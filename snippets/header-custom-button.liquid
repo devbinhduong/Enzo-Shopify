@@ -1,0 +1,13 @@
+{%- if settings.custom_button_enabled -%}
+<div class="header-custom-button max-md:hidden">
+  <a href="{{ settings.custom_button_link }}" class="custom-button-content">
+    <div class="svg-wrapper">
+      {{- 'icon-sparkles.svg' | inline_asset_content -}}
+    </div>
+    <span class="text">{{ settings.custom_button_text }}</span>
+    <div class="svg-wrapper">
+      {{- 'icon-sparkles.svg' | inline_asset_content -}}
+    </div>
+  </a>
+</div>
+{%- endif -%}

@@ -1,0 +1,609 @@
+{%- liquid
+  assign sec_stts = section.settings
+  assign bl_stts = block.settings
+  assign bl_id = block.id
+  assign link = bl_stts.link
+  assign menu = bl_stts.menu
+  assign show_image_level_1 = sec_stts.show_image_level_1
+  assign show_image_sub_menu = sec_stts.show_image_sub_menu
+  assign show_see_all = bl_stts.show_see_all
+
+  assign media_width_desktop = '100vw'
+  assign media_width_mobile = '100vw'
+  assign sizes = 'auto, (min-width: 750px) 450px, ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
+  assign widths = '300, 375, 450'
+  assign sizes_banner = 'auto, (min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
+  assign widths_banner = '300, 450, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2000, 2500, 3000, 3500, 4000, 5000'
+
+  assign media_type_level_1 = sec_stts.media_type
+  assign image_type_level_1 = bl_stts.image_type_level_1
+  assign svg_upload_level_1 = bl_stts.svg_upload_level_1
+  assign image_upload_level_1 = bl_stts.image_level_1
+  assign width_level_1 = sec_stts.media_width
+
+  assign has_image_sub_menu = false
+  if bl_stts.image_1 or bl_stts.image_2 or bl_stts.image_3
+    assign has_image_sub_menu = true
+  endif
+  assign has_submenu = false
+  if bl_stts.sub_menu_1 != blank or bl_stts.sub_menu_2 != blank or bl_stts.sub_menu_3 != blank
+    assign has_submenu = true
+  endif
+
+  capture class_link
+    echo 'menu-drawer__menu-item--multi-tab menu-drawer__menu-item link link--text list-menu__item capitalize focus-inset'
+  endcapture
+
+  capture class_sub_link
+    echo 'menu-drawer__menu-item--multi-tab menu-drawer__menu-item menu-drawer__sub_menu-item link link--text list-menu__item focus-inset'
+  endcapture
+
+  capture class_submenu
+    echo 'menu-drawer__submenu has-submenu motion-reduce'
+  endcapture
+-%}
+
+{%- capture icon_arrow -%}
+  <span class="svg-wrapper icon-arrow--backward">
+    {%- render 'icon-chevron-right' -%}
+  </span>
+{%- endcapture -%}
+
+{%- capture icon_arrow_forward -%}
+  <span class="svg-wrapper icon-arrow--backward">
+    {%- render 'icon-chevron-right' -%}
+  </span>
+{%- endcapture -%}
+
+{%- capture media_level_1 -%}
+  {% if show_image_level_1 %}
+    {% if image_type_level_1 == 'svg' %}
+      {%- if svg_upload_level_1 != blank -%}
+        <span class="svg-wrapper">
+          {{ bl_stts.svg_upload_level_1 }}
+        </span>
+      {%- endif -%}
+    {% elsif image_type_level_1 == 'image' %}
+      {%- if image_upload_level_1 != blank -%}
+        {% liquid
+          assign width = width_level_1
+
+          assign ratio = image_upload_level_1.aspect_ratio
+          if media_type_level_1 == 'circle'
+            assign ratio = 1
+          endif
+
+          assign image_style = 'width: ' | append: width | append: 'px;' | append: ';' | append: '--media-adapt-ratio:' | append: ratio | append: ';'
+        %}
+
+        <div class="media media--adapt media--{{ media_type_level_1 }}" style="{{ image_style }}">
+          {{ image_upload_level_1 | image_url: width: 450 | image_tag: widths: widths, sizes: sizes }}
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      <div class="placeholder-svg" style="width: {{ width }}px; height: {{ width }}px;">
+        {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {% endif %}
+  {% endif %}
+{%- endcapture -%}
+
+<li>
+  {%- if has_submenu or menu != blank -%}
+    {%- unless bl_stts.expanded_menu -%}
+    <header-drawer>
+      <details id="Details-tab-drawer-menu-item-{{ block.id }}">
+        <summary class="{{ class_link }}{% if bl_stts.highlights_item %} menu-drawer__menu-item-highlights{% endif %}">
+          {{ media_level_1 }}
+
+          {{ bl_stts.title }}
+
+          {{ icon_arrow }}
+        </summary>
+        <div
+          id="link-{{ bl_id | escape }}"
+          class="{{ class_submenu }}"
+          tabindex="-1"
+        >
+          <div class="menu-drawer__inner-submenu custom-scrollbar">
+            <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+              {{ icon_arrow_forward }}
+              <span class="text w-full center">
+                {{ bl_stts.title | escape }}
+              </span>
+            </button>
+            
+            <ul
+              class="menu-drawer__menu list-menu grid"
+              role="list"
+              tabindex="-1"
+              style="--p: 1.6rem 0;"
+            >
+              {%- if show_see_all -%}
+                <li>
+                  <a
+                    id="HeaderDrawer-{{ link.handle }}-{{ link.handle }}"
+                    href="{{ link.handle }}"
+                    class="{{ class_sub_link }}"
+                    style="--gap-x: var(--gap-xl)"
+                  >
+                    {{ 'actions.see_all' | t }} {{ bl_stts.title | escape }}
+                  </a>
+                </li>
+              {%- endif -%}
+
+              {%- for i in (1..3) -%}
+                {%- capture sub_menu -%}sub_menu_{{ i }}{%- endcapture -%}
+                {%- capture sub_menu_link -%}sub_menu_link_{{ i }}{%- endcapture -%}
+                {%- liquid
+                  assign sub_menu = bl_stts[sub_menu]
+                  assign sub_menu_link = bl_stts[sub_menu_link]
+                -%}
+                {%- if sub_menu and sub_menu_link -%}
+                <li>
+                  <a
+                    id="HeaderDrawer-{{ link.handle }}-{{ class_sub_link }}"
+                    href="{{ sub_menu_link }}"
+                    class="{{ class_sub_link }}"
+                    style="--gap-x: var(--gap-xl)"
+                  >
+                    {{ sub_menu | escape }}
+                  </a>
+                </li>
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- for linklv2 in menu.links -%}
+                <li>
+                  {%- if linklv2.links == blank -%}
+                    <a
+                      id="HeaderDrawer-{{ link.handle }}-{{ linklv2.handle }}"
+                      href="{{ linklv2.url }}"
+                      class="{{ class_link }}{% if linklv2.current %} menu-drawer__menu-item--active{% endif %}"
+                      {% if linklv2.current %}
+                        aria-current="page"
+                      {% endif %}
+                      style="--gap-x: var(--gap-xl)"
+                    >
+                      {{ linklv2.title | escape }}
+                    </a>
+                  {%- else -%}
+                    <div id="Details-menu-drawer-{{ link.handle }}-{{ linklv2.handle }}">
+                      <a
+                        href="{{ linklv2.url }}"
+                        id="HeaderDrawer-{{ link.handle }}-{{ linklv2.handle }}"
+                        class="{{ class_link }} menu-drawer__menu-item-level-2"
+                      >
+                        {{ linklv2.title | escape }}
+                      </a>
+                      <div
+                        id="linklv2-{{ linklv2.handle | escape }}"
+                        class="list-menu-wrap"
+                      >
+                        <ul
+                          class="menu-drawer__menu list-menu"
+                          role="list"
+                          tabindex="-1"
+                        >
+                          {%- for linklv3 in linklv2.links -%}
+                            <li>
+                              {%- if linklv3.links == blank -%}
+                              <a
+                                id="HeaderDrawer-{{ link.handle }}-{{ linklv2.handle }}-{{ linklv3.handle }}"
+                                href="{{ linklv3.url }}"
+                                class="link link--text list-menu__item focus-inset flex-column gap-xs left{%- if linklv3.current %} menu-drawer__menu-item--active{% endif -%}"
+                                {% if linklv3.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ linklv3.title | escape }}
+                              </a>
+                              {%- else -%}
+                              {% render 'menu-tab-item-lv4', menu: linklv3, class_link: class_link, class_sub_link: class_sub_link, bl_id: bl_id, icon_arrow: icon_arrow, icon_arrow_forward: icon_arrow_forward, class_submenu: class_submenu %}
+                              {%- endif -%}
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+
+            {%- if show_image_sub_menu and has_image_sub_menu -%}
+            <div
+              class="
+                mega-drawer__image grid grid-layout contains-card contains-card--card
+              "
+              style="
+                --border-radius: 1rem;
+                --border-width: 0rem;
+              "
+            >
+              {%- for i in (1..3) -%}
+                {%- capture capture_image -%}image_{{ i }}{%- endcapture -%}
+                {%- capture capture_link_url -%}link_url_{{ i }}{%- endcapture -%}
+                {%- capture capture_sub_text -%}sub_text_{{ i }}{%- endcapture -%}
+                {%- capture capture_text -%}text_{{ i }}{%- endcapture -%}
+                {%- liquid
+                  assign image = bl_stts[capture_image]
+                  assign link_url = bl_stts[capture_link_url]
+                  assign sub_text = bl_stts[capture_sub_text]
+                  assign text = bl_stts[capture_text]
+                -%}
+                {%- if image != blank -%}
+                  <div class="overflow-hidden mega-menu__image">
+                    <a
+                      class="block relative h-full"
+                      {% if link_url != blank %}
+                        href="{{ link_url }}"
+                      {% else %}
+                        role="link" aria-disabled="true"
+                      {% endif %}
+                    >
+                      {%- liquid
+                        assign ratio = image.aspect_ratio | default: 1
+                        assign image_alt = image.alt | default: shop.name | escape
+                      -%}
+                      <div
+                        class="media media--transparent media--adapt relative overflow-hidden h-full"
+                        style="--media-adapt-ratio: {{ ratio }};"
+                      >
+                        {{
+                          image
+                          | image_url: width: 600
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '275, 550, 710',
+                            sizes: sizes,
+                            alt: image_alt,
+                            class: 'motion-reduce'
+                        }}
+                        {%- if sub_text or text -%}
+                        <div class="card-megamenu-content absolute left-0 bottom-0 w-full">
+                          {%- if bl_stts.show_sub_text_above -%}
+                          <p class="sub_text">{{ sub_text }}</p>
+                          {%- endif -%}
+                          <p class="text">{{ text }}</p>
+                          {%- unless bl_stts.show_sub_text_above -%}
+                          <p class="sub_text">{{ sub_text }}</p>
+                          {%- endunless -%}
+                        </div>
+                        {%- endif -%}
+                      </div>
+                    </a>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </details>
+    </header-drawer>
+    {%- else -%}
+    <li>
+      <div id="Details-menu-drawer-{{ link.handle }}">
+        <a
+          href="{{ link.handle }}"
+          id="HeaderDrawer-{{ link.handle }}"
+          class="{{ class_link }} menu-drawer__menu-item-level-2"
+        >
+          {{ bl_stts.title | escape }}
+        </a>
+        <div
+          id="linklv2-{{ link.handle | escape }}"
+          class="list-menu-wrap"
+        >
+          <ul
+            class="menu-drawer__menu list-menu"
+            role="list"
+            tabindex="-1"
+          >
+            {%- for linklv2 in menu.links -%}
+              <li>
+                {%- if linklv2.links == blank -%}
+                <a
+                  id="HeaderDrawer-{{ link.handle }}-{{ linklv2.handle }}"
+                  href="{{ linklv2.url }}"
+                  class="link link--text list-menu__item focus-inset flex-column gap-xs left{%- if linklv2.current %} menu-drawer__menu-item--active{% endif -%}"
+                  {% if linklv2.current %}
+                    aria-current="page"
+                  {% endif %}
+                >
+                  {{ linklv2.title | escape }}
+                </a>
+                {%- else -%}
+                {% render 'menu-tab-item-lv4', menu: linklv2, class_link: class_link, class_sub_link: class_sub_link, bl_id: bl_id, icon_arrow: icon_arrow, icon_arrow_forward: icon_arrow_forward, class_submenu: class_submenu %}
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+
+          {%- if show_image_sub_menu and has_image_sub_menu -%}
+            <div
+              class="
+                mega-drawer__image grid grid-layout contains-card contains-card--card
+              "
+              style="
+                --border-radius: 1rem;
+                --border-width: 0rem;
+              "
+            >
+              {%- for i in (1..3) -%}
+                {%- capture capture_image -%}image_{{ i }}{%- endcapture -%}
+                {%- capture capture_link_url -%}link_url_{{ i }}{%- endcapture -%}
+                {%- capture capture_sub_text -%}sub_text_{{ i }}{%- endcapture -%}
+                {%- capture capture_text -%}text_{{ i }}{%- endcapture -%}
+                {%- liquid
+                  assign image = bl_stts[capture_image]
+                  assign link_url = bl_stts[capture_link_url]
+                  assign sub_text = bl_stts[capture_sub_text]
+                  assign text = bl_stts[capture_text]
+                -%}
+                {%- if image != blank -%}
+                  <div class="overflow-hidden mega-menu__image">
+                    <a
+                      class="block relative h-full"
+                      {% if link_url != blank %}
+                        href="{{ link_url }}"
+                      {% else %}
+                        role="link" aria-disabled="true"
+                      {% endif %}
+                    >
+                      {%- liquid
+                        assign ratio = image.aspect_ratio | default: 1
+                        assign image_alt = image.alt | default: shop.name | escape
+                      -%}
+                      <div
+                        class="media media--transparent media--adapt relative overflow-hidden h-full"
+                        style="--media-adapt-ratio: {{ ratio }};"
+                      >
+                        {{
+                          image
+                          | image_url: width: 600
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '275, 550, 710',
+                            sizes: sizes,
+                            alt: image_alt,
+                            class: 'motion-reduce'
+                        }}
+                        {%- if sub_text or text -%}
+                        <div class="card-megamenu-content absolute left-0 bottom-0 w-full">
+                          {%- if bl_stts.show_sub_text_above -%}
+                          <p class="sub_text">{{ sub_text }}</p>
+                          {%- endif -%}
+                          <p class="text">{{ text }}</p>
+                          {%- unless bl_stts.show_sub_text_above -%}
+                          <p class="sub_text">{{ sub_text }}</p>
+                          {%- endunless -%}
+                        </div>
+                        {%- endif -%}
+                      </div>
+                    </a>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </li>
+    {%- endunless -%}
+  {%- else -%}
+    <a
+      id="HeaderDrawer-{{ bl_id }}"
+      {% if link != blank %}
+        href="{{ link.url }}"
+      {%- else -%}
+        role="link" aria-disabled="true"
+      {% endif %}
+      class="{{ class_link }} gap-lg{% if bl_stts.highlights_item %} menu-drawer__menu-item-highlights{% endif %}"
+    >
+      {{ media_level_1 }}
+
+      {{ bl_stts.title | escape }}
+    </a>
+  {%- endif -%}
+</li>
+
+
+{% schema %}
+{
+  "name": "t:names.menu_item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "checkbox",
+      "id": "highlights_item",
+      "label": "Highlights item",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:content.menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:settings.menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "expanded_menu",
+      "label": "Expanded at level 1",
+      "default": false,
+      "visible_if": "{{ block.settings.menu }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_see_all",
+      "label": "Show see all menu in level 2",
+      "default": true,
+      "visible_if": "{{ block.settings.menu and block.settings.expanded_menu == false }}"
+    },
+    {
+      "type": "text",
+      "id": "sub_menu_1",
+      "label": "t:settings.submenu"
+    },
+    {
+      "type": "url",
+      "id": "sub_menu_link_1",
+      "label": "t:settings.link_1",
+      "visible_if": "{{ block.settings.sub_menu_1 != blank }}"
+    },
+    {
+      "type": "text",
+      "id": "sub_menu_2",
+      "label": "Submenu 2",
+      "visible_if": "{{ block.settings.sub_menu_1 != blank }}"
+    },
+    {
+      "type": "url",
+      "id": "sub_menu_link_2",
+      "label": "t:settings.link_2",
+      "visible_if": "{{ block.settings.sub_menu_2 != blank }}"
+    },
+    {
+      "type": "text",
+      "id": "sub_menu_3",
+      "label": "Submenu 3",
+      "visible_if": "{{ block.settings.sub_menu_2 != blank }}"
+    },
+    {
+      "type": "url",
+      "id": "sub_menu_link_3",
+      "label": "t:settings.link_3",
+      "visible_if": "{{ block.settings.sub_menu_3 != blank }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.media"
+    },
+    {
+      "type": "select",
+      "id": "image_type_level_1",
+      "label": "t:settings.type_level_1",
+      "options": [
+        {
+          "value": "svg",
+          "label": "SVG"
+        },
+        {
+          "value": "image",
+          "label": "t:settings.image"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "liquid",
+      "id": "svg_upload_level_1",
+      "label": "t:settings.svg_icon_level_1",
+      "info": "t:info.svg_icon_info",
+      "visible_if": "{{ block.settings.image_type_level_1 == 'svg' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_level_1",
+      "label": "t:settings.image_level_1",
+      "visible_if": "{{ block.settings.image_type_level_1 == 'image' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sub_text_above",
+      "label": "Display the supplementary text above.",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "t:settings.image_1"
+    },
+    {
+      "type": "text",
+      "id": "sub_text_1",
+      "label": "Sub text 1",
+      "visible_if": "{{ block.settings.image_1 }}"
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "t:settings.text_1",
+      "visible_if": "{{ block.settings.image_1 }}"
+    },
+    {
+      "type": "url",
+      "id": "link_url_1",
+      "label": "t:settings.link",
+      "visible_if": "{{ block.settings.image_1 }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:settings.image_2",
+      "visible_if": "{{ block.settings.image_1 }}"
+    },
+    {
+      "type": "text",
+      "id": "sub_text_2",
+      "label": "Sub text 2",
+      "visible_if": "{{ block.settings.image_2 }}"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "t:settings.text_2",
+      "visible_if": "{{ block.settings.image_2 }}"
+    },
+    {
+      "type": "url",
+      "id": "link_url_2",
+      "label": "t:settings.link",
+      "visible_if": "{{ block.settings.image_2 }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "t:settings.image_3",
+      "visible_if": "{{ block.settings.image_2 }}"
+    },
+    {
+      "type": "text",
+      "id": "sub_text_3",
+      "label": "Sub text 3",
+      "visible_if": "{{ block.settings.image_3 }}"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "t:settings.text_3",
+      "visible_if": "{{ block.settings.image_3 }}"
+    },
+    {
+      "type": "url",
+      "id": "link_url_3",
+      "label": "t:settings.link",
+      "visible_if": "{{ block.settings.image_3 }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.menu_item"
+    }
+  ]
+}
+{% endschema %}

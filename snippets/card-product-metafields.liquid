@@ -1,0 +1,26 @@
+{%- liquid
+  if card_product.metafields.custom.is_this_a_free_gift
+    assign has_free_gift = true
+  endif
+  if card_product.metafields.custom.tiktok_link
+    assign has_tiktok = true
+  endif
+-%}
+
+{%- if has_free_gift or has_tiktok -%}
+  <div class="metafields-block flex items-center" style="--gap: 0.5rem">
+    {%- if has_free_gift -%}
+      <div class="metafields-item flex items-center">
+        <span>{{ 'content.free_gift' | t }}</span>
+      </div>
+    {%- endif -%}
+    {%- if has_tiktok -%}
+      <a href="{{ card_product.metafields.custom.tiktok_link }}" class="metafields-item flex items-center">
+        <span class="svg-wrapper">
+          {{- 'icon-tiktok.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'content.social.tiktok' | t }}</span>
+      </a>
+    {%- endif -%}
+  </div>
+{%- endif -%}

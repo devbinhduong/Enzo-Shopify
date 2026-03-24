@@ -1,0 +1,216 @@
+{%- liquid
+  assign bl_stts = block.settings
+  assign bl_id = block.id
+  assign menu = bl_stts.menu
+
+  capture class_link
+    echo 'menu-drawer__menu-item--multi-tab menu-drawer__menu-item link link--text list-menu__item capitalize focus-inset'
+  endcapture
+
+  capture class_sub_link
+    echo 'menu-drawer__menu-item--multi-tab menu-drawer__menu-item menu-drawer__sub_menu-item link link--text list-menu__item focus-inset'
+  endcapture
+
+  capture class_submenu
+    echo 'menu-drawer__submenu has-submenu motion-reduce'
+  endcapture
+-%}
+
+{%- capture icon_arrow -%}
+  <span class="svg-wrapper icon-arrow--backward">
+    {%- render 'icon-chevron-right' -%}
+  </span>
+{%- endcapture -%}
+
+{%- capture icon_arrow_forward -%}
+  <span class="svg-wrapper icon-arrow--backward">
+    {%- render 'icon-chevron-right' -%}
+  </span>
+{%- endcapture -%}
+
+<li>
+  <header-drawer>
+    <details id="Details-tab-drawer-menu-item-{{ block.id }}">
+      <summary class="{{ class_sub_link }}">
+        {{ bl_stts.title }}
+
+        {{ icon_arrow }}
+      </summary>
+      <div
+        id="link-{{ bl_id | escape }}"
+        class="{{ class_submenu }}"
+        tabindex="-1"
+      >
+        <search-brands class="menu-drawer__inner-submenu menu-drawer__inner-brands custom-scrollbar">
+          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+            {{ icon_arrow_forward }}
+            <span class="text w-full center">
+              {{ 'content.all_brands' | t }}
+            </span>
+          </button>
+
+          <div class="menu-drawer__brands-search">
+            <div class="field">
+              <button class="search__button field__button z-2" aria-label={{ 'content.search_for_brands' | t }}>
+                <span class="svg-wrapper">
+                  {{- 'icon-search.svg' | inline_asset_content -}}
+                </span>
+              </button>
+              <input
+                class="search__input field__input"
+                id="Menu-drawer-brands-search"
+                type="search"
+                name="q"
+                value="{{ search.terms | escape }}"
+                placeholder={{ 'content.search_for_brands' | t }}
+                {%- if settings.predictive_search_enabled -%}
+                  role="combobox"
+                  aria-expanded="false"
+                  aria-owns="brands-search-results"
+                  aria-controls="brands-search-results"
+                  aria-haspopup="listbox"
+                  aria-autocomplete="list"
+                  autocorrect="off"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                {%- endif -%}
+              >
+              {% comment %} <label class="field__label" for="{{ input_id }}">{{ 'content.search' | t }}</label> {% endcomment %}
+              <input type="hidden" name="options[prefix]" value="last">
+              <button
+                type="reset"
+                class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+                aria-label="{{ 'content.clear_search_term' | t }}"
+              >
+                <span class="svg-wrapper">
+                  {{- 'icon-close.svg' | inline_asset_content -}}
+                </span>
+              </button>
+            </div>
+          </div>
+          
+          <ul
+            class="menu-drawer__menu list-menu grid"
+            role="list"
+            tabindex="-1"
+            style="--p: 1.6rem 0;"
+          >
+            {% assign brand_letters = '' %}
+            {% assign alphabet = 'A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z' | split: '|' %}
+            {% for vendor in shop.vendors %}
+              {% assign first = vendor | strip_html | slice: 0, 1 | upcase %}
+              {% unless brand_letters contains first %}
+                {% assign brand_letters = brand_letters | append: first %}
+              {% endunless %}
+            {% endfor %}
+            {% for letter in alphabet %}
+              {% assign remainder = forloop.index | modulo: 2 %}
+              {% if remainder != 0 %}
+                {% assign next_index = forloop.index0 | plus: 1 %}
+                {% assign next_letter = alphabet[next_index] %}
+                <li>
+                <div class="menu-drawer__menu-item-brand" id="Details-menu-drawer-brands-{{ letter |downcase }}{% if next_letter %}-{{ next_letter | downcase }}{% endif %}">
+                  <a
+                    href="javascript:void(0);"
+                    id="HeaderDrawer-brands-{{ letter | downcase }}{% if next_letter %}-{{ next_letter | downcase }}{% endif %}"
+                    class="{{ class_link }} menu-drawer__menu-item-level-2"
+                  >
+                    {{ letter }}{% if next_letter %}-{{ next_letter }}{% endif %}
+                  </a>
+                  <div
+                    id="linklv2-{{ letter | downcase }}{% if next_letter %}-{{ next_letter | downcase }}{% endif %}"
+                    class="list-menu-wrap"
+                  >
+                    <ul
+                      class="menu-drawer__menu list-menu"
+                      role="list"
+                      tabindex="-1"
+                    >
+                      {%- if bl_stts.type_brands == 'auto' -%}
+                      {% for vendor in shop.vendors %}
+                        {% assign first_letter = vendor | slice: 0 | upcase %}
+                        {% if first_letter == letter %}
+                          <li>
+                            {% liquid
+                              assign letter_list = letter | downcase
+                              if next_letter
+                                assign letter_list = letter_list | append: '-' | append: next_letter | downcase | append: '-'
+                              endif
+                              assign letter_list = letter_list | append: vendor | url_encode
+                              assign html = '<a class="link link--text list-menu__item focus-inset flex-column gap-xs left visible" id="HeaderDrawer-brands-' | append: letter_list | append: '"'
+                            %}
+
+                            {{ vendor | link_to_vendor | replace: '<a', html }}
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                      {%- else -%}
+                      {% for link in menu.links %}
+                        {% assign first_letter = link.title | slice: 0 | upcase %}
+                        {% if first_letter == letter %}
+                          <li>
+                            <a
+                              id="HeaderDrawer-brands-{{ letter | downcase }}{% if next_letter %}-{{ next_letter | downcase }}{% endif %}-{{ link.handle }}"
+                              href="{{ link.handle }}"
+                              class="{{ class_link }} visible"
+                              style="--gap-x: var(--gap-xl)"
+                            >
+                              {{ link.title | escape }}
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                      {%- endif -%}
+                    </ul>
+                  </div>
+                </div>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </search-brands>
+      </div>
+    </details>
+  </header-drawer>
+</li>
+
+{% schema %}
+{
+  "name": "Menu item brands",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "select",
+      "id": "type_brands",
+      "label": "t:settings.type",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:options.auto"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.custom"
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:settings.menu",
+      "visible_if": "{{ block.settings.type_brands == 'custom' }}"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Menu item brands"
+    }
+  ]
+}
+{% endschema %}

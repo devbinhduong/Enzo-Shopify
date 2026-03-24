@@ -1,0 +1,57 @@
+<header-drawer>
+  <details id="Details-tab-drawer-menu-item-lv4-{{ bl_id }}">
+    <summary class="{{ class_link }}">
+      {{ menu.title }}
+
+      {{ icon_arrow }}
+    </summary>
+    <div
+      id="link-lv3-{{ bl_id | escape }}"
+      class="{{ class_submenu }}"
+      tabindex="-1"
+    >
+      <div class="menu-drawer__inner-submenu custom-scrollbar">
+        <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+          {{ icon_arrow_forward }}
+          <span class="text w-full center">
+            {{ menu.title | escape }}
+          </span>
+        </button>
+        
+        <ul
+          class="menu-drawer__menu list-menu grid"
+          role="list"
+          tabindex="-1"
+          style="--p: 1.6rem 0;"
+        >
+          <li>
+            <a
+              id="HeaderDrawer-{{ link.handle }}-{{ menu.handle }}"
+              href="{{ link.handle }}"
+              class="{{ class_sub_link }}"
+              style="--gap-x: var(--gap-xl)"
+            >
+              {{ 'actions.see_all' | t }} {{ menu.title | escape }}
+            </a>
+          </li>
+
+          {%- for linklv4 in menu.links -%}
+            <li>
+              <a
+                id="HeaderDrawer-{{ link.handle }}-{{ linklv4.handle }}"
+                href="{{ linklv4.url }}"
+                class="{{ class_link }}{% if linklv4.current %} menu-drawer__menu-item--active{% endif %}"
+                {% if linklv4.current %}
+                  aria-current="page"
+                {% endif %}
+                style="--gap-x: var(--gap-xl)"
+              >
+                {{ linklv4.title | escape }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </details>
+</header-drawer>

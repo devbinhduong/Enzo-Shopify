@@ -1,0 +1,32 @@
+{%- capture children -%}
+  {%- content_for 'blocks' -%}
+{%- endcapture -%}
+
+<nav class="site-nav-mobile menu-drawer__navigation h-full color-{{ block.settings.color_scheme }}">
+  {{- children -}}
+</nav>
+
+{% schema %}
+{
+  "name": "t:names.contents",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-3"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "_menu-tab-list"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.contents"
+    }
+  ]
+}
+{% endschema %}

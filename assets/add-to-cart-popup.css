@@ -1,0 +1,97 @@
+add-to-cart-popup .add-to-cart-popup__content {
+  border-radius: 20px 20px 0 0;
+  border: none;
+  overflow: hidden;
+}
+
+add-to-cart-popup .popup__header {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+add-to-cart-popup .popup__header .drawer__close {
+  top: 0;
+  right: 0;
+}
+
+add-to-cart-popup .popup__heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+add-to-cart-popup .popup__heading .svg-wrapper {
+  color: #F8A2BF;
+}
+
+add-to-cart-popup .popup__heading .text {
+  color: #1A1A1A;
+  font-family: var(--font-body--family);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+add-to-cart-popup .add-to-cart-popup__content-info {
+  max-height: calc(100% - 4.6rem);
+}
+
+#AddedToCartList {
+  .cart-item {
+    --cart-item-price-width: 2rem;
+    display: grid;
+    grid-template-columns: 13rem minmax(0, 1fr);
+    grid-template-areas:
+        "media details"
+        "media quantity";
+    gap: var(--gap-xs);
+    align-items: start;
+    padding-block: calc(var(--cart-items-gap) / 2);
+    padding-inline: var(--cart-items-gap);
+    margin-bottom: 0;
+
+    .cart-item__media {
+      grid-area: media;
+    }
+
+    .cart-item__details {
+      grid-area: details;
+      width: auto;
+      .cart-item__price-wrapper.medium-hide.large-up-hide {
+        display: block !important;
+
+        .cart-item__discounted-prices {
+          display: flex;
+          gap: 0.8rem;
+        }
+      }
+    }
+
+    .cart-item__quantity {
+        grid-area: quantity;
+        .cart-quantity {
+          width: 100%;
+          min-height: 2.9rem;
+          max-width: min(100%, 8.7rem);
+        }
+    }
+
+    .cart-item__price,
+    .cart-item__remove {
+      display: none;
+    }
+  }
+}
+
+add-to-cart-popup .cart-drawer__recommendations {
+  margin-bottom: 1.5rem;
+}
+
+add-to-cart-popup .cart-drawer__recommendations .card__content {
+  padding: 0;
+}
+
+@media screen and (max-width: 749px) {
+  add-to-cart-popup .cart-items__table thead {
+    display: none;
+  }
+}

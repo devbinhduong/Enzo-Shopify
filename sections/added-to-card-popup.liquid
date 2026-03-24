@@ -1,0 +1,41 @@
+
+{% capture cart_drawer_product_block %}
+  {% content_for 'block', id: 'cart-product', type: '_cart-product' %}
+{% endcapture %}
+
+{% capture cart_drawer_popular_products_block %}
+  {% content_for 'block', id: 'cart-popular-products', type: '_cart-popular-products' %}
+{% endcapture %}
+
+{%- render 'add-to-cart-popup', cart_drawer_product_block: cart_drawer_product_block, cart_drawer_popular_products_block: cart_drawer_popular_products_block -%}
+
+<link rel="stylesheet" href="{{ 'add-to-cart-popup.css' | asset_url }}"  media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="{{ 'add-to-cart-popup.css' | asset_url }}">
+</noscript>
+<script src="{{ 'add-to-cart-popup.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "Added to cart popup",
+    "tag": "section",
+    "class": "section-add-to-card-popup",
+    "limit": 1,
+    "enabled_on": {
+      "groups": ["custom.popup"]
+    },
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:settings.color_scheme",
+        "default": "scheme-1"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Added to cart popup"
+      }
+    ]
+  }
+{% endschema %}

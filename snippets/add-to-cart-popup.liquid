@@ -1,0 +1,138 @@
+<add-to-cart-popup
+  class="add-to-cart-popup modal--popup fixed top-0 left-0 z-9 w-screen h-full flex justify-center no-js-hidden"
+  element-s-popup
+  id="AddToCartPopup"
+>
+  <div id="Modal-Overlay" class="drawer__overlay fixed inset-0 cursor-pointer"></div>
+  <div
+    class="popup__inner add-to-cart-popup__content w-auto h-full absolute-c-c flex flex-column global-settings-popup color-{{ section.settings.color_scheme }}"
+    role="dialog"
+    aria-modal="true"
+    tabindex="-1"
+    style="--modal-max-height: 85dvh; --modal-max-width: 39rem;"
+  >
+    <div
+      class="popup__header flex justify-between items-center relative"
+      style="--p: 1.2rem 1.5rem;"
+    >
+      <h2 class="popup__heading flex items-center break m-0 h5" style="--gap: 1rem;">
+        <span class="svg-wrapper" style="--icon-size: 2.2rem">
+          {{- 'icon-checkmark.svg' | inline_asset_content -}}
+        </span>
+        <span class="text">{{ 'content.items_added.item_successfully_added_to_your_cart' | t }}</span>
+      </h2>
+      <button 
+        class="add-to-cart-popup__toggle drawer__close block t-button bor-none rounded-full cursor-pointer" 
+        type="button" 
+        onclick="this.closest('add-to-cart-popup').hide()" 
+        aria-label="{{ 'accessibility.close_dialog' | t }}"
+        style="--top: 0.3rem; --right: 0.3rem;"
+      >
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </button>
+    </div>
+    <div id="AddToCartModal" class="add-to-cart-popup__content-info overflow-y-a cus-scrollbar">
+      <div class="flex flex-column" style="--p: 1.5rem; --gap: 1rem;">
+        <table
+          class="cart-items cart-items__table"
+          role="table"
+        >
+          <thead class="none" role="rowgroup">
+            <tr
+              role="row"
+              class="cart-items__table-row"
+            >
+              <th
+                id="productImage"
+                class="cart-items__table-heading cart-item__media caption-with-letter-spacing--medium font-bold"
+                scope="col"
+                role="columnheader"
+              >
+                <span>{{ 'content.product' | t }}</span>
+              </th>
+              <th
+                id="productInformation"
+                class="cart-items__table-heading cart-item__details caption-with-letter-spacing--medium font-bold"
+                scope="col"
+                role="columnheader"
+              >
+                <span class="visually-hidden">{{ 'content.product_information' | t }}</span>
+              </th>
+              <th
+                id="productPrice"
+                class="cart-items__table-heading cart-item__price small-hide center caption-with-letter-spacing--medium font-bold"
+                scope="col"
+                role="columnheader"
+              >
+                <span>{{ 'content.price' | t }}</span>
+              </th>
+              <th
+                id="productTotalMobile"
+                class="cart-items__table-heading cart-item__totals medium-hide large-up-hide right caption-with-letter-spacing--medium font-bold"
+                scope="col"
+                role="columnheader"
+              >
+                <span>{{ 'content.total' | t }}</span>
+              </th>
+              <th
+                id="quantity"
+                class="cart-items__table-heading cart-item__quantity cart-items__heading--wide cart-items__heading--quantity small-hide center caption-with-letter-spacing--medium font-bold"
+                scope="col"
+                role="columnheader"
+              >
+                <span>{{ 'content.quantity' | t }}</span>
+              </th>
+              <th
+                id="productTotal"
+                class="cart-items__table-heading cart-item__totals small-hide center caption-with-letter-spacing--medium font-bold"
+                scope="col"
+                role="columnheader"
+              >
+                <span>{{ 'content.total' | t }}</span>
+              </th>
+              <th
+                id="productRemove"
+                class="cart-items__table-heading right caption-with-letter-spacing--medium font-bold"
+                scope="col"
+                role="columnheader"
+              >
+                <span class="visually-hidden">{{ 'content.remove' | t }}</span>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody id="AddedToCartList" role="rowgroup">
+          </tbody>
+        </table>
+
+        <a
+          href="{{ routes.cart_url }}"
+          id="AddToCartPopup-Viewcart"
+          class="cart__viewcart-button button button--full-width"
+        >
+          <span class="button-overflow relative overflow-hidden" data-button-text="{{ 'content.cart.view_empty_cart' | t }}">
+            <span class="button-text-main inline-block relative z-1">
+              {{- 'content.cart.view_empty_cart' | t -}}
+            </span>
+          </span>
+        </a>
+        <button
+          type="submit"
+          id="AddToCartPopup-Continue"
+          class="button-secondary button--full-width"
+          name="continue"
+          onclick="this.closest('add-to-cart-popup').hide()" 
+        >
+          <span class="button-overflow relative overflow-hidden" data-button-text="{{ 'actions.continue_shopping' | t }}">
+            <span class="button-text-main inline-block relative z-1">
+              {{ 'actions.continue_shopping' | t }}
+            </span>
+          </span>
+        </button>
+      </div>
+      {%- if cart_drawer_popular_products_block != blank -%}
+        {{ cart_drawer_popular_products_block }}
+      {%- endif -%}
+    </div>
+  </div>
+</add-to-cart-popup>
