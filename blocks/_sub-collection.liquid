@@ -3,6 +3,17 @@
   assign heading = bl_stts.heading
   assign color_scheme = bl_stts.color_scheme
   assign accordion_item_dividers = bl_stts.accordion_item_dividers
+
+  assign mobile_columns = bl_stts.items_per_row_mobile | default: '2'
+  assign mobile_columns_int = mobile_columns | plus: 0
+  assign show_mobile_slider = false
+  assign items_count = 0
+  for item in collection.metafields.custom.sub_collection.value
+    assign items_count = items_count | plus: 1
+  endfor
+  if bl_stts.carousel_on_mobile and items_count > mobile_columns_int
+    assign show_mobile_slider = true
+  endif
 %}
 
 {% if collection.metafields.custom.sub_collection.value != blank %}
@@ -31,12 +42,19 @@
           {% if bl_stts.show_image %}
             <span class="menu__heading__default">{{ heading }}</span>
 
+            {%- if show_mobile_slider -%}
+              <swiper-component class="swiper-component-mobile block w-full" data-swiper-mobile
+                {%- render 'swiper-data', settings: bl_stts, loop: false, slides_per_view: mobile_columns, space_between: bl_stts.gap_mobile -%}
+              >
+                <div class="swiper">
+            {%- endif -%}
+
             <ul
-              class="list-unstyled direction--row mobile-row"
+              class="list-unstyled direction--row mobile-row{% if show_mobile_slider %} swiper-wrapper{% endif %}"
               style="--font-heading--size: {{ bl_stts.heading_font_size }}; --font-link--size: {{ bl_stts.link_font_size }};"
             >
               {% for item in collection.metafields.custom.sub_collection.value %}
-                <li class="menu__item has-image">
+                <li class="menu__item has-image{% if show_mobile_slider %} swiper-slide{% endif %}">
                   <a class="flex flex-column w-full" href="{{ item.url }}">
                     {% if item.featured_image %}
                       <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ item.featured_image | image_url: width: 130 }}" src="{{ item.featured_image | image_url: width: 130 }}" alt="{{ item.featured_image.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} width="{{item.featured_image.width}}" height="auto">
@@ -48,24 +66,43 @@
                 </li>
               {% endfor %}
             </ul>
+
+            {%- if show_mobile_slider -%}
+                </div>
+              </swiper-component>
+            {%- endif -%}
+
           {% else %}
+            {%- if show_mobile_slider -%}
+              <swiper-component class="swiper-component-mobile block w-full" data-swiper-mobile
+                {%- render 'swiper-data', settings: bl_stts, loop: false, slides_per_view: mobile_columns, space_between: bl_stts.gap_mobile -%}
+              >
+                <div class="swiper">
+            {%- endif -%}
+
             <ul
               class="
                 list-unstyled
                 direction--row
                 mobile-row
+                {% if show_mobile_slider %} swiper-wrapper{% endif %}
               "
               style="--font-heading--size: {{ bl_stts.heading_font_size }}; --font-link--size: {{ bl_stts.link_font_size }};"
             >
-              <li class="menu__heading__default">{{ heading }}</li>
+              <li class="menu__heading__default{% if show_mobile_slider %} swiper-slide{% endif %}">{{ heading }}</li>
               {% for item in collection.metafields.custom.sub_collection.value %}
-                <li class="menu__item">
+                <li class="menu__item{% if show_mobile_slider %} swiper-slide{% endif %}">
                   <a class="link--hover-underline" href="{{ item.url }}">
                     {{ item.title }}
                   </a>
                 </li>
               {% endfor %}
             </ul>
+
+            {%- if show_mobile_slider -%}
+                </div>
+              </swiper-component>
+            {%- endif -%}
           {% endif %}
         {% endif %}
       </div>
@@ -99,6 +136,33 @@
       "id": "show_image",
       "label": "t:settings.show_images",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "carousel_on_mobile",
+      "label": "t:settings.carousel_on_mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "items_per_row_mobile_custom",
+      "label": "t:settings.mobile_columns",
+      "min": 1,
+      "max": 2.5,
+      "step": 0.1,
+      "default": 2.2,
+      "visible_if": "{{ block.settings.carousel_on_mobile == true }}"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap on mobile",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 14,
+      "visible_if": "{{ block.settings.carousel_on_mobile == true }}"
     },
     {
       "type": "header",
@@ -446,3 +510,4 @@
   ]
 }
 {% endschema %}
+

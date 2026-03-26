@@ -41,9 +41,9 @@
     <div
       class="
         main-collection-grid
-        {%- if section.settings.inherit_color_scheme == false %} color-{{ section.settings.color_scheme }}{% endif %}
         {%- if section.settings.product_grid_width == 'full-width' %} collection-wrapper--full-width{% endif %}
         {%- if section.settings.full_width_on_mobile == true %} collection-wrapper--full-width-on-mobile{% endif %}
+        {%- if section.settings.product_listing_grid_width == 'custom' %} collection-wrapper--custom-width{% endif %}
         spacing-style
       "
       style="
@@ -52,6 +52,7 @@
         --grid-column--mobile: var(--{% if section.settings.full_width_on_mobile %}full-width{% else %}{% if section.settings.product_grid_width == 'centered' %}centered{% else %}full-width{% endif %}{% endif %});
         --padding-inline-start: {{ section.settings.padding-inline-start }}px;
         --padding-inline-end: {{ section.settings.padding-inline-end }}px;
+        --product-listing-custom-width: {{ section.settings.product_listing_width_custom }}px;
       "
     >
 
@@ -227,6 +228,33 @@
         }
       ],
       "default": "centered"
+    },
+    {
+      "type": "select",
+      "id": "product_listing_grid_width",
+      "label": "Product listing width",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Inherit"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "inherit"
+    },
+    {
+      "type": "range",
+      "id": "product_listing_width_custom",
+      "label": "Custom Width",
+      "min": 1000,
+      "max": 2000,
+      "step": 10,
+      "unit": "px",
+      "default": 1080,
+      "visible_if": "{{ section.settings.product_listing_grid_width == 'custom' }}"
     },
     {
       "type": "checkbox",

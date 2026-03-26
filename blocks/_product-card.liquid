@@ -25,6 +25,7 @@
   assign bl_stts = block.settings
   assign product = closest.product
   assign show_badges = bl_stts.show_badges
+  assign show_card_border = bl_stts.show_card_border
 -%}
 
 {%- capture product_card_class -%}
@@ -38,7 +39,7 @@
   justify-{{ bl_stts.justify_content }}
   gap-style
   spacing-style
-  border-style
+  {% if show_card_border %} border-style{% endif %}
 {%- endcapture -%}
 
 <div 
@@ -53,6 +54,11 @@
       {%- if bl_stts.inherit_color_scheme == false -%}
         {%- render 'color-scheme-style', settings: bl_stts -%}
       {%- endif -%}
+      {% if show_card_border %} 
+        {% render 'border-override', settings: bl_stts %}
+        --border-style: solid;
+        --border-color: {{ bl_stts.card_border_color }};
+      {% endif %}
     "
   >
     <template>
@@ -98,6 +104,42 @@
       "id": "inherit_color_scheme",
       "label": "t:settings.inherit_color_scheme",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Show card border",
+      "id": "show_card_border",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "unit": "px",
+      "label": "t:settings.border_width",
+      "default": 1,
+      "visible_if": "{{ block.settings.show_card_border == true }}"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "t:settings.border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.show_card_border == true }}"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#FFF3F9",
+      "alpha": true,
+      "visible_if": "{{ block.settings.show_card_border == true }}"
     },
     {
       "type": "color",

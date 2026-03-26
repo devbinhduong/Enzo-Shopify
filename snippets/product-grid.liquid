@@ -29,14 +29,6 @@
 {%- style -%}
   @media (min-width: 750px) {
     {% case section.settings.layout_type %}
-      {% when 'grid' %}
-        .template-collection:not(:has(.switcher-grid)) .product-grid:is(.product-grid--grid) {
-          --product-grid-columns-desktop: repeat(auto-fill, minmax({{ product_card_size }}, 1fr));
-        }
-
-        .template-collection:has(.switcher-grid) .product-grid:is(.product-grid--grid:not([data-view])) {
-          --product-grid-columns-desktop: repeat(auto-fill, minmax(calc(100% / {{ columns_desktop | plus: 1 }}), 1fr));
-        }
       {% when 'organic' %}
         {% assign large_span = 2 %}
         {% assign row_cycle = 3 %}
@@ -113,6 +105,7 @@
       {% endif %}
       <ul
         class="product-grid list-unstyled grid-layout product-grid--{{ section.id }} product-grid--{{ section.settings.layout_type }} {% if section.settings.mobile_product_card_size == 'large' %} product-grid-mobile--large{% endif %}"
+        style="--grid-desktop-vertical-spacing: {{ section.settings.columns_gap_vertical }}px; --grid-desktop-horizontal-spacing: {{ section.settings.columns_gap_horizontal }}px;"
         product-grid-view="default"
         ref="grid"
         role="list"

@@ -40,8 +40,10 @@
       echo ' 0px;'
     endif
 
-    echo ' --facets-margin-right: ' | append: bl_stts.facets_margin_right | append: 'px;'
-    echo ' --facets-margin-left: ' | append: bl_stts.facets_margin_left | append: 'px;'
+    if bl_stts.filter_style == 'vertical'
+      echo ' --facets-margin-right: ' | append: bl_stts.facets_margin_right | append: 'px;'
+      echo ' --facets-margin-left: ' | append: bl_stts.facets_margin_left | append: 'px;'
+    endif
     echo ' --facets-margin-bottom: ' | append: bl_stts.facets_margin_bottom | append: 'px;'
   endcapture
 

@@ -188,3 +188,9 @@
     margin-inline-end: calc(-1 * max(var(--padding-xs), var(--padding-inline-end)));
   }
 }
+
+/* Mint start custom */
+.collection-wrapper--custom-width .product-grid-container { 
+  max-width: var(--product-listing-custom-width, 100%);
+  margin: 0 auto;
+}

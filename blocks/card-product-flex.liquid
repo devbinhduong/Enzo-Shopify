@@ -57,6 +57,9 @@
       {%- if bl_stts.inherit_color_scheme == false -%}
         {%- render 'color-scheme-style', settings: bl_stts -%}
       {%- endif -%}
+      {% if bl_stts.custom_card_border %} 
+        --border-color: {{ bl_stts.card_border_color }};
+      {% endif %}
     "
   >
     <template>
@@ -211,6 +214,20 @@
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.border != 'none' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_card_border",
+      "label": "Custom card border",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#FFF3F9",
+      "alpha": true,
+      "visible_if": "{{ block.settings.custom_card_border == true }}"
     },
     {
       "type": "header",

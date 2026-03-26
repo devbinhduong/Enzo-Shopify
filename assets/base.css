@@ -9693,15 +9693,17 @@ sold-in-last-component.loading {
   }
 }
 
-.sub-collection-block .direction--row {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: calc(var(--spacing--size) / 2) var(--spacing--size);
+@media screen and (min-width: 750px) {
+  .sub-collection-block .direction--row {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing--size) / 2) var(--spacing--size);
 
-  .menu__item {
-    margin: 0;
+    .menu__item {
+      margin: 0;
+    }
   }
 }
 
@@ -10675,7 +10677,7 @@ svg.icon-block__media {
   .menu-block .mobile-row,
   .sub-collection-block .mobile-row {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     gap: var(--spacing--size);
@@ -13640,21 +13642,19 @@ deferred-media[class].media-block__media
 }
 
 .pagination__list > li {
-  min-width: 4rem;
+  min-width: 0.5rem;
 }
 
 .pagination__list > li:not(:last-child) {
-  margin-right: 1.6rem;
+  margin-right: 1rem;
 }
 
 .pagination__item {
   display: inline-flex;
-  height: 4rem;
+  height: 2.1rem;
   color: var(--pagination-color);
-  background-color: var(--pagination-active-color);
-  border: var(--border-width) solid var(--pagination-color);
+  background-color: transparent;
   font-size: var(--body-s-font-size);
-  box-shadow: rgba(var(--pagination-active-color-rgb) / 0.25) 0rem 0rem 0rem 0rem;
   transition: background-color var(--animation-speed) var(--ease-out-smooth),
     box-shadow var(--animation-speed) var(--ease-out-smooth);
 
@@ -13664,16 +13664,8 @@ deferred-media[class].media-block__media
 }
 
 .pagination__item--current {
-  background: var(--pagination-color);
-  border-color: rgba(var(--pagination-active-color-rgb) / .25);
   color: var(--pagination-active-color);
-  box-shadow: rgba(var(--pagination-active-color-rgb) / .25) 0 4px 4px;
-}
-
-.pagination__item:hover {
-  background: transparent;
-  border-color: var(--pagination-active-color);
-  box-shadow: rgba(var(--pagination-active-color-rgb) / 0.25) 0 4px 4px 0;
+  border-bottom: 2px solid var(--pagination-active-color);
 }
 
 .pagination__item--next,

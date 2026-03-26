@@ -3,7 +3,7 @@
 {% endcomment %}
 {% capture list_items %}
   {% for child_block in block.blocks %}
-    <div class="test1212121-{{ forloop.index }}">
+    <div>
       {% render child_block, tab_index: 99 %}
     </div>
   {% endfor %}

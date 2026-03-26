@@ -19,10 +19,10 @@
 {% endcapture %}
 
 {% capture icons_style %}
-  {% if sec_stts.pagination_icons_type == 'chevron' %}
-    {{- 'icon-caret.svg' | inline_asset_content -}}
-  {% else %}
+  {% if sec_stts.pagination_icons_type == 'arrows' %}
     {{- 'icon-arrow.svg' | inline_asset_content -}}
+    {% else %}
+    {{- 'icon-caret.svg' | inline_asset_content -}}
   {% endif %}
 {% endcapture %}
 
@@ -56,6 +56,7 @@
               <span class="svg-wrapper">
                 {{ icons_style }}
               </span>
+              <span class="link link--underline" style="--ml: 0.8rem;">Vorige</span>
             </a>
           </li>
         {%- endif -%}
@@ -96,6 +97,7 @@
               aria-label="{{ 'content.pagination.next' | t }}"
             >
               <span class="visually-hidden">{{ 'content.pagination.button_next' | t }}</span>
+              <span class="link link--underline" style="--mr: 0.8rem;">Volgende</span>
               <span class="svg-wrapper">
                 {{ icons_style }}
               </span>
