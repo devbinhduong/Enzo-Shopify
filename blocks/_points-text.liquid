@@ -1,0 +1,59 @@
+{%- liquid
+  assign ratio = block.settings.point_ratio | default: 10
+  assign price_cents = product.selected_or_first_available_variant.price
+  assign ratio_cents = ratio | times: 100
+  assign point_link = block.settings.point_link
+  
+  assign points = price_cents | divided_by: ratio_cents
+-%}
+
+<div class="flex items-center" style="gap: 8px;">
+  {% content_for 'block', type: 'icon', id: 'point-icon' %}
+
+  {%- capture point_text -%}
+    Collect 
+      <span class="point-value">
+        <a class="link link--underline" href="{{ point_link }}" style="color: {{ block.settings.accent_color }}; font-weight: 600;">{{ points }} KS points</a>
+      </span> 
+      with this purchase
+  {%- endcapture -%}
+
+  <div class="product-reward-points" {{ block.shopify_attributes }}>
+      <p style="margin:0;">
+        {{ point_text }}
+      </p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Points text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "number",
+      "id": "point_ratio",
+      "label": "Money for each point",
+      "default": 10,
+      "info": "Example: Enter 10 if you spend 10€ to get 1 point"
+    },
+    {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Point text color",
+        "default": "#FF76A1"
+    },
+    {
+      "type": "url",
+      "id": "point_link",
+      "label": "Point link",
+      "default": "/"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Points text"
+    }
+  ]
+}
+{% endschema %}

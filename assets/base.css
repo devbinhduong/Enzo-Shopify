@@ -9090,7 +9090,13 @@ marquee-component {
 }
 
 .product-details .form__label {
-  font-size: var(--font-size-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 15.31px;
+}
+
+.product-details .form__label [data-selected-value] {
+  font-weight: 400;
 }
 
 .product-details > .group-block > .group-block-content {
@@ -9777,7 +9783,7 @@ more-payment-options-link a:hover {
 }
 
 .add-to-cart-button-container .add-to-cart-button-inner .card-product__group-item button {
-  padding: 0.5rem;
+  padding: 1.5rem;
 }
 
 .add-to-cart-button-inner {
@@ -9797,11 +9803,11 @@ more-payment-options-link a:hover {
 
   &:has(.wishlist-button) .add-to-cart-button-container,
   &:has(.share-button) .add-to-cart-button-container {
-    width: calc(100% - 4.4rem - 1rem);
+    width: calc(100% - 6rem - 1rem);
   }
 
   &:has(.wishlist-button):has(.share-button) .add-to-cart-button-container {
-    width: calc(100% - (4.4rem * 2) - 2rem);
+    width: calc(100% - (6rem * 2) - 2rem);
   }
 }
 
@@ -9811,11 +9817,11 @@ more-payment-options-link a:hover {
 
     &:has(.wishlist-button) .add-to-cart-button-container,
     &:has(.share-button) .add-to-cart-button-container {
-      width: calc(100% - 4.4rem - var(--gap-sm));
+      width: calc(100% - 6rem - var(--gap-sm));
     }
 
     &:has(.wishlist-button):has(.share-button) .add-to-cart-button-container {
-      width: calc(100% - (4.4rem * 2) - (var(--gap-sm) * 2));
+      width: calc(100% - (6rem * 2) - (var(--gap-sm) * 2));
     }
   }
 }
@@ -11488,7 +11494,7 @@ form.payment-terms {
 }
 
 @media screen and (min-width: 750px) {
-  .product-information__media:has(.media-gallery--carousel) {
+  .product-information__media:has(.media-gallery--carousel):not(.flex-column) {
     height: 100vh;
   }
 }
@@ -11667,7 +11673,8 @@ form.payment-terms {
       .product-information__grid--half,
       :has(.product-information__media:empty)
     ).product-information--media-left {
-    grid-template-columns: 2fr 1.34fr;
+    /* grid-template-columns: 2fr 1.34fr; */
+    grid-template-columns: 642fr 780fr;
   }
 
   .product-information__grid:not(

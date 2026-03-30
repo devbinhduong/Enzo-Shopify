@@ -1974,13 +1974,19 @@ class SwiperComponent extends HTMLElement {
         const thumbnailPosition =
           this.querySelector(".swiper-controls__thumbnails-container")?.getAttribute("data-thumbnail-position") ||
           "bottom";
-        const slidesPerView =
-          thumbnailPosition === "left" || thumbnailPosition === "right" ? "auto" : 4;
+        const thumbnailContainer = this._thumbnailSwiper.closest('.swiper-controls__thumbnails-container');
+        const slidesPerViewDesktopAttr = thumbnailContainer?.getAttribute('data-slides-per-view-desktop') || 4;
+        const slidesPerViewMobileAttr = thumbnailContainer?.getAttribute('data-slides-per-view-mobile') || 4;
+
+        const slidesPerViewDesktop =
+          thumbnailPosition === "left" || thumbnailPosition === "right" ? "auto" : slidesPerViewDesktopAttr;
+        const slidesPerViewMobile =
+          thumbnailPosition === "left" || thumbnailPosition === "right" ? "auto" : slidesPerViewMobileAttr;
 
         this._thumbsSwiper = new Swiper(this._thumbnailSwiper, {
           direction: "horizontal",
           spaceBetween: 8,
-          slidesPerView: 4,
+          slidesPerView: slidesPerViewMobile,
           freeMode: false,
           watchSlidesProgress: true,
           allowTouchMove: true,
@@ -1989,8 +1995,8 @@ class SwiperComponent extends HTMLElement {
           loop: this._thumbnailSwiper.getAttribute("data-loop") || false,
           breakpoints: {
             750: { 
-              slidesPerView: slidesPerView, 
-              spaceBetween: isVerticalThumbnails ? 8 : 16, 
+              slidesPerView: slidesPerViewDesktop, 
+              spaceBetween: isVerticalThumbnails ? 8 : 8, 
               direction: isVerticalThumbnails ? "vertical" : "horizontal"
             }
           },

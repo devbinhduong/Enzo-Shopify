@@ -19,6 +19,16 @@
   assign accordion_pr = block.settings.accordion_pr
   assign accordion_pt = block.settings.accordion_pt
   assign accordion_pb = block.settings.accordion_pb
+
+  assign hide_on_desktop = false
+  if block.settings.hide_on_desktop
+    assign hide_on_desktop = true
+  endif
+
+  assign hide_on_mobile = false
+  if block.settings.hide_on_mobile
+    assign hide_on_mobile = true
+  endif
 -%}
 
 {%- capture style -%}
@@ -66,7 +76,7 @@ style="
   {% render 'global-sidebar', drawer_direction: 'right' %}
 {% endcapture %}
 
-<div class="block-product-tabs w-full color-{{ block.settings.color_scheme }}" {{ style }}>
+<div class="block-product-tabs w-full color-{{ block.settings.color_scheme }} {% if hide_on_desktop %}hide-on-desktop{% endif %} {% if hide_on_mobile %}hide-on-mobile{% endif %}" {{ style }}>
   {%- if block.blocks.size > 0 -%}
     <div class="tabs-content tabs-content--{{ block.settings.content_direction }} tabs-content-mobile--{{ block.settings.content_direction_mobile }} style-accordion" {{ accordion_attr }}>
       {{ list_items }}
@@ -485,6 +495,18 @@ style="
         }
       ],
       "default": "default"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_mobile",
+      "label": "Hide on mobile",
+      "default": false
     },
     {
       "type":  "header",

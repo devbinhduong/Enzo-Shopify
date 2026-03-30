@@ -1,0 +1,73 @@
+{% if product.metafields.custom.product_promotion_title != blank %}
+  {% style %}
+    .promotion-banner {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-radius: 5px;
+      border: 1px solid #F8A2BF;
+      background: #FFF3F9;
+      overflow: hidden;
+    }
+    .promo-img {
+      flex: 0 0 109px;
+      aspect-ratio: 1;
+    }
+    .promo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .promo-content {
+      flex: 1;
+      padding: 1.2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .promo-content h4 {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.80);
+      font-family: Poppins;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .promo-content p {
+      color: rgba(0, 0, 0, 0.80);
+      font-family: Poppins;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0;
+    }
+  {% endstyle %}
+
+  <div class="promotion-banner">
+    <div class="promo-img">
+      <img src="{{ product.metafields.custom.product_promotion_banner | image_url: width: 110 }}" alt="{{ product.metafields.custom.product_promotion_title }}">
+    </div>
+    <div class="promo-content">
+      <h4>{{ product.metafields.custom.product_promotion_title }}</h4>
+      <p>{{ product.metafields.custom.product_promotion_text }}</p>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product promotion",
+  "tag": null,
+  "settings": [
+    
+    ],
+  "presets": [
+    {
+      "name": "Product promotion"
+    }
+  ]
+}
+{% endschema %}

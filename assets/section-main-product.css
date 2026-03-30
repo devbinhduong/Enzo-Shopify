@@ -548,3 +548,88 @@ featured-product product-recommendations swiper-component,
 .main-product-information.section--full-width .back-in-stock-alert {
   max-width: 72rem;
 }
+
+/* Mint start custom */
+.product-info-item.hide-info-name .product-info-name {
+  display: none;
+}
+
+.product-info-value {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.add-to-cart-button-inner .wishlist-button {
+  --color-primary-button-background: #fff;
+  --color-primary-button-hover-text: #F8A2BF;
+  border-radius: 5px;
+  border: 1px solid #F8A2BF;
+}
+
+.add-to-cart-button-inner .wishlist-button .wishlist-button__icon {
+  fill: transparent;
+  stroke: #F8A2BF;
+}
+
+.product-form__buttons .quantity {
+  min-height: 5.2rem;
+}
+
+.product-information__grid {
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  @media (max-width: 750px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* .desktop-tabs {
+  display: none;
+}
+
+.mobile-tabs {
+  display: block;
+}
+
+@media (min-width: 750px) {
+  .desktop-tabs {
+    display: block;
+  }
+
+  .mobile-tabs {
+    display: none;
+  }
+} */
+
+@media (min-width: 750px) {
+  .block-product-tabs.hide-on-desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 749px) {
+  .block-product-tabs.hide-on-mobile {
+    display: none;
+  }
+
+  .product-form__buttons {
+    display: flex;
+    flex-wrap: nowrap;
+
+    .quantity {
+      width: 8.1rem;
+      min-height: 4.2rem;
+    }
+
+    .add-to-cart-button-container {
+      width: calc(100% - 15.6rem) !important;
+    }
+    .card-wishlist {
+      max-width: 4.5rem;
+    }
+  }
+}

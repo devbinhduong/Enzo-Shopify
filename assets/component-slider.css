@@ -26,7 +26,7 @@ swiper-component {
 
 .product-information__grid .swiper:not(.swiper-vertical):not(:has(.swiper-actions--bottom_right)):has(.swiper-pagination:not(.swiper-pagination-pos--inside):not(.swiper-pagination-lock)),
 .has-variant-image-grouped .swiper:not(.swiper-vertical):not(:has(.swiper-actions--bottom_right)) {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
 .product-information__grid swiper-component[data-thumbnail-direction="vertical"] .swiper:not(:has(.swiper-actions--bottom_right)):has(.swiper-pagination:not(.swiper-pagination-pos--inside):not(.swiper-pagination-lock)) {

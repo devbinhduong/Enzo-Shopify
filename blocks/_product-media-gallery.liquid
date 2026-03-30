@@ -861,12 +861,22 @@
     </script>
     <script src="{{ 'product-model.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
+
+  {%- content_for 'blocks'-%}
 </media-gallery>
 
 {% schema %}
 {
   "name": "t:names.product_media",
   "tag": null,
+  "blocks": [
+    {
+      "type": "_product-tabs"
+    },
+    {
+      "type": "spacer"
+    }
+  ],
   "settings": [
     {
       "type": "select",

@@ -50,16 +50,18 @@
   {% if thumbnail_position == 'bottom' %}
     style="
       {% render 'swiper-style',
-        columns_mobile: 4,
-        columns_tablet: 4,
-        columns_desktop: 4,
-        columns_gap: 16,
+        columns_mobile: 3,
+        columns_tablet: 5.5,
+        columns_desktop: 5.5,
+        columns_gap: 8,
       %}
       {% if thumbnail_width %}
         --thumbnail-width: {{ thumbnail_width }}px;
       {% endif %}
     "
   {% endif %}
+  data-slides-per-view-desktop="5.5"
+  data-slides-per-view-mobile="3"
 >
   <div 
     class="swiper swiper-controls__thumbnails"
@@ -68,11 +70,11 @@
     data-loop="{% if loop %}true{% else %}false{% endif %}"
   >
     <div
-      class="swiper-wrapper swiper-controls__thumbnails w-full{% if thumbnail_position == 'bottom' %} grid-layout-no-js list-unstyled lg:grid-layout--4 md:grid-layout--4 grid--4-col-mobile{% else %}  grid-layout-no-js grid-mobile-layout-no-js list-unstyled grid--4-col-mobile{% endif %}"
+      class="swiper-wrapper swiper-controls__thumbnails tets12121212 w-full{% if thumbnail_position == 'bottom' %} grid-layout-no-js list-unstyled lg:grid-layout--5 md:grid-layout--5 grid--3-col-mobile{% else %}  grid-layout-no-js grid-mobile-layout-no-js list-unstyled grid--4-col-mobile{% endif %}"
       style="
-        --card-grid-per-row-desktop: 4;
-        --card-grid-per-row-tablet: 4;
-        --card-grid-per-row-mobile: 4;
+        --card-grid-per-row-desktop: 5.5;
+        --card-grid-per-row-tablet: 5.5;
+        --card-grid-per-row-mobile: 3;
       "
       pagination-position="{{ pagination_position }}"
     >

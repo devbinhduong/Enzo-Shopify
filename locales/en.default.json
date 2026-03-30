@@ -174,7 +174,7 @@
       "search": "Search",
       "separator": "/",
       "title": "Breadcrumb",
-      "pipe": "Breadcrumb"
+      "pipe": "|"
     },
     "button_label": "Subscribe",
     "calculator_shipping": {
