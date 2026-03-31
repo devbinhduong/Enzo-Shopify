@@ -501,22 +501,6 @@
   font-size: var(--font-size--md);
 }
 
-:is(.account, .order) h1 {
-  margin-bottom: 1rem;
-}
-
-:is(.account, .order, .addresses) h2 {
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-  padding-bottom: var(--padding-md);
-}
-
-@media screen and (min-width: 1025px) {
-  :is(.account, .order) h2 {
-    margin-top: 0;
-  }
-}
-
 .account h1 + a:not(.button) {
   display: inline-flex;
   align-items: center;
@@ -589,48 +573,12 @@
   margin-top: 3rem;
 }
 
-.account-return {
-  margin-top: 2rem;
-}
-
-.customer .account-list ,
-.customer .account-list ul {
-  padding: 0;
-  margin: 0;
-}
-
-.customer .account-list {
-  margin-inline: calc(var(--padding-xs) * -1);
-  row-gap: calc(var(--padding-xs) * 2);
-}
-
-.customer .account-list-item {
-  padding-inline: var(--padding-xs);
-  width: 50%;
-}
-
-@media screen and (min-width: 750px) {
-  .customer .account-list-item {
-    width: 25%;
-  }
-}
-
-@media screen and (max-width: 749px) {
-  .customer.addresses .account-list-item {
-    width: 100%;
-  }
-}
-
-.account-product {
-  border: var(--style-border-width) solid #e6e6e6;
-  padding: 1.9rem 1.5rem 2rem;
-  min-height: 200px;
-}
-
 .account-product-default {
-  color: #e73e45;
+  color: #F8A2BF;
   text-transform: capitalize;
-  margin-left: .4rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 21px;
 }
 
 .account-product-detail + ul  .account-product-detail {
@@ -899,3 +847,186 @@ li[data-address] > h2 {
 .button--reset-password {
   width: 100%;
 }
+
+/* Mint start custom */
+.accountTabs__list  {
+  padding: 4.2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accountTabs__item {
+  padding: 0 3.6rem;
+  border-right: 0.1rem solid #F8A2BF;
+}
+
+.accountTabs__item:last-child {
+  border-right: none;
+}
+
+.accountTabs__item button {
+  overflow: visible;
+}
+
+.accountTabs__item button {
+  position: relative;
+}
+
+.accountTabs__item a {
+  color: inherit !important;
+}
+
+.accountTabs__item.active button,
+.accountTabs__item:hover button {
+  color: #FE79A4;
+}
+
+.accountTabs__item.active button::after,
+.accountTabs__item:hover button::after {
+  content: '';
+  position: absolute;
+  bottom: -0.2rem;
+  left: 0;
+  width: 100%;
+  height: 0.1rem;
+  background-color: #FE79A4;
+  animation: slideInWidth 0.3s ease-in-out;
+}
+
+.accountTabs__contents {
+  border-radius: 7px;
+  border: 1px solid #FFF3F9;
+  padding: 2rem;
+}
+
+.accountTabs__content {
+  display: none;
+}
+
+.accountTabs__content.active {
+  display: block;
+}
+
+.accountTabs__title {
+  color: #1A1A1A;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+#address-loader-container .account-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.account-product-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3px;
+}
+
+.account-product-header ~ p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.edit-address-button {
+  color: #000000;
+}
+
+.edit-address-button svg {
+  min-width: 1.2rem;
+  min-height: 1.2rem;
+}
+
+.edit-address-button:hover {
+  color: #F8A2BF;
+}
+
+@media (max-width: 750px) {
+  #address-loader-container .account-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .accountTabs__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .accountTabs__item {
+    padding: 0;
+    border: none;
+  }
+}
+
+@media (max-width: 500px) {
+  #address-loader-container .account-list {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+}
+
+@keyframes slideInWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.popup__content--account .field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.popup__content--account .field::after,
+.popup__content--account .field .select::after,
+.popup__content--account .field .select::before,
+.popup__content--account .field::before {
+  display: none;
+}
+
+.popup__content--account label {
+  color: #F8A2BF;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.popup__content--account .select .svg-wrapper {
+  top: calc(50% - 0.7rem);
+}
+.popup__content--account select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
+.popup__content--account .field input,
+.popup__content--account .field select,
+.popup__content--account .field textarea {
+  border-radius: 5px;
+  border: 1px solid #F8A2BF;
+  background: #FFF;
+  display: flex;
+  padding: 9px 13px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+

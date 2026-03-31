@@ -4,7 +4,7 @@
   assign ratio_cents = ratio | times: 100
   assign point_link = block.settings.point_link
   
-  assign points = price_cents | divided_by: ratio_cents
+  assign points = price_cents | divided_by: ratio_cents | round: 0
 -%}
 
 <div class="flex items-center" style="gap: 8px;">

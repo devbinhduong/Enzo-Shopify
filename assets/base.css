@@ -9671,7 +9671,8 @@ sold-in-last-component.loading {
 
 @media screen and (max-width: 991px) {
   .sticky-atc {
-    bottom: calc(var(--toolbar-mobile-height) + 5px);
+    /* bottom: calc(var(--toolbar-mobile-height) + 5px); */
+    bottom: 0;
   }
 }
 

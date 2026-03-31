@@ -1,0 +1,414 @@
+{%- liquid
+  assign font_size_value = section.settings.font_size | split: 'rem' | first | times: 1.0
+
+  assign font_size_cutoff = 4.8
+  if font_size_value < font_size_cutoff
+    assign fluid_size_min_rem = font_size_value | plus: 1.2 | times: 0.5
+  else
+    assign fluid_size_min_rem = font_size_value | times: 0.5
+  endif
+  assign fluid_size = font_size_value
+  assign fluid_size_max_rem = font_size_value
+
+-%}
+
+<div class="group-block block page-width group-block--{{ section.id }} color-{{ section.settings.color_scheme }} flex flex-column items-{{ section.settings.text_alignment }} spacing-style" style="{% render 'spacing-style', settings: section.settings %}">
+  <h1 class="
+      text-block
+      custom-typography
+      {% if section.settings.weight != blank %}custom-font-weight{% endif %}
+      {% if section.settings.font_size != blank %}custom-font-size{% endif %}
+    "
+    style="{% render 'typography-style', preset: 'custom', settings: section.settings, type: 'heading' %} --font-size: clamp({{fluid_size_min_rem}}rem, {{fluid_size}}vw, {{fluid_size_max_rem}}rem);">
+    Hey, {{ customer.name }}!
+  </h1>
+  {% content_for 'blocks' %}
+</div>
+
+
+{% schema %}
+{
+  "name": "Account top information",
+  "limit": 1,
+  "blocks": [
+    {
+      "type": "text"
+    },
+    {
+      "type": "button"
+    },
+    {
+      "type": "spacer"
+    },
+    {
+      "type": "group-basic"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-4"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+       {
+      "type": "header",
+      "content": "t:content.typography"
+    },
+    {
+      "type": "select",
+      "id": "font",
+      "label": "t:settings.font",
+      "options": [
+        {
+          "value": "var(--font-body--family)",
+          "label": "t:options.body"
+        },
+        {
+          "value": "var(--font-subheading--family)",
+          "label": "t:options.subheading"
+        },
+        {
+          "value": "var(--font-heading--family)",
+          "label": "t:options.heading"
+        }
+      ],
+      "default": "var(--font-body--family)"
+    },
+    {
+      "type": "select",
+      "id": "font_style",
+      "label": "t:settings.style",  
+      "options": [
+        {
+          "value": "normal",
+          "label": "t:options.normal"
+        },
+        {
+          "value": "italic",
+          "label": "t:options.italic"
+        },
+        {
+          "value": "oblique",
+          "label": "t:options.oblique"
+        }
+      ],
+      "default": "normal",
+    },
+    {
+      "type": "select",
+      "id": "font_size",
+      "label": "t:settings.size",
+      "options": [
+        {
+          "value": "",
+          "label": "t:options.default"
+        },
+        {
+          "value": "1.0rem",
+          "label": "10px"
+        },
+        {
+          "value": "1.2rem",
+          "label": "12px"
+        },
+        {
+          "value": "1.3rem",
+          "label": "13px"
+        },
+        {
+          "value": "1.4rem",
+          "label": "14px"
+        },
+        {
+          "value": "1.6rem",
+          "label": "16px"
+        },
+        {
+          "value": "1.8rem",
+          "label": "18px"
+        },
+        {
+          "value": "2.0rem",
+          "label": "20px"
+        },
+        {
+          "value": "2.2rem",
+          "label": "22px"
+        },
+        {
+          "value": "2.4rem",
+          "label": "24px"
+        },
+        {
+          "value": "2.6rem",
+          "label": "26px"
+        },
+        {
+          "value": "2.8rem",
+          "label": "28px"
+        },
+        {
+          "value": "3.0rem",
+          "label": "30px"
+        },
+        {
+          "value": "3.2rem",
+          "label": "32px"
+        },
+        {
+          "value": "3.4rem",
+          "label": "34px"
+        },
+        {
+          "value": "3.6rem",
+          "label": "36px"
+        },
+        {
+          "value": "4.0rem",
+          "label": "40px"
+        },
+        {
+          "value": "4.6rem",
+          "label": "46px"
+        },
+        {
+          "value": "5.0rem",
+          "label": "50px"
+        },
+        {
+          "value": "6.0rem",
+          "label": "60px"
+        },
+        {
+          "value": "6.4rem",
+          "label": "64px"
+        },
+        {
+          "value": "7.0rem",
+          "label": "70px"
+        },
+        {
+          "value": "8.0rem",
+          "label": "80px"
+        },
+        {
+          "value": "9.0rem",
+          "label": "90px"
+        },
+        {
+          "value": "10.0rem",
+          "label": "100px"
+        },
+        {
+          "value": "12.0rem",
+          "label": "120px"
+        }
+      ],
+      "default": "1.6rem"
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "t:settings.weight",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:options.default"
+        },
+        {
+          "value": "400",
+          "label": "t:options.regular"
+        },
+        {
+          "value": "500",
+          "label": "t:options.medium"
+        },
+        {
+          "value": "600",
+          "label": "t:options.semibold"
+        },
+        {
+          "value": "700",
+          "label": "t:options.bold"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "line_height",
+      "label": "t:settings.line_height",
+      "options": [
+        {
+          "value": "tight",
+          "label": "t:options.tight"
+        },
+        {
+          "value": "normal",
+          "label": "t:options.normal"
+        },
+        {
+          "value": "loose",
+          "label": "t:options.loose"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "select",
+      "id": "letter_spacing",
+      "label": "t:settings.letter_spacing",
+      "options": [
+        {
+          "value": "tight",
+          "label": "t:options.tight"
+        },
+        {
+          "value": "normal",
+          "label": "t:options.normal"
+        },
+        {
+          "value": "loose",
+          "label": "t:options.loose"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "select",
+      "id": "case",
+      "label": "t:settings.case",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:options.default"
+        },
+        {
+          "value": "uppercase",
+          "label": "t:options.uppercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "t:options.capitalize"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select",
+      "id": "wrap",
+      "label": "t:settings.wrap",
+      "default": "pretty",
+      "options": [
+        {
+          "value": "pretty",
+          "label": "t:options.pretty"
+        },
+        {
+          "value": "balance",
+          "label": "t:options.balance"
+        },
+        {
+          "value": "nowrap",
+          "label": "t:options.none"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "t:settings.color",
+      "options": [
+        {
+          "value": "var(--color-foreground)",
+          "label": "t:options.text"
+        },
+        {
+          "value": "var(--color-foreground-heading)",
+          "label": "t:options.heading"
+        },
+        {
+          "value": "var(--color-primary)",
+          "label": "t:options.link"
+        }
+      ],
+      "default": "var(--color-foreground)",
+      "visible_if": "{{ section.settings.type_preset != 'rte' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Account top information"
+    }
+  ]
+}
+{% endschema %}

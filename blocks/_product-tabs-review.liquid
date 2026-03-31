@@ -3,6 +3,8 @@
   assign title = block.settings.title
   assign view_content = block.settings.view_content
   assign accordion_icon = block.settings.accordion_icon
+  assign icon_rotate = block.settings.icon_rotate
+  assign icon_rotate_open = block.settings.icon_rotate_open
   assign accordion_border_style = block.settings.accordion_border_style
   assign accordion_border_color = block.settings.accordion_border_color
 %}
@@ -33,7 +35,7 @@
   </{{ element }}>
 {%- endcapture -%}
 
-<div class="tab-content{% if accordion_border_style != 'none' %} border-{{ accordion_border_style }}{% endif %}" style="--accordion-border-color: {{ accordion_border_color }};">
+<div class="tab-content{% if accordion_border_style != 'none' %} border-{{ accordion_border_style }}{% endif %}" style="--accordion-border-color: {{ accordion_border_color }}; --icon-rotate: {{ icon_rotate }}deg; --icon-rotate-open: {{ icon_rotate_open }}deg;">
   {{ tab_title | replace: 'Tab Title', title }}
   <div class="toggle-content">
     {{ product.reviews.rating_average }}
@@ -95,6 +97,26 @@
         { "value": "right-arrow", "label": "t:options.right_arrow" }
       ],
       "default": "caret"
+    },
+    {
+      "type": "range",
+      "id": "icon_rotate",
+      "label": "Icon rotate",
+      "min": -360,
+      "max": 360,
+      "step": 10,
+      "unit": "deg",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "icon_rotate_open",
+      "label": "Icon rotate open",
+      "min": -360,
+      "max": 360,
+      "step": 10,
+      "unit": "deg",
+      "default": 180
     },
     {
       "type": "select",

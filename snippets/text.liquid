@@ -8,6 +8,7 @@
   @param {string} [width_mobile] - width of the text block on mobile
   @param {object} block - block object
   @param {boolean} [is_heading] - if true, the text block is a heading
+  @param {string} [read_more_text] - raw HTML appended after truncated text (e.g. read-more link)
 {%- enddoc -%}
 
 {% liquid
@@ -264,7 +265,8 @@
       {%- if has_heading_border or is_card_heading -%}
         <div class="text{% if has_heading_border %} {{ text_class }}{% endif %}">
       {%- endif -%}
-      {{ fallback_text }}
+      {{ fallback_text -}}
+      {%- if read_more_text != blank %}{{ read_more_text }}{% endif %}
       {%- if has_heading_border or is_card_heading -%}
         </div>
       {%- endif -%}
@@ -298,7 +300,8 @@
           </div>
         </collapsible-text>
       {%- else -%}
-        {{ text }}
+        {{ text -}}
+        {%- if read_more_text != blank %}{{ read_more_text }}{% endif %}
       {% endif %}
 
       {% if is_card_heading or type_block == 'product' %}

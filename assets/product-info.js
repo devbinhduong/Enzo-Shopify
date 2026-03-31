@@ -62,11 +62,22 @@ if (!customElements.get('product-info')) {
         this.isSyncingVariant = true;
 
         try {
+          const stickyCombinedSelects = document.querySelectorAll('sticky-atc .sticky-combined-variant-select');
+          if (stickyCombinedSelects.length && data.variant) {
+            stickyCombinedSelects.forEach(el => el.value = data.variant.id);
+          }
+
           const stickyVariantSelects = document.querySelector('variant-selects[data-context^="sticky"]');
-          if (!stickyVariantSelects) return;
+          if (!stickyVariantSelects) {
+            this.updateStickyButtonState(data.variant);
+            return;
+          }
 
           const mainVariantSelects = this.variantSelectors;
-          if (!mainVariantSelects) return;
+          if (!mainVariantSelects) {
+            this.updateStickyButtonState(data.variant);
+            return;
+          }
 
           const mainSelectedOptions = mainVariantSelects.querySelectorAll('select option[selected], fieldset input:checked');
           
@@ -1891,12 +1902,22 @@ if (!customElements.get('sticky-atc')) {
         this.applyBannerVisibilityClass();
         this.findMainForm();
         
+        let targetToObserve = this.form;
         if (this.form) {
+          const submitButton = this.form.querySelector('button[name="add"]');
+          if (submitButton) {
+            targetToObserve = submitButton;
+          }
+        }
+        
+        this.observerTarget = targetToObserve;
+
+        if (this.observerTarget) {
           const observer = new IntersectionObserver(this.onScroll.bind(this));
-          observer.observe(this.form);
+          observer.observe(this.observerTarget);
           window.addEventListener('scroll', this._handleWindowScroll, { passive: true });
         } else {
-          console.warn('Sticky ATC: Could not find product form');
+          console.warn('Sticky ATC: Could not find product form button');
         }
         
         setTimeout(() => {
@@ -1904,6 +1925,7 @@ if (!customElements.get('sticky-atc')) {
         }, 100);
 
         this.setupJumpToProduct();
+        this.setupMobileSubmitInterceptor();
       }
 
       disconnectedCallback() {
@@ -1939,17 +1961,112 @@ if (!customElements.get('sticky-atc')) {
         ) || document.querySelector('product-info');
 
         this.stickyVariantSelects = this.querySelector('variant-selects');
+        this.stickyCombinedSelects = this.querySelectorAll('.sticky-combined-variant-select');
         
         if (this.mainProductInfo) {
           this.mainVariantSelects = this.mainProductInfo.querySelector('variant-selects');
         }
         
+        if (this.stickyCombinedSelects.length && this.mainVariantSelects) {
+          this.setupCombinedSelectSync();
+          this.syncCombinedInitialState();
+        }
+
         if (this.stickyVariantSelects && this.mainVariantSelects) {
           this.setupVariantSync();
           this.setupToggleButton();
           this.syncInitialState();
           this.updateStickyAvailabilityFromMain();
           this.observeMainAvailabilityChanges();
+        }
+        
+        this.setupQuantitySync();
+      }
+
+      setupQuantitySync() {
+        const mainQuantityInput = this.form?.querySelector('.quantity__input');
+        const stickyQuantityInput = this.querySelector('.quantity__input');
+        
+        if (mainQuantityInput && stickyQuantityInput) {
+          mainQuantityInput.addEventListener('change', () => {
+             stickyQuantityInput.value = mainQuantityInput.value;
+          });
+          stickyQuantityInput.addEventListener('change', () => {
+             mainQuantityInput.value = stickyQuantityInput.value;
+             mainQuantityInput.dispatchEvent(new Event('change', { bubbles: true }));
+          });
+        }
+      }
+
+      setupCombinedSelectSync() {
+        this.stickyCombinedSelects.forEach(select => {
+          select.addEventListener('change', (event) => {
+            if (this.isSyncing) return;
+            this.syncCombinedToMain(event);
+          });
+        });
+      }
+
+      syncCombinedInitialState() {
+        const inputId = this.form?.querySelector('input[name="id"]');
+        if (inputId && inputId.value) {
+            this.stickyCombinedSelects.forEach(select => {
+              select.value = inputId.value;
+            });
+        }
+      }
+
+      syncCombinedToMain(event) {
+        this.isSyncing = true;
+        try {
+          const selectedOption = event.target.options[event.target.selectedIndex];
+          if (!selectedOption || !this.mainVariantSelects) return;
+
+          const options = [
+             selectedOption.dataset.option1,
+             selectedOption.dataset.option2,
+             selectedOption.dataset.option3
+          ];
+
+          const groups = Array.from(this.mainVariantSelects.querySelectorAll('fieldset, .product-form__input'));
+
+          const newVariantId = selectedOption.value;
+          if (newVariantId && this.form) {
+            const mainInputId = this.form.querySelector('input[name="id"]');
+            if (mainInputId) mainInputId.value = newVariantId;
+          }
+
+          groups.forEach((group, index) => {
+            const optValue = options[index];
+            if (!optValue) return;
+
+            const inputs = Array.from(group.querySelectorAll('input[type="radio"], select option'));
+            const cleanOptValue = optValue.trim().toLowerCase();
+            const matchingInput = inputs.find(el => el.value.trim().toLowerCase() === cleanOptValue);
+
+            if (matchingInput) {
+              if (matchingInput.tagName === 'INPUT' && matchingInput.type === 'radio') {
+                const groupName = matchingInput.name;
+                Array.from(document.getElementsByName(groupName)).forEach((el) => {
+                  if (el instanceof HTMLInputElement && el.type === 'radio') {
+                    el.checked = false;
+                  }
+                });
+                matchingInput.checked = true;
+                matchingInput.dispatchEvent(new Event('change', { bubbles: true }));
+              } else if (matchingInput.tagName === 'OPTION') {
+                const select = matchingInput.closest('select');
+                if (select) {
+                  Array.from(select.options).forEach(opt => opt.removeAttribute('selected'));
+                  matchingInput.setAttribute('selected', 'selected');
+                  select.value = matchingInput.value;
+                  select.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+              }
+            }
+          });
+        } finally {
+          this.isSyncing = false;
         }
       }
 
@@ -2069,6 +2186,45 @@ if (!customElements.get('sticky-atc')) {
           evt.preventDefault();
           scrollToMainProductInfo();
         });
+      }
+
+      setupMobileSubmitInterceptor() {
+        const submitBtn = this.querySelector('.product-form__submit');
+        const overlay = this.querySelector('overlay-component');
+        
+        if (submitBtn) {
+          submitBtn.addEventListener('click', (event) => {
+            const hasCombinedMobile = this.querySelector('.sticky-atc__variant .sticky-combined-variant-select');
+            if (!hasCombinedMobile) return;
+            
+            if (window.innerWidth < 768) {
+              const isOpen = this.classList.contains('is-active');
+              if (!isOpen) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                this.classList.add('is-active');
+                document.body.classList.add('sticky-cart-active');
+                
+                const closePanel = () => {
+                  this.classList.remove('is-active');
+                  document.body.classList.remove('sticky-cart-active');
+                  document.removeEventListener('click', handleClickOutside, true);
+                  if (overlay) overlay.removeEventListener('click', closePanel);
+                };
+
+                const handleClickOutside = (evt) => {
+                  if (!this.contains(evt.target) && evt.target !== overlay) {
+                    closePanel();
+                  }
+                };
+
+                document.addEventListener('click', handleClickOutside, true);
+                if (overlay) overlay.addEventListener('click', closePanel);
+              }
+            }
+          });
+        }
       }
 
       syncInitialState() {
@@ -2378,7 +2534,7 @@ if (!customElements.get('sticky-atc')) {
 
       onScroll(entries) {
         entries.forEach((entry) => {
-          if (entry.target === this.form) this.passedForm = entry.boundingClientRect.bottom < 0;
+          if (entry.target === this.observerTarget) this.passedForm = entry.boundingClientRect.bottom < 0;
         });
 
         this.updateStickyVisibility();

@@ -58,11 +58,12 @@ style="
   {% if pt != 0 %}--pt:{{ pt }}px;{% endif %}
   {% if pb != 0 %}--pb:{{ pb }}px;{% endif %}
   {% if pr != 0 %}--pr:{{ pr }}px;{% endif %}
+  gap: 1rem;
 "
 {%- endcapture -%}
 
 <sticky-atc
-  class="sticky-atc w-full fixed bottom-0 left-0 right-0 z-10 flex justify-between items-center shadow-style style-{{ style_class }}{% if block.settings.inherit_color_scheme == false %} color-scheme-custom{% else %} color-{{ color_scheme }}{% endif %}"
+  class="sticky-atc w-full fixed bottom-0 left-0 right-0 z-10 flex justify-between items-center shadow-style style-{{ style_class }}{% if block.settings.inherit_color_scheme == false %} color-scheme-custom{% else %} color-{{ color_scheme }}{% endif %}{% if block.settings.sticky_use_combined_dropdown %} sticky-atc--combined-dropdown{% endif %}"
   {{ sticky_attr }}
   form="{{ product_form_id }}"
   data-sticky-section-id="{{ section.id }}"
@@ -72,32 +73,72 @@ style="
 >
   <overlay-component class="overlay-component fixed inset-0 cursor-pointer md:hidden" aria-controls="StickyAddToCart" aria-expanded="true"></overlay-component>
   {%- unless product.has_only_default_variant -%}
-    <div div class="sticky-atc__variant">
-      <div class="section section--page-width variant-alignment--{{ variant_alignment }}" {{ attr }}>
-        <div class="large-up-hide medium-hide">
-          <div class="sticky-atc__info">
+    {%- if block.settings.sticky_use_combined_dropdown -%}
+      <div class="sticky-atc__variant large-up-hide medium-hide">
+        <div class="section section--page-width variant-alignment--{{ variant_alignment }}" {{ attr }}>
+          <div class="sticky-atc__info" style="margin-bottom: 0;">
             <div class="sticky-atc__title">
-              <span class="block font-bold {{ type_preset }}">{{ product.title | escape }}</span>
+              <span class="block {{ type_preset }}">{{ product.title | escape }}</span>
             </div>
             <div class="sticky-atc__price">
               {%- render 'price', product: product, use_variant: true, show_badges: false, price_class: 'price--large'-%}
             </div>
           </div>
+          <div class="sticky-atc__combined-dropdown w-full">
+            <div class="product-form__input product-form__input--dropdown" data-context="sticky" style="margin-bottom: 0;">
+              <div class="select">
+                <select class="select__select sticky-combined-variant-select w-full font-body" style="padding-top: 1rem; padding-bottom: 1rem;">
+                  {%- for variant in product.variants -%}
+                    <option value="{{ variant.id }}"
+                      data-inventory-quantity="{{ variant.inventory_quantity }}"
+                      data-inventory-policy="{{ variant.inventory_policy }}"
+                      data-option1="{{ variant.option1 }}"
+                      data-option2="{{ variant.option2 }}"
+                      data-option3="{{ variant.option3 }}"
+                      {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                      {% if variant.available == false %}disabled{% endif %}
+                    >
+                      {{ variant.title }} - {{ variant.price | money }}
+                      {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif -%}
+                    </option>
+                  {%- endfor -%}
+                </select>
+                <span class="svg-wrapper icon-caret">
+                  {{- 'icon-caret-2.svg' | inline_asset_content -}}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        {% render 'variant-main-picker', context: 'sticky', product_resource: product_resource %}
       </div>
-    </div>
+    {%- else -%}
+      <div class="sticky-atc__variant">
+        <div class="section section--page-width variant-alignment--{{ variant_alignment }}" {{ attr }}>
+          <div class="large-up-hide medium-hide">
+            <div class="sticky-atc__info">
+              <div class="sticky-atc__title">
+                <span class="block {{ type_preset }}">{{ product.title | escape }}</span>
+              </div>
+              <div class="sticky-atc__price">
+                {%- render 'price', product: product, use_variant: true, show_badges: false, price_class: 'price--large'-%}
+              </div>
+            </div>
+          </div>
+          {% render 'variant-main-picker', context: 'sticky', product_resource: product_resource %}
+        </div>
+      </div>
+    {%- endif -%}
   {%- endunless -%}
   <div class="section section--page-width">
     <div class="sticky-atc__wrapper flex justify-between items-center w-full" {{ attr }}>
       <div class="sticky-atc__content w-full flex items-center small-hide" style="--gap: {{ content_gap }};">
         <div class="sticky-atc__media">
           {%- assign current_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
-          {{- current_media | image_url: width: 64 | image_tag: height: '64', sizes: '64px', widths: '64', loading: 'lazy', class: 'w-full h-auto object-cover' -}}
+          {{- current_media | image_url: width: 73 | image_tag: height: '73', sizes: '73px', widths: '73', loading: 'lazy', class: 'w-full h-auto object-cover' -}}
         </div>
         <div class="sticky-atc__info">
           <div class="sticky-atc__title">
-            <span class="block font-bold {{ type_preset }}">{{ product.title | escape }}</span>
+            <span class="block {{ type_preset }}">{{ product.title | escape }}</span>
           </div>
           <div class="sticky-atc__price">
             <product-price>
@@ -128,8 +169,36 @@ style="
             </span>
             <span class="product-form__error-message"></span>
           </div>
-          <div class="md:flex max-sm:w-full items-center" style="--gap: {{ action_gap }};">
-            <div id="StickyCart-Quantity-Form-{{ section.id }}" class="sticky-cart__quantity product-form__quantity small-hide{% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %} disabled{% endif %}">
+          <div class="flex w-full items-center justify-between" style="--gap: {{ action_gap }}; gap: 1rem;">
+            {%- if block.settings.sticky_use_combined_dropdown and product.has_only_default_variant == false -%}
+              <div class="sticky-atc__combined-dropdown flex-shrink-0 small-hide">
+                <div class="product-form__input product-form__input--dropdown" data-context="sticky" style="margin-bottom: 0;">
+                  <div class="select">
+                    <select class="select__select sticky-combined-variant-select w-full font-body" style="padding-top: 1rem; padding-bottom: 1rem;">
+                      {%- for variant in product.variants -%}
+                        <option value="{{ variant.id }}"
+                          data-inventory-quantity="{{ variant.inventory_quantity }}"
+                          data-inventory-policy="{{ variant.inventory_policy }}"
+                          data-option1="{{ variant.option1 }}"
+                          data-option2="{{ variant.option2 }}"
+                          data-option3="{{ variant.option3 }}"
+                          {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                          {% if variant.available == false %}disabled{% endif %}
+                        >
+                          {{ variant.title }}
+                          {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif -%}
+                        </option>
+                      {%- endfor -%}
+                    </select>
+                    <span class="svg-wrapper icon-caret">
+                      {{- 'icon-caret-2.svg' | inline_asset_content -}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+            
+            <div id="StickyCart-Quantity-Form-{{ section.id }}" class="sticky-cart__quantity product-form__quantity{% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %} disabled{% endif %}">
               {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
               <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
                 <button class="quantity__button no-js-hidden pos-relative" name="minus" type="button">
@@ -138,11 +207,11 @@ style="
                     {{- 'icon-minus.svg' | inline_asset_content -}}
                   </span>
                 </button>
-                <input class="quantity__input" type="number" name="quantity" id="Quantity-Sticky-{{ section.id }}" data-cart-quantity="{{ cart_qty }}" data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}" min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                <input class="quantity__input" type="number" id="Quantity-Sticky-{{ section.id }}" data-cart-quantity="{{ cart_qty }}" data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}" min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                   {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
                     data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}" max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
                   {% endif %}
-                  step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}" value="{{ product.selected_or_first_available_variant.quantity_rule.min }}" form="{{ product_form_id }}"/>
+                  step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}" value="{{ product.selected_or_first_available_variant.quantity_rule.min }}" />
                 <button class="quantity__button no-js-hidden pos-relative" name="plus" type="button">
                   <span class="visually-hidden">{{- 'products.product.quantity.increase' | t: product: product.title | escape -}}</span>
                   <span class="svg-wrapper icon-plus">
@@ -152,7 +221,7 @@ style="
               </quantity-input>
             </div>
             {%- assign product_form_sticky_id = 'product-form-sticky-' | append: section.id -%}
-            <div class="sticky-cart__button w-full" id="{{ product_form_sticky_id }}">
+            <div class="sticky-cart__button flex-1" id="{{ product_form_sticky_id }}">
               {%- liquid
                 assign check_against_inventory = true
                 if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -168,7 +237,7 @@ style="
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled class="product-variant-id">
               <button
                 id="StickyCart-ProductSubmitButton-{{ section.id }}" type="submit" name="add"
-                class="product-form__submit{% unless variant_length > 1 %} no-variants{% endunless %} button button--full-width{% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %} sold-out--button{% endif %}"
+                class="product-form__submit{% unless variant_length > 1 and block.settings.sticky_use_combined_dropdown == false %} no-variants{% endunless %} button button--full-width{% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %} sold-out--button{% endif %}"
                 form="{{ product_form_id }}"
                 {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}disabled{% endif %}
                 data-inventory-quantity="{{ product.selected_or_first_available_variant.inventory_quantity }}"
@@ -205,7 +274,7 @@ style="
                   {% endif %}
                 {%- endif -%}
               </button>
-              {% if variant_length > 1 %}
+              {%- if variant_length > 1 and block.settings.sticky_use_combined_dropdown == false -%}
                 <button
                   id="StickyCart-ProductSubmitButton-ToggleVariants-{{ section.id }}" type="button"
                   class="button button--full-width button-toggle-variants"
@@ -214,8 +283,23 @@ style="
                     {{ 'products.product.choose_options' | t }}
                   </span>
                 </button>
-              {% endif %}
+              {%- endif -%}
             </div>
+            {%- if block.settings.sticky_use_combined_dropdown -%}
+              {% liquid
+                assign class_button = 'button h-full center cursor-pointer flex items-center justify-center relative leading-none'
+                assign class_text = 'visually-hidden'
+                assign class_text_inner = 'text-inner text-sm inline-block'
+              %}
+              <div class="sticky-cart__wishlist flex-shrink-0 h-full flex items-stretch">
+                {% render 'product-wishlist-button',
+                  card_product: product,
+                  class_button: class_button,
+                  class_text: class_text,
+                  class_text_inner: class_text_inner
+                %}
+              </div>
+            {%- endif -%}
           </div>
         </div>
       {% endif %}
@@ -707,6 +791,13 @@ style="
     {
       "type": "paragraph",
       "content": "t:content.edit_variants_in_theme_settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_use_combined_dropdown",
+      "label": "Show custom sticky",
+      "info": "Khi bật, tất cả swatch/button sẽ được thay thế bằng một danh sách chọn duy nhất chứa mọi tổ hợp biến thể.",
+      "default": true
     },
     {
       "type": "select",
