@@ -29,7 +29,6 @@
 }
 
 .customer ul {
-  padding-left: 2em;
   text-align: left;
   margin: 0;
 }
@@ -1030,3 +1029,263 @@ li[data-address] > h2 {
   width: 100%;
 }
 
+/* ===== Orders Table (My Order History) ===== */
+.orders-table {
+  width: 100%;
+}
+
+.orders-table__head {
+  display: flex;
+  padding: 1rem 0;
+  gap: 1rem;
+  color: #F8A2BF;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-bottom: 1px solid #F3F3F3;
+}
+
+.orders-table__head__item--date,
+.order-col--date {
+  flex-basis: 12%;
+}
+
+.orders-table__head__item--number,
+.order-col--name {
+  flex-basis: 12%;
+}
+
+.orders-table__head__item--status,
+.order-col--status {
+  flex-basis: 30%;
+}
+
+.orders-table__head__item--total,
+.order-col--total {
+  flex-basis: 20%;
+}
+
+.orders-table__head__item--arrow,
+.order-col--chevron {
+  flex-basis: 10%;
+}
+
+.orders-table__head__item--button,
+.order-col--action {
+  flex-basis: auto;
+}
+
+/* --- Accordion row --- */
+.order-accordion {
+  display: block;
+  border-bottom: 1px solid #F3F3F3;
+}
+
+/* Summary is a <button> – reset browser button defaults */
+.order-accordion__summary {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0rem;
+  gap: 1rem;
+  transition: background 0.2s;
+}
+
+.order-accordion__summary:hover {
+  background: #FFF9FC;
+}
+
+.order-col {
+  white-space: nowrap;
+  color: #1A1A1A;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px; /* 175% */
+}
+
+.order-col--chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.4rem;
+}
+
+.order-chevron-icon {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  min-width: 6px !important;
+  min-height: 10px !important;
+}
+
+/* Rotate chevron when accordion is open (JS adds this class) */
+.order-accordion--open .order-chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* --- Products area (accordion content) --- */
+/* JS controls display via hidden attr + inline height for animation */
+
+.order-accordion__products {
+  padding: 1rem 0 2.5rem;
+}
+
+.order-accordion__products-inner .swiper-button:before {
+  background: transparent;
+}
+.order-accordion__products-inner .swiper-button {
+  opacity: 1;
+  border: none;
+  color: #F8A2BF;
+}
+
+.order-accordion__products-inner .swiper-button:hover {
+  color: #ffffff;
+}
+
+.order-products-swiper {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.order-products-swiper .swiper {
+  overflow: hidden;
+  /* Padding gives room for the swiper-btns that are inside .swiper */
+  padding: 0 6rem;
+}
+
+/* Position swiper nav buttons inside orders panel */
+.order-swiper-btns {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  z-index: 99;
+}
+
+.order-swiper-btns .swiper-button {
+  pointer-events: all;
+  position: static;
+  transform: none;
+  margin-top: 0;
+}
+
+.order-product-item {
+  height: auto;
+}
+
+.order-product-item__link {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  gap: 0.5rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.order-product-item__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #F5F5F5;
+}
+
+.order-product-item__image img,
+.order-product-item__image .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.order-product-item__link:hover .order-product-item__image img {
+  transform: scale(1.04);
+}
+
+.order-product-item__title {
+  color: #1A1A1A;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0 !important;
+}
+
+.order-product-item__price {
+  color: #1A1A1A;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* Mobile: stack header info using grid areas */
+@media (max-width: 749px) {
+  .orders-table__head {
+    display: none;
+  }
+
+  .order-accordion__summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    grid-template-areas: 
+      "date name arrow" 
+      "status total total" 
+      "button button button";
+  }
+
+  .order-col--date {
+    grid-area: date;
+  }
+
+  .order-col--name {
+    grid-area: name;
+  }
+
+  .order-col--status {
+    grid-area: status;
+  }
+
+  .order-col--total {
+    grid-area: total;
+  }
+
+  .order-col--chevron {
+    grid-area: arrow;
+  }
+
+  .order-col--action {
+    grid-area: button;
+  }
+
+  .order-again-btn {
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .order-products-swiper .swiper-wrapper,
+  .order-products-swiper .swiper {
+    padding: 0;
+  }
+}
+
+/* Wishlist page */

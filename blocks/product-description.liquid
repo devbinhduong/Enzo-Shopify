@@ -15,7 +15,7 @@
 
 {% if bl_stts.truncate_type == 'words' %}
   {% assign text = bl_stts.text | strip_html | truncatewords: bl_stts.truncatewords %}
-  {% assign read_more_text = '<a href="#" data-read-more-text="' | append: bl_stts.read_more_text | append: '" class="link link--underline" style="color: #FE79A4;">' | append: bl_stts.read_more_text | append: '</a>' %}
+  {% assign read_more_text = '<a href="#" id="readMoreDescription" data-read-more-text="' | append: bl_stts.read_more_text | append: '" class="link link--underline" style="color: #FE79A4; display:inline-flex; width: fit-content;">' | append: bl_stts.read_more_text | append: '</a>' %}
   {% assign text = text | append: read_more_text %}
   {% render 'text', fallback_text: text, block: block %}
 {% else %}

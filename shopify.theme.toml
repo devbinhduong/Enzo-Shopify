@@ -1,7 +1,11 @@
-
-
 [environments.mint]
 store = "korean-skincare-uk"
 theme = "185487163772"
+theme-editor-sync = true
+ignore = "*.json"
+
+[environments.qmcar]
+store = "qmcar"
+theme = "185698910510"
 theme-editor-sync = true
 ignore = "*.json"

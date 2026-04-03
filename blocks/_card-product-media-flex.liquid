@@ -71,6 +71,7 @@
       style="
         {%- if bl_stts.width_option == 'custom' -%}--globalGroupWidth: {% if bl_stts.unit == 'pixel' %}{{ bl_stts.custom_width_pixel | append: 'px' }}{% else %}{{ bl_stts.custom_width | append: '%' }}{% endif %};{%- endif -%}
         {%- if bl_stts.border != 'none' -%}{%- render 'border-override', settings: bl_stts -%}{% endif -%}
+        --pt: {{ bl_stts.padding_top }}px; --pb: {{ bl_stts.padding_bottom }}px; --pl: {{ bl_stts.padding_left }}px; --pr: {{ bl_stts.padding_right }}px;
         "
       >
       <div class="ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
@@ -270,6 +271,45 @@
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.border != 'none' }}"
+    },{
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "label": "t:settings.top"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "label": "t:settings.right"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "label": "t:settings.bottom"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "label": "t:settings.left"
     }
   ],
   "presets": [

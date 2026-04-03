@@ -2585,3 +2585,45 @@ function updateProductShareButtonWidth() {
     // silent
   }
 }
+
+function readMoreDescription() {
+  const readMoreButton = document.querySelector("#readMoreDescription");
+  const descriptionTabs = document.querySelectorAll('.tab-content--description');
+
+  if (!readMoreButton) return;
+
+  readMoreButton.addEventListener('click', () => {
+    console.log('read more button clicked');
+    descriptionTabs.forEach((tab) => {
+      const parentTab = tab.closest('.block-product-tabs');
+
+      if (parentTab.classList.contains('hide-on-mobile')) {
+        if (window.innerWidth > 750) {
+          const tabTitle = tab.querySelector('.toggle-title');
+          if (tabTitle && !tabTitle.classList.contains('is-open')) {
+            tabTitle.querySelector('.toggle-link').click();
+          }
+
+          setTimeout(() => {
+            tab.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+          }, 200);
+        }
+      }
+
+      if (parentTab.classList.contains('hide-on-desktop')) {
+        if (window.innerWidth < 750) {
+          const tabTitle = tab.querySelector('.toggle-title');
+          if (tabTitle && !tabTitle.classList.contains('is-open')) {
+            tabTitle.querySelector('.toggle-link').click();
+          }
+
+          setTimeout(() => {
+            tab.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+          }, 200);
+        }
+      }
+    });
+  });
+}
+
+readMoreDescription();
