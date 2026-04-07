@@ -1,0 +1,960 @@
+
+    
+    
+    <style {% if section.settings.section_preload == "false" %} class="gps-link gps-style" type="text/disabled-css" {% endif %}>.gps-609491116084953794.gps.gpsil [style*="--as:"]{align-self:var(--as)}.gps-609491116084953794.gps.gpsil [style*="--aspect:"]{aspect-ratio:var(--aspect)}.gps-609491116084953794.gps.gpsil [style*="--bg:"]{background:var(--bg)}.gps-609491116084953794.gps.gpsil [style*="--hvr-bg:"]:hover{background:var(--hvr-bg)}.gps-609491116084953794.gps.gpsil [style*="--bga:"]{background-attachment:var(--bga)}.gps-609491116084953794.gps.gpsil [style*="--bgc:"]{background-color:var(--bgc)}.gps-609491116084953794.gps.gpsil [style*="--bgi:"]{background-image:var(--bgi)}.gps-609491116084953794.gps.gpsil [style*="--hvr-bgi:"]:hover{background-image:var(--hvr-bgi)}.gps-609491116084953794.gps.gpsil [style*="--bgp:"]{background-position:var(--bgp)}.gps-609491116084953794.gps.gpsil [style*="--bgr:"]{background-repeat:var(--bgr)}.gps-609491116084953794.gps.gpsil [style*="--bgs:"]{background-size:var(--bgs)}.gps-609491116084953794.gps.gpsil [style*="--b:"]{border:var(--b)}.gps-609491116084953794.gps.gpsil [style*="--hvr-b:"]:hover{border:var(--hvr-b)}.gps-609491116084953794.gps.gpsil [style*="--focus-b:"]:focus{border:var(--focus-b)}.gps-609491116084953794.gps.gpsil [style*="--bb:"]{border-bottom:var(--bb)}.gps-609491116084953794.gps.gpsil [style*="--hvr-bb:"]:hover{border-bottom:var(--hvr-bb)}.gps-609491116084953794.gps.gpsil [style*="--focus-bb:"]:focus{border-bottom:var(--focus-bb)}.gps-609491116084953794.gps.gpsil [style*="--bbw:"]{border-bottom-width:var(--bbw)}.gps-609491116084953794.gps.gpsil [style*="--bc:"]{border-color:var(--bc)}.gps-609491116084953794.gps.gpsil [style*="--bblr:"]{border-bottom-left-radius:var(--bblr)}.gps-609491116084953794.gps.gpsil [style*="--hvr-bblr:"]:hover{border-bottom-left-radius:var(--hvr-bblr)}.gps-609491116084953794.gps.gpsil [style*="--focus-bblr:"]:focus{border-bottom-left-radius:var(--focus-bblr)}.gps-609491116084953794.gps.gpsil [style*="--bbrr:"]{border-bottom-right-radius:var(--bbrr)}.gps-609491116084953794.gps.gpsil [style*="--hvr-bbrr:"]:hover{border-bottom-right-radius:var(--hvr-bbrr)}.gps-609491116084953794.gps.gpsil [style*="--focus-bbrr:"]:focus{border-bottom-right-radius:var(--focus-bbrr)}.gps-609491116084953794.gps.gpsil [style*="--bl:"]{border-left:var(--bl)}.gps-609491116084953794.gps.gpsil [style*="--radius:"]{border-radius:var(--radius)}.gps-609491116084953794.gps.gpsil [style*="--bs:"]{border-style:var(--bs)}.gps-609491116084953794.gps.gpsil [style*="--bt:"]{border-top:var(--bt)}.gps-609491116084953794.gps.gpsil [style*="--hvr-bt:"]:hover{border-top:var(--hvr-bt)}.gps-609491116084953794.gps.gpsil [style*="--focus-bt:"]:focus{border-top:var(--focus-bt)}.gps-609491116084953794.gps.gpsil [style*="--btlr:"]{border-top-left-radius:var(--btlr)}.gps-609491116084953794.gps.gpsil [style*="--hvr-btlr:"]:hover{border-top-left-radius:var(--hvr-btlr)}.gps-609491116084953794.gps.gpsil [style*="--focus-btlr:"]:focus{border-top-left-radius:var(--focus-btlr)}.gps-609491116084953794.gps.gpsil [style*="--btrr:"]{border-top-right-radius:var(--btrr)}.gps-609491116084953794.gps.gpsil [style*="--hvr-btrr:"]:hover{border-top-right-radius:var(--hvr-btrr)}.gps-609491116084953794.gps.gpsil [style*="--focus-btrr:"]:focus{border-top-right-radius:var(--focus-btrr)}.gps-609491116084953794.gps.gpsil [style*="--bw:"]{border-width:var(--bw)}.gps-609491116084953794.gps.gpsil [style*="--shadow:"]{box-shadow:var(--shadow)}.gps-609491116084953794.gps.gpsil [style*="--c:"]{color:var(--c)}.gps-609491116084953794.gps.gpsil [style*="--cg:"]{-moz-column-gap:var(--cg);column-gap:var(--cg)}.gps-609491116084953794.gps.gpsil [style*="--size:"]{font-size:var(--size)}.gps-609491116084953794.gps.gpsil [style*="--weight:"]{font-weight:var(--weight)}.gps-609491116084953794.gps.gpsil [style*="--fs:"]{font-style:var(--fs)}.gps-609491116084953794.gps.gpsil [style*="--gg:"]{grid-gap:var(--gg)}.gps-609491116084953794.gps.gpsil [style*="--gtc:"]{grid-template-columns:var(--gtc)}.gps-609491116084953794.gps.gpsil [style*="--h:"]{height:var(--h)}.gps-609491116084953794.gps.gpsil [style*="--jc:"]{justify-content:var(--jc)}.gps-609491116084953794.gps.gpsil [style*="--tdt:"]{text-decoration-thickness:var(--tdt)}.gps-609491116084953794.gps.gpsil [style*="--tdc:"]{text-decoration-color:var(--tdc)}.gps-609491116084953794.gps.gpsil [style*="--tdl:"]{text-decoration-line:var(--tdl)}.gps-609491116084953794.gps.gpsil [style*="--m:"]{margin:var(--m)}.gps-609491116084953794.gps.gpsil [style*="--mb:"]{margin-bottom:var(--mb)}.gps-609491116084953794.gps.gpsil [style*="--ml:"]{margin-left:var(--ml)}.gps-609491116084953794.gps.gpsil [style*="--mr:"]{margin-right:var(--mr)}.gps-609491116084953794.gps.gpsil [style*="--mt:"]{margin-top:var(--mt)}.gps-609491116084953794.gps.gpsil [style*="--minw:"]{min-width:var(--minw)}.gps-609491116084953794.gps.gpsil [style*="--objf:"]{-o-object-fit:var(--objf);object-fit:var(--objf)}.gps-609491116084953794.gps.gpsil [style*="--op:"]{opacity:var(--op)}.gps-609491116084953794.gps.gpsil [style*="--o:"]{order:var(--o)}.gps-609491116084953794.gps.gpsil [style*="--pc:"]{place-content:var(--pc)}.gps-609491116084953794.gps.gpsil [style*="--p:"]{padding:var(--p)}.gps-609491116084953794.gps.gpsil [style*="--pb:"]{padding-bottom:var(--pb)}.gps-609491116084953794.gps.gpsil [style*="--pl:"]{padding-left:var(--pl)}.gps-609491116084953794.gps.gpsil [style*="--pr:"]{padding-right:var(--pr)}.gps-609491116084953794.gps.gpsil [style*="--pt:"]{padding-top:var(--pt)}.gps-609491116084953794.gps.gpsil [style*="--pos:"]{position:var(--pos)}.gps-609491116084953794.gps.gpsil [style*="--rg:"]{row-gap:var(--rg)}.gps-609491116084953794.gps.gpsil [style*="--ta:"]{text-align:var(--ta)}.gps-609491116084953794.gps.gpsil [style*="--tt:"]{text-transform:var(--tt)}.gps-609491116084953794.gps.gpsil [style*="--top:"]{top:var(--top)}.gps-609491116084953794.gps.gpsil [style*="--t:"]{transform:var(--t)}.gps-609491116084953794.gps.gpsil [style*="--w:"]{width:var(--w)}.gps-609491116084953794.gps.gpsil [style*="--line-clamp:"]{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:var(--line-clamp)}@media only screen and (max-width:1024px){.gps-609491116084953794.gps.gpsil [style*="--aspect-tablet:"]{aspect-ratio:var(--aspect-tablet)}.gps-609491116084953794.gps.gpsil [style*="--bbw-tablet:"]{border-bottom-width:var(--bbw-tablet)}.gps-609491116084953794.gps.gpsil [style*="--size-tablet:"]{font-size:var(--size-tablet)}.gps-609491116084953794.gps.gpsil [style*="--gtc-tablet:"]{grid-template-columns:var(--gtc-tablet)}.gps-609491116084953794.gps.gpsil [style*="--h-tablet:"]{height:var(--h-tablet)}.gps-609491116084953794.gps.gpsil [style*="--jc-tablet:"]{justify-content:var(--jc-tablet)}.gps-609491116084953794.gps.gpsil [style*="--mb-tablet:"]{margin-bottom:var(--mb-tablet)}.gps-609491116084953794.gps.gpsil [style*="--ml-tablet:"]{margin-left:var(--ml-tablet)}.gps-609491116084953794.gps.gpsil [style*="--mr-tablet:"]{margin-right:var(--mr-tablet)}.gps-609491116084953794.gps.gpsil [style*="--mt-tablet:"]{margin-top:var(--mt-tablet)}.gps-609491116084953794.gps.gpsil [style*="--o-tablet:"]{order:var(--o-tablet)}.gps-609491116084953794.gps.gpsil [style*="--pb-tablet:"]{padding-bottom:var(--pb-tablet)}.gps-609491116084953794.gps.gpsil [style*="--pl-tablet:"]{padding-left:var(--pl-tablet)}.gps-609491116084953794.gps.gpsil [style*="--pr-tablet:"]{padding-right:var(--pr-tablet)}.gps-609491116084953794.gps.gpsil [style*="--pt-tablet:"]{padding-top:var(--pt-tablet)}.gps-609491116084953794.gps.gpsil [style*="--ta-tablet:"]{text-align:var(--ta-tablet)}.gps-609491116084953794.gps.gpsil [style*="--w-tablet:"]{width:var(--w-tablet)}.gps-609491116084953794.gps.gpsil [style*="--line-clamp-tablet:"]{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:var(--line-clamp-tablet)}}@media only screen and (max-width:767px){.gps-609491116084953794.gps.gpsil [style*="--aspect-mobile:"]{aspect-ratio:var(--aspect-mobile)}.gps-609491116084953794.gps.gpsil [style*="--bbw-mobile:"]{border-bottom-width:var(--bbw-mobile)}.gps-609491116084953794.gps.gpsil [style*="--size-mobile:"]{font-size:var(--size-mobile)}.gps-609491116084953794.gps.gpsil [style*="--gg-mobile:"]{grid-gap:var(--gg-mobile)}.gps-609491116084953794.gps.gpsil [style*="--gtc-mobile:"]{grid-template-columns:var(--gtc-mobile)}.gps-609491116084953794.gps.gpsil [style*="--h-mobile:"]{height:var(--h-mobile)}.gps-609491116084953794.gps.gpsil [style*="--jc-mobile:"]{justify-content:var(--jc-mobile)}.gps-609491116084953794.gps.gpsil [style*="--mb-mobile:"]{margin-bottom:var(--mb-mobile)}.gps-609491116084953794.gps.gpsil [style*="--ml-mobile:"]{margin-left:var(--ml-mobile)}.gps-609491116084953794.gps.gpsil [style*="--mr-mobile:"]{margin-right:var(--mr-mobile)}.gps-609491116084953794.gps.gpsil [style*="--mt-mobile:"]{margin-top:var(--mt-mobile)}.gps-609491116084953794.gps.gpsil [style*="--minw-mobile:"]{min-width:var(--minw-mobile)}.gps-609491116084953794.gps.gpsil [style*="--o-mobile:"]{order:var(--o-mobile)}.gps-609491116084953794.gps.gpsil [style*="--pb-mobile:"]{padding-bottom:var(--pb-mobile)}.gps-609491116084953794.gps.gpsil [style*="--pl-mobile:"]{padding-left:var(--pl-mobile)}.gps-609491116084953794.gps.gpsil [style*="--pr-mobile:"]{padding-right:var(--pr-mobile)}.gps-609491116084953794.gps.gpsil [style*="--pt-mobile:"]{padding-top:var(--pt-mobile)}.gps-609491116084953794.gps.gpsil [style*="--pos-mobile:"]{position:var(--pos-mobile)}.gps-609491116084953794.gps.gpsil [style*="--ta-mobile:"]{text-align:var(--ta-mobile)}.gps-609491116084953794.gps.gpsil [style*="--w-mobile:"]{width:var(--w-mobile)}.gps-609491116084953794.gps.gpsil [style*="--line-clamp-mobile:"]{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:var(--line-clamp-mobile)}}.gps-609491116084953794 .-gp-translate-x-1\/2,.gps-609491116084953794 .-gp-translate-y-1\/2{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1}.gps-609491116084953794 .gp-g-heading-1{font-family:var(--g-h1-ff);font-size:var(--g-h1-size);font-style:var(--g-h1-fs);font-weight:var(--g-h1-weight);letter-spacing:var(--g-h1-ls);line-height:var(--g-h1-lh)}.gps-609491116084953794 .gp-g-heading-2{font-family:var(--g-h2-ff);font-size:var(--g-h2-size);font-style:var(--g-h2-fs);font-weight:var(--g-h2-weight);letter-spacing:var(--g-h2-ls);line-height:var(--g-h2-lh)}.gps-609491116084953794 .gp-g-heading-3{font-family:var(--g-h3-ff);font-size:var(--g-h3-size);font-style:var(--g-h3-fs);font-weight:var(--g-h3-weight);letter-spacing:var(--g-h3-ls);line-height:var(--g-h3-lh)}.gps-609491116084953794 .gp-g-subheading-3{font-family:var(--g-sh3-ff);font-size:var(--g-sh3-size);font-style:var(--g-sh3-fs);font-weight:var(--g-sh3-weight);letter-spacing:var(--g-sh3-ls);line-height:var(--g-sh3-lh)}.gps-609491116084953794 .gp-g-paragraph-1{font-family:var(--g-p1-ff);font-size:var(--g-p1-size);font-style:var(--g-p1-fs);font-weight:var(--g-p1-weight);letter-spacing:var(--g-p1-ls);line-height:var(--g-p1-lh)}.gps-609491116084953794 .gp-invisible{visibility:hidden}.gps-609491116084953794 .gp-absolute{position:absolute}.gps-609491116084953794 .gp-relative{position:relative}.gps-609491116084953794 .gp-left-0{left:0}.gps-609491116084953794 .gp-left-1\/2{left:50%}.gps-609491116084953794 .gp-top-0{top:0}.gps-609491116084953794 .gp-top-1\/2{top:50%}.gps-609491116084953794 .gp-z-0{z-index:0}.gps-609491116084953794 .gp-z-\[90\]{z-index:90}.gps-609491116084953794 .\!gp-m-0{margin:0!important}.gps-609491116084953794 .gp-mx-auto{margin-left:auto;margin-right:auto}.gps-609491116084953794 .gp-mb-0{margin-bottom:0}.gps-609491116084953794 .gp-block{display:block}.gps-609491116084953794 .gp-inline-block{display:inline-block}.gps-609491116084953794 .gp-flex{display:flex}.gps-609491116084953794 .gp-inline-flex{display:inline-flex}.gps-609491116084953794 .gp-grid{display:grid}.gps-609491116084953794 .gp-contents{display:contents}.gps-609491116084953794 .\!gp-hidden{display:none!important}.gps-609491116084953794 .gp-hidden{display:none}.gps-609491116084953794 .gp-aspect-\[56\/32\]{aspect-ratio:56/32}.gps-609491116084953794 .gp-h-0{height:0}.gps-609491116084953794 .gp-h-auto{height:auto}.gps-609491116084953794 .gp-h-full{height:100%}.gps-609491116084953794 .gp-w-14{width:56px}.gps-609491116084953794 .gp-w-5{width:20px}.gps-609491116084953794 .gp-w-full{width:100%}.gps-609491116084953794 .\!gp-min-w-full{min-width:100%!important}.gps-609491116084953794 .\!gp-max-w-full{max-width:100%!important}.gps-609491116084953794 .gp-max-w-full{max-width:100%}.gps-609491116084953794 .gp-flex-none{flex:none}.gps-609491116084953794 .-gp-translate-x-1\/2{--tw-translate-x:-50%}.gps-609491116084953794 .-gp-translate-x-1\/2,.gps-609491116084953794 .-gp-translate-y-1\/2{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.gps-609491116084953794 .-gp-translate-y-1\/2{--tw-translate-y:-50%}.gps-609491116084953794 .gp-cursor-pointer{cursor:pointer}.gps-609491116084953794 .gp-grid-rows-\[1fr\]{grid-template-rows:1fr}.gps-609491116084953794 .gp-flex-col{flex-direction:column}.gps-609491116084953794 .gp-items-start{align-items:flex-start}.gps-609491116084953794 .gp-items-center{align-items:center}.gps-609491116084953794 .gp-justify-start{justify-content:flex-start}.gps-609491116084953794 .gp-justify-center{justify-content:center}.gps-609491116084953794 .gp-overflow-hidden{overflow:hidden}.gps-609491116084953794 .gp-break-words{overflow-wrap:break-word}.gps-609491116084953794 .\!gp-rounded-none{border-radius:0!important}.gps-609491116084953794 .gp-rounded{border-radius:4px}.gps-609491116084953794 .gp-bg-black\/80{background-color:rgba(0,0,0,.8)}.gps-609491116084953794 .gp-object-cover{-o-object-fit:cover;object-fit:cover}.gps-609491116084953794 .\!gp-pb-0{padding-bottom:0!important}.gps-609491116084953794 .gp-text-center{text-align:center}.gps-609491116084953794 .gp-text-g-text-2{color:var(--g-c-text-2)}.gps-609491116084953794 .gp-text-g-text-3{color:var(--g-c-text-3)}.gps-609491116084953794 .gp-text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.gps-609491116084953794 .gp-no-underline{text-decoration-line:none}.gps-609491116084953794 .gp-decoration-g-text-2{text-decoration-color:var(--g-c-text-2)}.gps-609491116084953794 .gp-outline-1{outline-width:1px}.gps-609491116084953794 .-gp-outline-offset-1{outline-offset:-1px}.gps-609491116084953794 .gp-transition-colors{transition-duration:.15s;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1)}.gps-609491116084953794 .gp-transition-opacity{transition-duration:.15s;transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1)}.gps-609491116084953794 .gp-duration-200{transition-duration:.2s}.gps-609491116084953794 .gp-ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}.gps-609491116084953794 .disabled\:gp-btn-disabled:disabled{cursor:default}@media (hover:hover) and (pointer:fine){.gps-609491116084953794 .hover\:gp-bg-\[\#ef0800\]:hover{--tw-bg-opacity:1;background-color:rgb(239 8 0/var(--tw-bg-opacity,1))}}.gps-609491116084953794 .disabled\:gp-opacity-30:disabled{opacity:.3}.gps-609491116084953794 .gp-group\/button:active .group-active\/button\:\!gp-text-inherit{color:inherit!important}.gps-609491116084953794 .data-\[hidden\=true\]\:\!gp-hidden[data-hidden=true]{display:none!important}.gps-609491116084953794 .data-\[outline\=active\]\:gp-outline[data-outline=active]{outline-style:solid}.gps-609491116084953794 .gp-group[data-state=loading] .group-data-\[state\=loading\]\:gp-invisible{visibility:hidden}@media (max-width:1024px){.gps-609491116084953794 .tablet\:gp-block{display:block}.gps-609491116084953794 .tablet\:\!gp-hidden{display:none!important}.gps-609491116084953794 .tablet\:gp-hidden{display:none}.gps-609491116084953794 .tablet\:gp-h-auto{height:auto}.gps-609491116084953794 .tablet\:gp-flex-none{flex:none}}@media (max-width:767px){.gps-609491116084953794 .mobile\:gp-block{display:block}.gps-609491116084953794 .mobile\:\!gp-hidden{display:none!important}.gps-609491116084953794 .mobile\:gp-hidden{display:none}.gps-609491116084953794 .mobile\:gp-h-auto{height:auto}.gps-609491116084953794 .mobile\:gp-flex-none{flex:none}.gps-609491116084953794 .mobile\:gp-justify-center{justify-content:center}}.gps-609491116084953794 .\[\&_\*\]\:gp-max-w-full *{max-width:100%}.gps-609491116084953794 .\[\&_p\]\:gp-whitespace-pre-line p{white-space:pre-line}</style>
+    
+  
+    
+    
+    
+
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+
+    
+        <section
+          class="gp-mx-auto gp-max-w-full [&_*]:gp-max-w-full {% if section.settings.section_preload == "false" %}gps-lazy {% endif %}"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--pl:none;--pl-tablet:none;--pl-mobile:none;--pr:none;--pr-tablet:none;--pr-mobile:none"
+        >
+          
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gcdOv7RXLB"}' data-id="gcdOv7RXLB" id="gcdOv7RXLB" data-same-height-subgrid-container class="gcdOv7RXLB gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--blockPadding:base;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pt:60px;--pb:60px;--cg:32px;--gtc:minmax(0, 12fr);--w:100%;--w-tablet:100%;--w-mobile:100%;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gmi8afa1Vq gp-relative gp-flex gp-flex-col"
+    >
+      
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"#FFF3F9","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color","video":"","videoHtml5":""}},"uid":"gqxBRcIuUD"}' data-id="gqxBRcIuUD" id="gqxBRcIuUD" data-same-height-subgrid-container class="gqxBRcIuUD gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:var(--g-s-l);--cg:0px;--gtc:minmax(0, 3fr) minmax(0, 9fr);--gtc-tablet:minmax(0, 3fr) minmax(0, 9fr);--gtc-mobile:minmax(0, 12fr);--w:100%;--bgc:#FFF3F9;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:center"
+      class="gwVD1egJQi gp-relative gp-flex gp-flex-col"
+    >
+      
+    <div
+      role="presentation"
+      data-id="g_SfJdRNTi"
+      style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:center;--ta-tablet:center"
+      class="gp-group/image gp-relative force-publish-1772815612911 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto g_SfJdRNTi"
+    >
+      <div
+        
+        style="border-radius:inherit;--jc:center;--jc-tablet:center"
+        class="gp-h-full gp-w-full gp-flex pointer-events-auto"
+      >
+        
+    <picture style="border-radius:inherit" class="gp-contents">
+      
+      <source media="(max-width: 767px)" data-srcSet="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/moisturizer_oily_skin_banner_768x.jpg" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctODAwLTQ1MCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnLTgwMC00NTApIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii04MDAiIHRvPSI4MDAiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" />
+      <source media="(max-width: 1024px)" data-srcSet="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/moisturizer_oily_skin_banner_1024x.jpg" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctODAwLTQ1MCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnLTgwMC00NTApIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii04MDAiIHRvPSI4MDAiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" />
+    
+      
+      <img
+        base-src="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/moisturizer_oily_skin_banner.jpg" quality-type="{}" quality-percent="{}"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctODAwLTQ1MCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0idXJsKCNnLTgwMC00NTApIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii04MDAiIHRvPSI4MDAiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" data-src="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/moisturizer_oily_skin_banner.jpg"
+        alt="Moisturiser for oily skin"
+        width="100%"
+        style="--aspect:auto;--aspect-tablet:auto;--aspect-mobile:auto;--objf:cover;--h:300px;--h-tablet:300px;--h-mobile:300px;--b:none;--bc:#000000;--bw:1px 1px 1px 1px;--radiusType:none;--shadow:none"
+        class="gp-inline-block gp-w-full gp-max-w-full gp_lazyload"
+      />
+    
+    </picture>
+  
+      </div>
+    </div>
+  
+    </div><div
+      data-same-height-display-contents
+      style="--jc:center"
+      class="giIsPA9DXT gp-relative gp-flex gp-flex-col"
+    >
+      
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gLdNijixX9"}' data-id="gLdNijixX9" id="gLdNijixX9" data-same-height-subgrid-container class="gLdNijixX9 gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr] gp-target-row" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ml:30px;--mr:30px;--pl:0px;--pr:0px;--mt-mobile:50px;--ml-mobile:auto;--mb-mobile:50px;--mr-mobile:auto;--pl-mobile:10px;--pr-mobile:10px;--mt-tablet:50px;--ml-tablet:30px;--mb-tablet:50px;--mr-tablet:30px;--cg:8px;--gtc:minmax(0, 12fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="g2hcjrki6T gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gKi-HdgyAJ"
+        class="gKi-HdgyAJ"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pb:8px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--ta-mobile:center;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--fs:italic;--c:#fd76a9;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          <p>{{ article.tags }}</p>
+        </div>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gP1lO_QaRh"
+        class="gP1lO_QaRh gp-title-page"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h1
+          data-gp-text
+          class="gp-g-heading-3  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--ta-mobile:center;--size:30px;--size-tablet:35px;--size-mobile:30px;--c:#FD76A9;--tt:uppercase;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ article.title }}
+        </h1>
+      </div>
+    </div>
+    <div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pt:12px;--pb:12px" class="gq-7b3WxTG ">
+      
+    <div data-id="gq-7b3WxTG" class="gp-flex gp-justify-start mobile:gp-justify-center">
+      <div style="--w:60%;--w-tablet:60%;--w-mobile:100%;--bs:solid;--bbw:1px;--bbw-tablet:1px;--bbw-mobile:1px;--t:gp-rotate(0deg);--bc:var(--g-c-line-2, line-2)" class="gp-block tablet:gp-block mobile:gp-block"></div>
+      <div class="gp-items-center gp-hidden tablet:gp-hidden mobile:gp-hidden" style="--w:60%;--w-tablet:60%;--w-mobile:100%;--bc:var(--g-c-line-2, line-2);--t:gp-rotate(0deg)">
+        <div class="gp-hidden" style="--bc:var(--g-c-line-2, line-2);--bs:solid;--bbw:1px;--bbw-tablet:1px;--bbw-mobile:1px;--minw:60%;--minw-mobile:100%;--w:60%;--w-tablet:60%;--w-mobile:100%"></div>
+        
+            <span
+              class="gp-inline-flex gp-flex-none gp-items-center gp-justify-center"
+              style="--mr:var(--g-s-xs);--w:20px;--h:20px;--t:gp-rotate(0);--c:var(--g-c-text-1, text-1)"
+            >
+              <svg style="width: 100%; height: 100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">              <path fill="currentColor" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" d="M428.8 137.6h-86.177a115.52 115.52 0 0 0 2.176-22.4c0-47.914-35.072-83.2-92-83.2-45.314 0-57.002 48.537-75.707 78.784-7.735 12.413-16.994 23.317-25.851 33.253l-.131.146-.129.148C135.662 161.807 127.764 168 120.8 168h-2.679c-5.747-4.952-13.536-8-22.12-8H32c-17.673 0-32 12.894-32 28.8v230.4C0 435.106 14.327 448 32 448h64c8.584 0 16.373-3.048 22.12-8h2.679c28.688 0 67.137 40 127.2 40h21.299c62.542 0 98.8-38.658 99.94-91.145 12.482-17.813 18.491-40.785 15.985-62.791A93.148 93.148 0 0 0 393.152 304H428.8c45.435 0 83.2-37.584 83.2-83.2 0-45.099-38.101-83.2-83.2-83.2zm0 118.4h-91.026c12.837 14.669 14.415 42.825-4.95 61.05 11.227 19.646 1.687 45.624-12.925 53.625 6.524 39.128-10.076 61.325-50.6 61.325H248c-45.491 0-77.21-35.913-120-39.676V215.571c25.239-2.964 42.966-21.222 59.075-39.596 11.275-12.65 21.725-25.3 30.799-39.875C232.355 112.712 244.006 80 252.8 80c23.375 0 44 8.8 44 35.2 0 35.2-26.4 53.075-26.4 70.4h158.4c18.425 0 35.2 16.5 35.2 35.2 0 18.975-16.225 35.2-35.2 35.2zM88 384c0 13.255-10.745 24-24 24s-24-10.745-24-24 10.745-24 24-24 24 10.745 24 24z" /></svg>
+            </span>
+          
+        
+            <span
+              class="gp-inline-flex gp-flex-none gp-items-center gp-justify-center gp-g-paragraph-1"
+              style="--tt:horizontal;--c:var(--g-c-text-1, text-1);--mr:var(--g-s-s);--ml:var(--g-s-s)"
+            >
+              Title
+            </span>
+          
+        <div class="gp-flex" style="--bc:var(--g-c-line-2, line-2);--bs:solid;--bbw:1px;--bbw-tablet:1px;--bbw-mobile:1px;--minw:60%;--minw-mobile:100%;--w:60%;--w-tablet:60%;--w-mobile:100%"></div>
+      </div>
+    </div>
+  
+      </div>
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gN7R3zYft-"
+        class="gN7R3zYft-"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--ta-mobile:center;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:#fd76a9;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          <p><strong>{{ blog.title }}</strong> - {{ article.published_at | date: "%B %d, %Y" }}</p>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+      
+    </gp-row>
+  
+  
+    </div>
+
+      
+    </gp-row>
+  
+  
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gducyWhymY"}' data-id="gducyWhymY" id="gducyWhymY" data-same-height-subgrid-container class="gducyWhymY gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:30px;--ml:auto;--mb:0px;--mr:auto;--pl:0px;--pr:0px;--mt-mobile:30px;--ml-mobile:auto;--pl-mobile:15px;--pr-mobile:15px;--cg:0px;--gtc:minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr);--gtc-tablet:minmax(0, 3fr) minmax(0, 6fr) minmax(0, 3fr);--gtc-mobile:minmax(0, 12fr);--w:100%;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="glRG_FDe_l gp-relative gp-flex gp-flex-col"
+    >
+      
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gx2kAFmAlC"}' data-id="gx2kAFmAlC" id="gx2kAFmAlC" data-same-height-subgrid-container class="gx2kAFmAlC gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr] gp-scroll-links" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:none;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--pos:sticky;--pos-mobile:static;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pt:0px;--pb:20px;--top:100px;--cg:8px;--gtc:minmax(0, 12fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="g2JDosGPBW gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="g2gnJbo_cw"
+        class="g2gnJbo_cw"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--pos:static;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--top:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:right;--ta-mobile:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--size:12px;--size-tablet:12px;--size-mobile:12px;--fs:italic;--c:#FFC5E1;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.gg2gnJbo_cw_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+      <style id="custom-css-g2gnJbo_cw">
+        .g2gnJbo_cw a {
+    text-decoration: none;
+    color: black;
+}
+.g2gnJbo_cw a.active {
+    font-weight: bold;
+    color: blue;
+}
+.g2gnJbo_cw p {
+
+}
+      </style>
+    
+      <script id="custom-js-g2gnJbo_cw">
+        try {
+          //const currentElement = document.getElementsByClassName('g2gnJbo_cw');
+document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("section");
+    const menuLinks = document.querySelectorAll("#g2gnJbo_cw a");
+
+    function updateMenu() {
+        let currentSection = null;
+
+        // Determine the currently visible section
+        sections.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+                currentSection = section;
+            }
+        });
+
+        // Update menu links
+        menuLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (currentSection && link.getAttribute("href") === `#${currentSection.id}`) {
+                link.classList.add("active");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", updateMenu);
+});
+
+        } catch(err){}
+      </script>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="ge9fAeKv0g"
+        class="ge9fAeKv0g"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--pos:static;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--top:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:right;--ta-mobile:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--size:12px;--size-tablet:12px;--size-mobile:12px;--fs:italic;--c:#FFC5E1;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.gge9fAeKv0g_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gJXnLEnRqH"
+        class="gJXnLEnRqH"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--pos:static;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--top:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:right;--ta-mobile:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--size:12px;--size-tablet:12px;--size-mobile:12px;--fs:italic;--c:#FFC5E1;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggJXnLEnRqH_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gx-ifyHSbR"
+        class="gx-ifyHSbR"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--pos:static;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--top:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:right;--ta-mobile:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--size:12px;--size-tablet:12px;--size-mobile:12px;--fs:italic;--c:#ffc5e1;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggx-ifyHSbR_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gGcF2ClLc_"
+        class="gGcF2ClLc_"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--pos:static;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--top:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:right;--ta-mobile:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--size:12px;--size-tablet:12px;--size-mobile:12px;--fs:italic;--c:#FFC5E1;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggGcF2ClLc__text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gGAJgV9tWf"
+        class="gGAJgV9tWf"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--pos:static;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--top:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:right;--ta-mobile:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--size:12px;--size-tablet:12px;--size-mobile:12px;--fs:italic;--c:#FFC5E1;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggGAJgV9tWf_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="g7LVRPKlCS"
+        class="g7LVRPKlCS"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--pos:static;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--top:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:right;--ta-mobile:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--size:12px;--size-tablet:12px;--size-mobile:12px;--fs:italic;--c:#FFC5E1;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.gg7LVRPKlCS_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+      
+    </gp-row>
+  
+  
+    </div><div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gSKqGJ7aXx gp-relative gp-flex gp-flex-col"
+    >
+      
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gfZMMrrk5I"}' data-id="gfZMMrrk5I" id="gfZMMrrk5I" data-same-height-subgrid-container class="gfZMMrrk5I gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:0px;--pl:30px;--pb:0px;--pr:30px;--pl-mobile:0px;--pr-mobile:0px;--cg:8px;--gtc:minmax(0, 12fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gZncYX_6Z_ gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gsuc8uMOvV"
+        class="gsuc8uMOvV"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:20px;--pl:0px;--pr:0px;--mb-mobile:10px;--pl-mobile:0px;--pr-mobile:0px;--mb-tablet:10px;--pl-tablet:0px;--pr-tablet:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:var(--g-c-text-1, text-1);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggsuc8uMOvV_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gDIgBETHDD"}' data-id="gDIgBETHDD" id="gDIgBETHDD" data-same-height-subgrid-container class="gDIgBETHDD gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr] gp-target-row" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:20px;--mb:0px;--mt-mobile:20px;--mb-mobile:0px;--mt-tablet:20px;--mb-tablet:0px;--cg:30px;--gtc:minmax(0, 3fr) minmax(0, 9fr);--gtc-tablet:minmax(0, 12fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start;--o-tablet:1"
+      class="gI9benhE5x gp-relative gp-flex gp-flex-col"
+    >
+      
+    <div
+      role="presentation"
+      data-id="gbCgbRda2s"
+      style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--pos:static;--bblr:5px;--bbrr:5px;--btlr:5px;--btrr:5px;--mt:0px;--pt:10px;--pb:10px;--mt-mobile:10px;--ml-mobile:0px;--mb-mobile:0px;--mr-mobile:0px;--pt-mobile:0px;--pb-mobile:10px;--mt-tablet:10px;--mb-tablet:0px;--pt-tablet:0px;--pb-tablet:10px;--ta:center"
+      class="gp-group/image gp-relative force-publish-1772815612953 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gbCgbRda2s"
+    >
+      <div
+        
+        style="border-radius:inherit;--jc:center"
+        class="gp-h-full gp-w-full gp-flex pointer-events-auto"
+      >
+        
+    <picture style="border-radius:inherit" class="gp-contents">
+      
+      <source media="(max-width: 767px)" data-srcSet="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/my-skin-is-happy-with-what-i-use-it-closeup-shot-beautiful-young-woman-with-freckles-her-face_800px_768x.jpg" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTczIiBoZWlnaHQ9IjgwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctNTczLTgwMCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTczIiBoZWlnaHQ9IjgwMCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iNTczIiBoZWlnaHQ9IjgwMCIgZmlsbD0idXJsKCNnLTU3My04MDApIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii01NzMiIHRvPSI1NzMiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" />
+      <source media="(max-width: 1024px)" data-srcSet="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/my-skin-is-happy-with-what-i-use-it-closeup-shot-beautiful-young-woman-with-freckles-her-face_800px_1024x.jpg" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTczIiBoZWlnaHQ9IjgwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctNTczLTgwMCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTczIiBoZWlnaHQ9IjgwMCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iNTczIiBoZWlnaHQ9IjgwMCIgZmlsbD0idXJsKCNnLTU3My04MDApIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii01NzMiIHRvPSI1NzMiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" />
+    
+      
+      <img
+        base-src="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/my-skin-is-happy-with-what-i-use-it-closeup-shot-beautiful-young-woman-with-freckles-her-face_800px.jpg" quality-type="{}" quality-percent="{}"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTczIiBoZWlnaHQ9IjgwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctNTczLTgwMCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTczIiBoZWlnaHQ9IjgwMCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iNTczIiBoZWlnaHQ9IjgwMCIgZmlsbD0idXJsKCNnLTU3My04MDApIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii01NzMiIHRvPSI1NzMiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" data-src="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/my-skin-is-happy-with-what-i-use-it-closeup-shot-beautiful-young-woman-with-freckles-her-face_800px.jpg"
+        alt="How do you know if you have oily skin"
+        width="100%"
+        style="--aspect:auto;--aspect-tablet:1/1;--aspect-mobile:1/1;--objf:cover;--h:auto;--h-tablet:auto;--h-mobile:auto;--b:none;--bc:#000000;--bw:1px 1px 1px 1px;--bblr:5px;--bbrr:5px;--btlr:5px;--btrr:5px;--radiusType:custom;--shadow:none"
+        class="gp-inline-block gp-w-full gp-max-w-full gp_lazyload"
+      />
+    
+    </picture>
+  
+      </div>
+    </div>
+  
+      <style id="custom-css-gbCgbRda2s">
+        .gbCgbRda2s {
+
+}
+.gbCgbRda2s > figure > img {
+
+}
+
+      </style>
+    
+    </div><div
+      data-same-height-display-contents
+      style="--jc:start;--o-tablet:0"
+      class="gbsOgqpBCi gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gETGZ8Sv5y"
+        class="gETGZ8Sv5y gp-title-page"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:10px;--mb:10px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h2
+          data-gp-text
+          class="gp-g-heading-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--c:var(--g-c-text-2, text-2);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggETGZ8Sv5y_text | replace: '$locationOrigin', locationOrigin }}
+        </h2>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gQU5aCn5I9"
+        class="gQU5aCn5I9"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pl:0px;--pr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:var(--g-c-text-1, text-1);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggQU5aCn5I9_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+      
+    </gp-row>
+  
+  
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"g7bcak_wLr"}' data-id="g7bcak_wLr" id="g7bcak_wLr" data-same-height-subgrid-container class="g7bcak_wLr gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr] gp-target-row" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:10px;--mb:0px;--mt-mobile:10px;--mb-mobile:0px;--mt-tablet:10px;--mb-tablet:0px;--cg:8px;--gtc:minmax(0, 12fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start;--o-tablet:1"
+      class="gx3uxignpU gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gbxIGQz7l3"
+        class="gbxIGQz7l3 gp-title-page"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:20px;--mb:10px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h2
+          data-gp-text
+          class="gp-g-heading-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--c:var(--g-c-text-2, text-2);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggbxIGQz7l3_text | replace: '$locationOrigin', locationOrigin }}
+        </h2>
+      </div>
+    </div>
+    
+      <style id="custom-css-gbxIGQz7l3">
+        .gbxIGQz7l3 {
+
+}
+      </style>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gw51K8muVj"
+        class="gw51K8muVj"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pl:0px;--pr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:var(--g-c-text-1, text-1);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggw51K8muVj_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+      
+    </gp-row>
+  
+  
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"g51ZcPDBLc"}' data-id="g51ZcPDBLc" id="g51ZcPDBLc" data-same-height-subgrid-container class="g51ZcPDBLc gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr] gp-target-row" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:10px;--mb:10px;--mt-mobile:10px;--mb-mobile:10px;--mt-tablet:10px;--mb-tablet:10px;--cg:8px;--gtc:minmax(0, 12fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start;--o-tablet:1"
+      class="gajtfALiZ2 gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gh7fP9vFam"
+        class="gh7fP9vFam gp-title-page"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:20px;--mb:10px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h2
+          data-gp-text
+          class="gp-g-heading-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--c:var(--g-c-text-2, text-2);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggh7fP9vFam_text | replace: '$locationOrigin', locationOrigin }}
+        </h2>
+      </div>
+    </div>
+    
+      <style id="custom-css-gh7fP9vFam">
+        .gh7fP9vFam {
+
+}
+      </style>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="geEQJIOEvb"
+        class="geEQJIOEvb"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pl:0px;--pr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:var(--g-c-text-1, text-1);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggeEQJIOEvb_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+      
+    </gp-row>
+  
+  {% render 'gp-section-609491116084953794-0', product: product, variant: variant, product_form_id: product_form_id, productSelectedVariant: productSelectedVariant, form: form  %}
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gEdtu0hKy8"}' data-id="gEdtu0hKy8" id="gEdtu0hKy8" data-same-height-subgrid-container class="gEdtu0hKy8 gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr] gp-target-row" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:10px;--cg:8px;--gtc:minmax(0, 12fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="g3Nr0cDT9o gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="g98Bxkm-11"
+        class="g98Bxkm-11 gp-title-page"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:20px;--mb:10px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h2
+          data-gp-text
+          class="gp-g-heading-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--c:var(--g-c-text-2, text-2);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.gg98Bxkm-11_text | replace: '$locationOrigin', locationOrigin }}
+        </h2>
+      </div>
+    </div>
+    
+      <style id="custom-css-g98Bxkm-11">
+        .g98Bxkm-11 {
+
+}
+      </style>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gusix--Lyp"
+        class="gusix--Lyp"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pl:0px;--pr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:var(--g-c-text-1, text-1);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggusix--Lyp_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+      
+    </gp-row>
+  
+  
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gUjqk071RK"}' data-id="gUjqk071RK" id="gUjqk071RK" data-same-height-subgrid-container class="gUjqk071RK gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr] gp-target-row" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:10px;--cg:8px;--gtc:minmax(0, 12fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gBKxF-AxF4 gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gWWv9gvbdv"
+        class="gWWv9gvbdv gp-title-page"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:20px;--mb:10px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h2
+          data-gp-text
+          class="gp-g-heading-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--c:var(--g-c-text-2, text-2);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggWWv9gvbdv_text | replace: '$locationOrigin', locationOrigin }}
+        </h2>
+      </div>
+    </div>
+    
+      <style id="custom-css-gWWv9gvbdv">
+        .gWWv9gvbdv {
+
+}
+      </style>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="giovkgPj-g"
+        class="giovkgPj-g gp-title-page"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:10px;--mb:10px;--mt-mobile:10px;--mb-mobile:10px;--mt-tablet:10px;--mb-tablet:10px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h3
+          data-gp-text
+          class="gp-g-heading-2  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--c:var(--g-c-text-2, text-2);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggiovkgPj-g_text | replace: '$locationOrigin', locationOrigin }}
+        </h3>
+      </div>
+    </div>
+    
+      <style id="custom-css-giovkgPj-g">
+        .giovkgPj-g {
+
+}
+      </style>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gIqWBTWyCh"
+        class="gIqWBTWyCh"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pl:0px;--pr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:var(--g-c-text-1, text-1);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggIqWBTWyCh_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gmlPtbFRRS"
+        class="gmlPtbFRRS gp-title-page"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:10px;--mb:10px;--mt-mobile:10px;--mb-mobile:10px;--mt-tablet:10px;--mb-tablet:10px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h3
+          data-gp-text
+          class="gp-g-heading-2  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--c:var(--g-c-text-2, text-2);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggmlPtbFRRS_text | replace: '$locationOrigin', locationOrigin }}
+        </h3>
+      </div>
+    </div>
+    
+      <style id="custom-css-gmlPtbFRRS">
+        .gmlPtbFRRS {
+
+}
+      </style>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gqkr4J3Gfj"
+        class="gqkr4J3Gfj"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:10px;--pl:0px;--pr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:var(--g-c-text-1, text-1);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggqkr4J3Gfj_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gLMaq6qgBK"
+        class="gLMaq6qgBK gp-title-page"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:10px;--mb:10px;--mt-mobile:10px;--mb-mobile:10px;--mt-tablet:10px;--mb-tablet:10px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h3
+          data-gp-text
+          class="gp-g-heading-2  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--c:var(--g-c-text-2, text-2);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggLMaq6qgBK_text | replace: '$locationOrigin', locationOrigin }}
+        </h3>
+      </div>
+    </div>
+    
+      <style id="custom-css-gLMaq6qgBK">
+        .gLMaq6qgBK {
+
+}
+      </style>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gt_E3-LLwF"
+        class="gt_E3-LLwF"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:10px;--pl:0px;--pr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:var(--g-c-text-1, text-1);word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggt_E3-LLwF_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    <div
+      role="presentation"
+      data-id="gssa7GIxwb"
+      style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:20px;--ta:left;--ta-mobile:left"
+      class="gp-group/image gp-relative force-publish-1772815613230 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gssa7GIxwb"
+    >
+      <div
+        
+        style="border-radius:inherit;--jc:left;--jc-mobile:left"
+        class="gp-h-full gp-w-full gp-flex pointer-events-auto"
+      >
+        
+    <picture style="border-radius:inherit" class="gp-contents">
+      
+      <source media="(max-width: 767px)" data-srcSet="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/gempages_490439461423809393-3ad5e2e2-a925-41b0-a976-d7ef676bc592_768x.png" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwMCIgaGVpZ2h0PSI1NDkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJnLTIwMDAtNTQ5Ij4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjIwJSIgLz4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjUwJSIgLz4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjcwJSIgLz4KICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSIyMDAwIiBoZWlnaHQ9IjU0OSIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMjAwMCIgaGVpZ2h0PSI1NDkiIGZpbGw9InVybCgjZy0yMDAwLTU0OSkiIC8+CiAgICA8YW5pbWF0ZSB4bGluazpocmVmPSIjciIgYXR0cmlidXRlTmFtZT0ieCIgZnJvbT0iLTIwMDAiIHRvPSIyMDAwIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgIC8+CiAgPC9zdmc+" />
+      <source media="(max-width: 1024px)" data-srcSet="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/gempages_490439461423809393-3ad5e2e2-a925-41b0-a976-d7ef676bc592_1024x.png" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwMCIgaGVpZ2h0PSI1NDkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJnLTIwMDAtNTQ5Ij4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjIwJSIgLz4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjUwJSIgLz4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjcwJSIgLz4KICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSIyMDAwIiBoZWlnaHQ9IjU0OSIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMjAwMCIgaGVpZ2h0PSI1NDkiIGZpbGw9InVybCgjZy0yMDAwLTU0OSkiIC8+CiAgICA8YW5pbWF0ZSB4bGluazpocmVmPSIjciIgYXR0cmlidXRlTmFtZT0ieCIgZnJvbT0iLTIwMDAiIHRvPSIyMDAwIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgIC8+CiAgPC9zdmc+" />
+    
+      
+      <img
+        base-src="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/gempages_490439461423809393-3ad5e2e2-a925-41b0-a976-d7ef676bc592.png" quality-type="{&quot;desktop&quot;:&quot;custom&quot;}" quality-percent="{&quot;desktop&quot;:&quot;100&quot;}"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwMCIgaGVpZ2h0PSI1NDkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJnLTIwMDAtNTQ5Ij4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjIwJSIgLz4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjUwJSIgLz4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjcwJSIgLz4KICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSIyMDAwIiBoZWlnaHQ9IjU0OSIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMjAwMCIgaGVpZ2h0PSI1NDkiIGZpbGw9InVybCgjZy0yMDAwLTU0OSkiIC8+CiAgICA8YW5pbWF0ZSB4bGluazpocmVmPSIjciIgYXR0cmlidXRlTmFtZT0ieCIgZnJvbT0iLTIwMDAiIHRvPSIyMDAwIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgIC8+CiAgPC9zdmc+" data-src="https://cdn.shopify.com/s/files/1/0254/3022/9055/files/gempages_490439461423809393-3ad5e2e2-a925-41b0-a976-d7ef676bc592.png"
+        alt="Love, KS Team"
+        width="100%"
+        style="--aspect:auto;--aspect-tablet:auto;--aspect-mobile:auto;--objf:cover;--w:25%;--w-tablet:50%;--w-mobile:50%;--h:auto;--h-tablet:auto;--h-mobile:auto;--b:none;--bc:#000000;--bw:1px 1px 1px 1px;--radiusType:none;--shadow:none"
+        class="gp-inline-block gp-w-full gp-max-w-full gp_lazyload"
+      />
+    
+    </picture>
+  
+      </div>
+    </div>
+  
+    </div>
+
+      
+    </gp-row>
+  
+  
+    </div>
+
+      
+    </gp-row>
+  
+  
+  
+    <div
+      
+      style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll"
+      data-keep-class="true"
+      class="gxhJ7GFw50 gp-custom-code">
+      <div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    </div>
+    </div>
+  
+      <style id="custom-css-gxhJ7GFw50">
+        .gp-scroll-links .gp-active, .gp-scroll-links .gp-active * {
+    font-weight: 600 !important;
+    color: #FD76A9 !important;
+    font-size: 13px !important; /* Added font-size 14px */
+}
+
+      </style>
+    
+      <script id="custom-js-gxhJ7GFw50">
+        try {
+          (function( jQuery ){
+  $(window).scroll(doStickyMenu);
+ 
+  function doStickyMenu(){
+    var tArray = $('.gp-title-page');
+    for(var i = 0; i < tArray.length; i++){
+        
+        var tArrOffset = $(tArray[i]).offset().top - 80 -82; 
+      
+      if( ( !tArray[i + 1] && tArrOffset < window.scrollY ) || (  tArrOffset < window.scrollY && $(tArray[i + 1]).offset().top -80 -82 > window.scrollY ) ){
+        $('.gp-scroll-links a').removeClass('gp-active');
+        var id = $(tArray[i]).parents('.gp-target-row').attr('id');
+        
+        $('.gp-scroll-links a').each(function(){
+          if($(this).attr('href') == '#' + id){
+            $(this).addClass('gp-active');
+          }
+        });
+        break;
+      }
+      
+    }
+    
+  }
+  
+
+})( window.GemQuery || jQuery );
+        } catch(err){}
+      </script>
+    
+    </div><div
+      data-same-height-display-contents
+      style="--jc:start;--d-mobile:none"
+      class="g44d17GMuT gp-relative gp-flex gp-flex-col"
+    >
+      
+    </div>
+
+      
+    </gp-row>
+  
+  
+    </div>
+
+      
+    </gp-row>
+  
+        </section>
+      
+  
+    
+{% schema %}
+  {
+    
+    "name": "Section 1",
+    "tag": "section",
+    "class": "gps-609491116084953794 gps gpsil",
+    "settings": [{"type":"paragraph","content":"Section design by GemPages. [Click here to start design](https://admin.shopify.com/store/korean-skincare-uk/apps/gempages-cro/app/shopify/edit?pageType=GP_ARTICLE&editorId=609491116051399362&sectionId=609491116084953794)"},{"type":"select","label":"Section Preload","id":"section_preload","options":[{"label":"On","value":"true"},{"label":"Off","value":"false"},{"label":"Off Lazy Script","value":"off_lazy_script"}],"default":"false"},{"type":"text","label":"Checksum","id":"checksum"},{"type":"html","id":"gg2gnJbo_cw_text","label":"gg2gnJbo_cw_text","default":"<p><a href=\"#gLdNijixX9\"><span style=\"color:#FFC5E1;\">Introduction</span></a></p>"},{"type":"html","id":"gge9fAeKv0g_text","label":"gge9fAeKv0g_text","default":"<p><a href=\"#gDIgBETHDD\">How do you know if you have oily skin?</a></p>"},{"type":"html","id":"ggJXnLEnRqH_text","label":"ggJXnLEnRqH_text","default":"<p><a href=\"#g7bcak_wLr\">What to look for in a moisturiser for oily skin</a></p>"},{"type":"html","id":"ggx-ifyHSbR_text","label":"ggx-ifyHSbR_text","default":"<p><a href=\"#g51ZcPDBLc\">Moisturiser for oily faces: Ingredients to avoid</a></p>"},{"type":"html","id":"ggGcF2ClLc__text","label":"ggGcF2ClLc__text","default":"<p><a href=\"#g28X1TuNgC\">Best moisturisers for oily skin</a></p>"},{"type":"html","id":"ggGAJgV9tWf_text","label":"ggGAJgV9tWf_text","default":"<p><a href=\"#gEdtu0hKy8\">Tips to stay glowing, not shiny</a></p>"},{"type":"html","id":"gg7LVRPKlCS_text","label":"gg7LVRPKlCS_text","default":"<p><a href=\"#gUjqk071RK\">FAQs</a></p>"},{"type":"html","id":"ggsuc8uMOvV_text","label":"ggsuc8uMOvV_text","default":"<p><i>If you’ve got oily skin, you’re probably dealing with excess oil, clogged pores, and frequent breakouts. And you might be thinking, “Do I even need moisturiser? Won’t this make things worse?”</i></p><p>&nbsp;</p><p><i>The answer is yes, you absolutely do need moisturiser. In fact, skipping it can cause dehydration, which signals your skin to produce even more oil to compensate.</i></p><p>&nbsp;</p><p><i>The key isn’t avoiding hydration. It’s choosing lightweight, non-clogging formulas that deliver moisture without heaviness. That’s why, in this guide, we’ll look at how you can find the best moisturiser for oily skin. We’ll also include some of our favourite Korean products, all designed to give you a glow without ever leaving you shiny.</i></p>"},{"type":"html","id":"ggETGZ8Sv5y_text","label":"ggETGZ8Sv5y_text","default":"How do you know if you have oily skin?"},{"type":"html","id":"ggQU5aCn5I9_text","label":"ggQU5aCn5I9_text","default":"<p>Oily skin is more than just having a bit of extra shine in warm weather. You’ll notice:</p><p>&nbsp;</p><ul><li>Your T-zone becomes shiny within hours of cleansing</li><li>You struggle with clogged pores and congestion</li><li>Your skin is acne-prone/you frequently get breakouts</li><li>Your pores are more visible&nbsp;</li><li>Your make-up separates on your face</li><li>Your skin remains shiny no matter which products you use</li></ul><p>&nbsp;</p><p>Oily skin can sometimes be mistaken for hydrated skin. However, it’s important to note that your skin can actually be oily and dehydrated at the same time, and this can worsen congestion and increase breakouts.</p>"},{"type":"html","id":"ggbxIGQz7l3_text","label":"ggbxIGQz7l3_text","default":"What to look for in a moisturiser for oily skin"},{"type":"html","id":"ggw51K8muVj_text","label":"ggw51K8muVj_text","default":"<p>When you’re searching for the <a href=\"$locationOrigin/blogs/skintalks/the-ultimate-guide-to-moisturisers\" target=\"_blank\"><span style=\"color:#FD76A9;\"><i>right moisturiser</i></span></a> for oily skin, the goal isn’t to get rid of oil completely. It’s to balance it. The best moisturisers for oily skin hydrate without adding heaviness, help regulate sebum production, and support a clear, <a href=\"$locationOrigin/blogs/skintalks/what-is-glass-skin-and-how-to-achieve-it\" target=\"_blank\"><span style=\"color:#FD76A9;\"><i>glass-skin complexion</i></span></a>.</p><p>&nbsp;</p><p>Here’s what to look out for:</p><ul><li>Lightweight gels or gel-creams that absorb quickly and won’t leave a greasy residue</li><li>Non-comedogenic formulas to reduce the risk of clogged pores</li><li>Humectants, like glycerin or hyaluronic acid, to deliver hydration without excess oil</li><li>Oil-regulating ingredients, such as niacinamide, to help visibly refine pores and control shine</li></ul>"},{"type":"html","id":"ggh7fP9vFam_text","label":"ggh7fP9vFam_text","default":"Moisturiser for oily faces: Ingredients to avoid"},{"type":"html","id":"ggeEQJIOEvb_text","label":"ggeEQJIOEvb_text","default":"<p>When your skin already produces excess oil, layering on the wrong moisturizer can quickly lead to blockages. Some ingredients may feel nourishing initially, but can worsen shine and breakouts over time.</p><p>&nbsp;</p><p>Here’s what to avoid when <a href=\"$locationOrigin/blogs/skintalks/the-ultimate-guide-to-moisturisers\" target=\"_blank\"><span style=\"color:#FD76A9;\"><i>picking a moisturiser</i></span></a>:</p><p>&nbsp;</p><ul><li>Heavy butters like cocoa butter&nbsp;</li><li>Petrolatum-heavy formulas&nbsp;</li><li>Alcohol-heavy formulas that strip the skin too much and trigger rebound oil production</li><li>Thick cream formulations designed for very dry skin</li><li>Isopropyl myristate and isopropyl palmitate, which can clog pores&nbsp;</li><li>Lanolin, which can feel too rich and trigger congestion&nbsp;</li></ul>"},{"type":"html","id":"ggqar9569_L_text","label":"ggqar9569_L_text","default":"Best moisturisers for oily skin"},{"type":"html","id":"ggGZrJGgPQ__text","label":"ggGZrJGgPQ__text","default":"<p>Korean skincare offers some of the best moisturisers for oily skin, formulated with lightweight, fast-absorbing textures that prioritise hydration without heaviness. Here are some of our favourites.</p>"},{"type":"html","id":"ggVe87ESuQZ_text","label":"ggVe87ESuQZ_text","default":"1. Pyunkang Yul ACNE Cream"},{"type":"html","id":"ggEb3LFnl-K_text","label":"ggEb3LFnl-K_text","default":"<p>Designed specifically for breakout-prone skin, Pyunkang Yul is a lightweight cream that delivers hydration without clogging pores. It contains soothing ingredients like centella asiatica and mild exfoliating components to help calm inflammation while keeping congestion under control.</p>"},{"type":"html","id":"gg6WwqnL-t2_label","label":"gg6WwqnL-t2_label","default":"See more"},{"type":"html","id":"gg_Puww_dzb_label","label":"gg_Puww_dzb_label","default":"See more"},{"type":"html","id":"ggr3oBTFvgv_text","label":"ggr3oBTFvgv_text","default":"2. INNISFREE Cherry Blossom Glow Jelly Cream"},{"type":"html","id":"ggeAh5XSztk_text","label":"ggeAh5XSztk_text","default":"<p>With its bouncy gel consistency, INNISFREE Glow Jelly Cream delivers a burst of hydration without sitting heavily on the skin. It leaves a subtle luminous finish rather than a greasy sheen, which can work well for oily skin that leans dehydrated.</p>"},{"type":"html","id":"ggraMpXZtby_text","label":"ggraMpXZtby_text","default":"3. Beauty of Joseon Red Bean Water Gel"},{"type":"html","id":"ggRdar2RkDe_text","label":"ggRdar2RkDe_text","default":"<p>One of the most well-loved Korean moisturisers for oily skin, Beauty of Joseon Red Bean Water Gel is a water-based gel that hydrates without adding grease. Infused with red bean extract to help balance oil, it absorbs quickly and keeps skin feeling fresh, smooth, and shine-controlled throughout the day.</p>"},{"type":"html","id":"ggcf0JGF4se_label","label":"ggcf0JGF4se_label","default":"See more"},{"type":"html","id":"gggQinfvBUd_label","label":"gggQinfvBUd_label","default":"See more"},{"type":"html","id":"ggpzy7Zfze__text","label":"ggpzy7Zfze__text","default":"4. IUNIK Centella Calming Gel Cream"},{"type":"html","id":"ggO0mGMQrjT_text","label":"ggO0mGMQrjT_text","default":"<p>If your skin is oily but easily irritated, IUNIK Centella Calming Gel Cream is the perfect solution for you. Its blend of centella asiatica, tea tree leaf water, and calendula extract delivers lightweight moisture while helping to calm irritation.</p>"},{"type":"html","id":"ggsMkkqNclI_text","label":"ggsMkkqNclI_text","default":"5. <span style=\"background-color:transparent;color:#434343;font-size:13.999999999999998pt;\">COSRX Hydrium Green Tea Aqua Soothing Gel Cream</span>"},{"type":"html","id":"ggycz9dDBu8_text","label":"ggycz9dDBu8_text","default":"<p>Formulated with green tea extract and hydrating ingredients like panthenol, COSRX Hydrium Green Tea Aqua Soothing Gel Cream helps soothe redness while delivering moisture that sinks in quickly. The texture feels fresh on application, making it especially suitable for humid climates or as a daytime moisturizer under SPF.</p>"},{"type":"html","id":"gg6FGKpbLdv_label","label":"gg6FGKpbLdv_label","default":"See more"},{"type":"html","id":"gg98Bxkm-11_text","label":"gg98Bxkm-11_text","default":"Tips to stay glowing, not shiny"},{"type":"html","id":"ggusix--Lyp_text","label":"ggusix--Lyp_text","default":"<p>Managing oily skin isn’t about fighting your natural oil production. It’s about working with it. The right moisturizer helps regulate sebum, maintain hydration, and support a strong skin barrier so your complexion looks balanced rather than slick.</p><p>&nbsp;</p><ul><li>To keep your glow intentional (not greasy), remember to:</li><li>Use thin, even layers instead of applying too much moisturiser at once</li><li>Avoid over-cleansing or harsh exfoliants which trigger rebound oil production</li><li>Build your entire <a href=\"$locationOrigin/blogs/skintalks/korean-skincare-for-oily-skin\" target=\"_blank\"><span style=\"color:#FD76A9;\"><i>skincare routine around your oily skin</i></span></a>, not just your moisturiser choice</li></ul><p>Oily skin only becomes difficult to manage when it’s treated aggressively or inconsistently. When you strip it, overload it, or constantly switch products, your barrier becomes compromised, and excess oil production follows. A lightweight, well-formulated moisturiser anchors your routine, helping your skin stay hydrated, resilient, and more predictable over time.&nbsp;</p>"},{"type":"html","id":"ggWWv9gvbdv_text","label":"ggWWv9gvbdv_text","default":"FAQs"},{"type":"html","id":"ggiovkgPj-g_text","label":"ggiovkgPj-g_text","default":"Can moisturisers cause acne?"},{"type":"html","id":"ggIqWBTWyCh_text","label":"ggIqWBTWyCh_text","default":"<p><span style=\"background-color:rgb(255,255,255);color:rgb(35,35,35);font-size:16px;\">Moisturiser doesn’t usually cause acne, but the wrong formula can. Heavy, pore-clogging ingredients or overly rich creams can trap oil and dirt, leading to congestion. Choosing a non-comedogenic (non-clogging) moisturiser that’s designed for oily or acne-prone skin significantly reduces the risk.</span></p>"},{"type":"html","id":"ggmlPtbFRRS_text","label":"ggmlPtbFRRS_text","default":"Does moisturiser cause breakouts?"},{"type":"html","id":"ggqkr4J3Gfj_text","label":"ggqkr4J3Gfj_text","default":"<p><span style=\"background-color:rgb(255,255,255);color:rgb(35,35,35);font-size:16px;\">Breakouts typically happen when a product is too heavy and creates a thick layer that traps oil on the skin. If your moisturiser feels greasy, sits on the surface of the skin, or causes clogged pores, it’s too rich for you. The key is choosing lightweight, breathable formulas that hydrate without overwhelming.</span></p>"},{"type":"html","id":"ggLMaq6qgBK_text","label":"ggLMaq6qgBK_text","default":"Do I need a moisturiser for oily skin?"},{"type":"html","id":"ggt_E3-LLwF_text","label":"ggt_E3-LLwF_text","default":"<p><span style=\"background-color:rgb(255,255,255);color:rgb(35,35,35);font-size:16px;\">Yes! However, if you have oily skin, you should opt for lighter formulas. A gel moisturiser for oily skin is often the best choice because it delivers lightweight, water-based hydration without heaviness. Look for ingredients like glycerin, hyaluronic acid, niacinamide, and soothing extracts that help control oil.</span></p>"}],
+    "blocks": [{"type": "@app"}],
+    "locales": {}
+  }
+{% endschema %}

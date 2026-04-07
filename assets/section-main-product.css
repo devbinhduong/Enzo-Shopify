@@ -720,3 +720,7 @@ featured-product product-recommendations swiper-component,
   }
 }
 
+/* style for review app */
+.shopify-app-block:has(.jdgm--done-setup-widget) {
+  width: 100%;
+}

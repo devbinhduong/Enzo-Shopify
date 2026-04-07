@@ -1,0 +1,778 @@
+
+
+    
+  
+      
+    (function( jQuery ){
+  try {
+    var $module = jQuery('#m-1688458340175').children('.module');   
+    var navspeed = $module.data('navspeed'),
+      autoplaytimeout = $module.data('autoplaytimeout'),
+      autoplayhoverpause = $module.data('autoplayhoverpause'),
+      navlg = $module.data('navlg'),
+      navmd = $module.data('navmd'),
+      navsm = $module.data('navsm'),
+      navxs = $module.data('navxs'),
+      collg = $module.data('collg'),
+      colmd = $module.data('colmd'),
+      colsm = $module.data('colsm'),
+      colxs = $module.data('colxs'),
+      dotslg = $module.data('dotslg'),
+      dotsmd = $module.data('dotsmd'),
+      dotssm = $module.data('dotssm'),
+      dotsxs = $module.data('dotsxs'),
+      marginlg = parseInt($module.data('marginlg')),
+      marginmd = parseInt($module.data('marginmd')),
+      marginsm = parseInt($module.data('marginsm')),
+      marginxs = parseInt($module.data('marginxs'));
+
+    var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+    if(mode == 'production') {
+    var autoplay = $module.data('autoplay'), 
+        autoRefresh = true, 
+        loop = $module.data('loop');
+    } else {
+    var autoplay = 0, 
+        autoRefresh = false, 
+        loop = 0;
+    }
+
+    var initCarousel = function() {
+      $module.owlCarousel({
+        mouseDrag: false,
+        autoplayHoverPause: autoplayhoverpause,
+        autoplay: autoplay,
+        autoRefresh: autoRefresh,
+        autoplaySpeed: navspeed,
+        autoplayTimeout: autoplaytimeout,
+        loop: loop,
+        navSpeed: navspeed,
+        autoWidth: !1,
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:colxs,
+            nav: navxs,
+            dots:dotsxs,
+            margin: marginxs
+          },
+          768:{
+            items:colsm,
+            nav: navsm,
+            dots:dotssm,
+            margin: marginsm
+          },
+          992:{
+            items:colmd,
+            nav: navmd,
+            dots:dotsmd,
+            margin: marginmd
+          },
+          1200:{
+            items:collg,
+            nav: navlg,
+            dots:dotslg,
+            margin: marginlg
+          }
+        },
+        onInitialized: function () {
+          $module.closest('.module-wrap[data-label="Carousel"]').addClass('gf-carousel-loaded');
+          jQuery(window).trigger("resize");
+        }
+      });
+    }
+    
+    // Fix nested carousel bug	
+    if ($module.parent().parent().closest('.module-wrap[data-label="Carousel"]').length > 0) {	
+      setTimeout(function() {	
+        initCarousel();	
+      }, 300)	
+    } else {	
+      initCarousel();	
+    }
+  } catch(err) {}
+})( window.GemQuery || jQuery );
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1688458360561').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1688458360561-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1688459108860').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1688459108860-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1688459409655').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1688459409655-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1688970545759').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1688970545759-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1688970542296').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1688970542296-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    (function( jQuery ){
+  try {
+    var $module = jQuery('#m-1699350745950').children('.module');   
+    var navspeed = $module.data('navspeed'),
+      autoplaytimeout = $module.data('autoplaytimeout'),
+      autoplayhoverpause = $module.data('autoplayhoverpause'),
+      navlg = $module.data('navlg'),
+      navmd = $module.data('navmd'),
+      navsm = $module.data('navsm'),
+      navxs = $module.data('navxs'),
+      collg = $module.data('collg'),
+      colmd = $module.data('colmd'),
+      colsm = $module.data('colsm'),
+      colxs = $module.data('colxs'),
+      dotslg = $module.data('dotslg'),
+      dotsmd = $module.data('dotsmd'),
+      dotssm = $module.data('dotssm'),
+      dotsxs = $module.data('dotsxs'),
+      marginlg = parseInt($module.data('marginlg')),
+      marginmd = parseInt($module.data('marginmd')),
+      marginsm = parseInt($module.data('marginsm')),
+      marginxs = parseInt($module.data('marginxs'));
+
+    var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+    if(mode == 'production') {
+    var autoplay = $module.data('autoplay'), 
+        autoRefresh = true, 
+        loop = $module.data('loop');
+    } else {
+    var autoplay = 0, 
+        autoRefresh = false, 
+        loop = 0;
+    }
+
+    var initCarousel = function() {
+      $module.owlCarousel({
+        mouseDrag: false,
+        autoplayHoverPause: autoplayhoverpause,
+        autoplay: autoplay,
+        autoRefresh: autoRefresh,
+        autoplaySpeed: navspeed,
+        autoplayTimeout: autoplaytimeout,
+        loop: loop,
+        navSpeed: navspeed,
+        autoWidth: !1,
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:colxs,
+            nav: navxs,
+            dots:dotsxs,
+            margin: marginxs
+          },
+          768:{
+            items:colsm,
+            nav: navsm,
+            dots:dotssm,
+            margin: marginsm
+          },
+          992:{
+            items:colmd,
+            nav: navmd,
+            dots:dotsmd,
+            margin: marginmd
+          },
+          1200:{
+            items:collg,
+            nav: navlg,
+            dots:dotslg,
+            margin: marginlg
+          }
+        },
+        onInitialized: function () {
+          $module.closest('.module-wrap[data-label="Carousel"]').addClass('gf-carousel-loaded');
+          jQuery(window).trigger("resize");
+        }
+      });
+    }
+    
+    // Fix nested carousel bug	
+    if ($module.parent().parent().closest('.module-wrap[data-label="Carousel"]').length > 0) {	
+      setTimeout(function() {	
+        initCarousel();	
+      }, 300)	
+    } else {	
+      initCarousel();	
+    }
+  } catch(err) {}
+})( window.GemQuery || jQuery );
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350745972').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350745972-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350745929').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350745929-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350746003').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350746003-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350745981').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350745981-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350746056').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350746056-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  try {
+    var $module = jQuery('#m-1699350746040').children('.module');   
+    var navspeed = $module.data('navspeed'),
+      autoplaytimeout = $module.data('autoplaytimeout'),
+      autoplayhoverpause = $module.data('autoplayhoverpause'),
+      navlg = $module.data('navlg'),
+      navmd = $module.data('navmd'),
+      navsm = $module.data('navsm'),
+      navxs = $module.data('navxs'),
+      collg = $module.data('collg'),
+      colmd = $module.data('colmd'),
+      colsm = $module.data('colsm'),
+      colxs = $module.data('colxs'),
+      dotslg = $module.data('dotslg'),
+      dotsmd = $module.data('dotsmd'),
+      dotssm = $module.data('dotssm'),
+      dotsxs = $module.data('dotsxs'),
+      marginlg = parseInt($module.data('marginlg')),
+      marginmd = parseInt($module.data('marginmd')),
+      marginsm = parseInt($module.data('marginsm')),
+      marginxs = parseInt($module.data('marginxs'));
+
+    var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+    if(mode == 'production') {
+    var autoplay = $module.data('autoplay'), 
+        autoRefresh = true, 
+        loop = $module.data('loop');
+    } else {
+    var autoplay = 0, 
+        autoRefresh = false, 
+        loop = 0;
+    }
+
+    var initCarousel = function() {
+      $module.owlCarousel({
+        mouseDrag: false,
+        autoplayHoverPause: autoplayhoverpause,
+        autoplay: autoplay,
+        autoRefresh: autoRefresh,
+        autoplaySpeed: navspeed,
+        autoplayTimeout: autoplaytimeout,
+        loop: loop,
+        navSpeed: navspeed,
+        autoWidth: !1,
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:colxs,
+            nav: navxs,
+            dots:dotsxs,
+            margin: marginxs
+          },
+          768:{
+            items:colsm,
+            nav: navsm,
+            dots:dotssm,
+            margin: marginsm
+          },
+          992:{
+            items:colmd,
+            nav: navmd,
+            dots:dotsmd,
+            margin: marginmd
+          },
+          1200:{
+            items:collg,
+            nav: navlg,
+            dots:dotslg,
+            margin: marginlg
+          }
+        },
+        onInitialized: function () {
+          $module.closest('.module-wrap[data-label="Carousel"]').addClass('gf-carousel-loaded');
+          jQuery(window).trigger("resize");
+        }
+      });
+    }
+    
+    // Fix nested carousel bug	
+    if ($module.parent().parent().closest('.module-wrap[data-label="Carousel"]').length > 0) {	
+      setTimeout(function() {	
+        initCarousel();	
+      }, 300)	
+    } else {	
+      initCarousel();	
+    }
+  } catch(err) {}
+})( window.GemQuery || jQuery );
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350746050').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350746050-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350745987').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350745987-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350746001').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350746001-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350746081').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350746081-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350746034').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350746034-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  try {
+    var $module = jQuery('#m-1699350745974').children('.module');   
+    var navspeed = $module.data('navspeed'),
+      autoplaytimeout = $module.data('autoplaytimeout'),
+      autoplayhoverpause = $module.data('autoplayhoverpause'),
+      navlg = $module.data('navlg'),
+      navmd = $module.data('navmd'),
+      navsm = $module.data('navsm'),
+      navxs = $module.data('navxs'),
+      collg = $module.data('collg'),
+      colmd = $module.data('colmd'),
+      colsm = $module.data('colsm'),
+      colxs = $module.data('colxs'),
+      dotslg = $module.data('dotslg'),
+      dotsmd = $module.data('dotsmd'),
+      dotssm = $module.data('dotssm'),
+      dotsxs = $module.data('dotsxs'),
+      marginlg = parseInt($module.data('marginlg')),
+      marginmd = parseInt($module.data('marginmd')),
+      marginsm = parseInt($module.data('marginsm')),
+      marginxs = parseInt($module.data('marginxs'));
+
+    var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+    if(mode == 'production') {
+    var autoplay = $module.data('autoplay'), 
+        autoRefresh = true, 
+        loop = $module.data('loop');
+    } else {
+    var autoplay = 0, 
+        autoRefresh = false, 
+        loop = 0;
+    }
+
+    var initCarousel = function() {
+      $module.owlCarousel({
+        mouseDrag: false,
+        autoplayHoverPause: autoplayhoverpause,
+        autoplay: autoplay,
+        autoRefresh: autoRefresh,
+        autoplaySpeed: navspeed,
+        autoplayTimeout: autoplaytimeout,
+        loop: loop,
+        navSpeed: navspeed,
+        autoWidth: !1,
+        responsiveClass:true,
+        responsive:{
+          0:{
+            items:colxs,
+            nav: navxs,
+            dots:dotsxs,
+            margin: marginxs
+          },
+          768:{
+            items:colsm,
+            nav: navsm,
+            dots:dotssm,
+            margin: marginsm
+          },
+          992:{
+            items:colmd,
+            nav: navmd,
+            dots:dotsmd,
+            margin: marginmd
+          },
+          1200:{
+            items:collg,
+            nav: navlg,
+            dots:dotslg,
+            margin: marginlg
+          }
+        },
+        onInitialized: function () {
+          $module.closest('.module-wrap[data-label="Carousel"]').addClass('gf-carousel-loaded');
+          jQuery(window).trigger("resize");
+        }
+      });
+    }
+    
+    // Fix nested carousel bug	
+    if ($module.parent().parent().closest('.module-wrap[data-label="Carousel"]').length > 0) {	
+      setTimeout(function() {	
+        initCarousel();	
+      }, 300)	
+    } else {	
+      initCarousel();	
+    }
+  } catch(err) {}
+})( window.GemQuery || jQuery );
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350745912').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350745912-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350745960').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350745960-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350745910').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350745910-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350746062').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350746062-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+    (function( jQuery ){
+  var $module = jQuery('#m-1699350745984').children('.module');
+  $module.gfV3Product();
+})( window.GemQuery || jQuery );
+  
+    (function(jQuery) {
+  var $module = jQuery('#m-1699350745984-0').children('.module');
+  var effect = $module.attr('data-effect');
+  var magnify = $module.attr('data-zoom-level');
+  var displayType = $module.attr('data-displaytype');
+  $module.gfV3ProductImage({
+    'effect': effect,
+    'displayType': displayType,
+    'magnify': magnify
+  });
+})(window.GemQuery || jQuery);
+  
+    
+  
+          jQuery(function() {
+  var $module = jQuery('#m-1699350746059').children('.module');
+});
+      
+    
+  jQuery(function() {var $module = jQuery('#m-1699350746059-child1').children('.module');}); jQuery(function() {var $module = jQuery('#m-1699350746059-child1-0').children('.module');}); jQuery(function() { var $module = jQuery('#m-1699350746059-child1-1').children('.module');}); jQuery(function() {var $module = jQuery('#m-1699350746059-child1-2').children('.module');}); jQuery(function() {var $module = jQuery('#m-1699350746059-child2').children('.module');}); jQuery(function() {var $module = jQuery('#m-1699350746059-child2-0').children('.module');}); jQuery(function() { var $module = jQuery('#m-1699350746059-child2-1').children('.module');}); jQuery(function() {var $module = jQuery('#m-1699350746059-child2-2').children('.module');}); jQuery(function() {var $module = jQuery('#m-1699350746059-child3').children('.module');}); jQuery(function() {var $module = jQuery('#m-1699350746059-child3-0').children('.module');}); jQuery(function() { var $module = jQuery('#m-1699350746059-child3-1').children('.module');}); jQuery(function() {var $module = jQuery('#m-1699350746059-child3-2').children('.module');}); 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

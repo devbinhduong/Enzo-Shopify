@@ -1,0 +1,114 @@
+
+
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  window.__gfAnimate.registerPageLoaded(jQuery("#e-1734083675480"), '{"animation":{"screens":{"lg":true,"md":true,"sm":true,"xs":true},"name":"pulse","delay":0,"duration":500,"iteration-count":"infinite"},"interaction":{"key":"after-page-loaded","type":"level2"}}');
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  (function( jQuery ){
+  var $module = jQuery('#m-1734083675570').children('.module');
+  $module.gfV1Popup();
+
+  var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+  if(mode == 'dev') {
+    var moduleId = "1734083675570";
+    var moduleIdSlug = moduleId.toString().replace(/-/g, '');
+    if (moduleIdSlug == "1734083675570") {
+      window.getPopup1734083675570 = function() {
+        return $module.data('gfv1popup');
+      }
+    }
+  }
+})( window.GemQuery || jQuery );
+
+function adjustPopupSize() {
+  const popup = document.querySelector('#m-1734083675570');
+  if (popup) {
+    popup.style.width = 'auto';
+    popup.style.height = 'auto';
+    popup.style.maxWidth = '90%';
+    popup.style.maxHeight = '90%';
+  }
+}
+
+// Call this function after updating the popup content
+adjustPopupSize();
+
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  window.__gfFlowActions = []; window.__gfFlowActions.push([{"source":{"id":"#e-1734083675480","target":".gf_image"},"events":[{"key":"click"}],"targets":[{"id":"#m-1734083675570","actions":[{"key":"showPopup","type":3,"data":{"delay":0}}],"rename":"Popup: #m-1734083675570"}]}]); window.__gfV1FlowActions.init();

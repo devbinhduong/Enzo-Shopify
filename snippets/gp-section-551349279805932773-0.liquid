@@ -1,0 +1,448 @@
+
+    <div
+      
+      id=""
+      class="gem-slider-item gp-w-full gem-slider-item-gR9hB8HQiq gp-child-item-gR9hB8HQiq gQGh5Cd0W6"
+      style="--pl:0px;--pr:0px;--pt:0px;--pb:0px;--minw:calc(100% / 3 - 13.333333333333334px);--minw-tablet:calc(100% / 2 - 7.5px);--minw-mobile:calc(100% / 1 - 0px);--maxw:calc(100% / 3 - 13.333333333333334px);--maxw-tablet:calc(100% / 2 - 7.5px);--maxw-mobile:calc(100% / 1 - 0px);--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC"
+      data-index="6"
+      grid-index="{{forloop.index}}"
+      external-id="{{media.external_id}}"
+      media-type="{{media.media_type}}"
+      media-poster="{{media.preview_image.src}}"
+      media-source-url="{{media.sources.first.url}}"
+      media-last-source-url="{{mediaSourceUrl}}"
+    >
+      <div
+        class="gp-w-full gp-h-full"
+        style="--shadow:none"
+      >
+      
+    
+      {%- assign gpBkProduct = product -%}
+      
+      {%- liquid
+        if request.page_type == 'product'
+          if 'static' == 'static'
+            if '6777593462913' == 'latest'
+              paginate collections.all.products by 100000
+                assign product = collections.all.products | sort: 'created_at' | reverse | first
+              endpaginate
+            else
+              assign product = all_products['needly-cicachid-relief-cream']
+              assign productId = '6777593462913' | times: 1
+              if product == empty or product == null
+                paginate collections.all.products by 100000
+                  for item in collections.all.products
+                    if item.id == productId
+                      assign product = item
+                    endif
+                  endfor
+                endpaginate
+              endif
+            endif
+          endif
+        else
+          if '6777593462913' == 'latest'
+            paginate collections.all.products by 100000
+              assign product = collections.all.products | sort: 'created_at'| reverse | first
+            endpaginate
+          else
+            assign product = all_products['needly-cicachid-relief-cream']
+            assign productId = '6777593462913' | times: 1
+            if product == empty or product == null
+              paginate collections.all.products by 100000
+                for item in collections.all.products
+                  if item.id == productId
+                    assign product = item
+                  endif
+                endfor
+              endpaginate
+            endif
+          endif
+        endif
+      -%}
+    
+    
+    {% if product != empty and product != null %}
+      
+      {%- assign initVariantId =  -%}
+      {%- assign product_form_id = 'product-form-' | append: "ghxMRt6mia" -%}
+      {%- assign variant = product.selected_or_first_available_variant -%}
+      {%- assign productSelectedVariant = product.selected_or_first_available_variant -%}
+      {%-if productSelectedVariant == empty or productSelectedVariant == null -%}
+        {%- assign productSelectedVariant = product.selected_or_first_available_variant -%}
+      {%- endif -%}
+      {%-if variant == empty or variant == null -%}
+        {%- assign variant = product.selected_or_first_available_variant -%}
+      {%- endif -%}
+    
+      <gp-product
+        data-uid="ghxMRt6mia"
+        data-id="ghxMRt6mia"
+        
+        
+        gp-context='{"productId": {{ product.id }}, "preSelectedOptionIds": [], "isSyncProduct": "true", "variantSelected": {{ variant | json | escape }},  "inventory_management": {{ variant.inventory_management | json | escape  }}, "inventory_policy": {{ variant.inventory_policy | json | escape }}, "inventoryQuantity": {{ variant.inventory_quantity }}, "quantity": 1, "formId": "{{ product_form_id }}" }'
+        gp-data='{"variantSelected": {{ variant | json | escape }}, "quantity": 1, "productUrl":{{ product.url | json | escape }}, "productHandle":{{ product.handle | json | escape }}, "collectionUrl": {{ collection.url | json | escape }}, "collectionHandle": {{ collection.handle | json | escape }}}'
+      >
+        <product-form class="product-form">
+          {%- form 'product', product, id: product_form_id, class: 'form contents', data-type: 'add-to-cart-form', autocomplete: 'off'  -%}
+            <input type="hidden" name="id" value="{{ variant.id }}" />
+            <input type="hidden" name="quantity" value="{{ quantity }}" />
+            <button type="submit" onclick="return false;" style="display:none;"></button>
+            
+    
+
+    
+
+    
+    <gp-row gp-data='{"uid":"ghxMRt6mia"}' data-id="ghxMRt6mia-row" id="ghxMRt6mia" data-same-height-subgrid-container class="ghxMRt6mia gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--cg:30px;--rg:0px;--gtc:minmax(0, 12fr);--w:600px;--w-tablet:100%;--w-mobile:100%;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gDyh23q1ZP gp-relative gp-flex gp-flex-col"
+    >
+      
+  {% if product.media.size > 1 %}<style>
+    .gem-slider-item-gxUd0A_n3r-{{product.id}}.gp-gallery-image-item::after, .gem-slider-item-gp-gallery-gxUd0A_n3r-{{product.id}}.gp-gallery-image-item::after {
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #000000;
+  
+      
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      
+    }
+    .gem-slider-item-gxUd0A_n3r-{{product.id}}.gp-gallery-image-item[data-outline=active]:after, .gem-slider-item-gp-gallery-gxUd0A_n3r-{{product.id}}.gp-gallery-image-item[data-outline=active]:after {
+      pointer-events: none;
+    }
+  </style>{% endif %}
+  
+    {% assign featured_image = product.featured_image %}
+    {% if variant != null and variant.featured_image != null %}{% assign featured_image = variant.featured_image %}{% endif %}
+  
+    <gp-product-images
+      gp-data='
+    {
+      "id":"gxUd0A_n3r",
+      "pageContext": {"pageType":"GP_STATIC","sectionName":"","isPreviewing":false,"isOptimizePlan":false,"isTranslateWithLocale":false,"isLazyLoadSection":true,"isLazyLoadImage":false,"hasCollectionHandle":true,"numberOfProductOfProductList":0,"pageBackground":"","fontType":"google","primaryLocale":"","showPriceCurrency":false,"enableLazyLoadImage":false},
+      "setting":{"arrowIcon":"<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0ZM10.6828 8.13017C10.5266 7.95661 10.2734 7.95661 10.1172 8.13017C9.96095 8.30374 9.96095 8.58515 10.1172 8.75871L13.0343 12L10.1172 15.2413C9.96095 15.4149 9.96095 15.6963 10.1172 15.8698C10.2734 16.0434 10.5266 16.0434 10.6828 15.8698L13.8828 12.3143C14.0391 12.1407 14.0391 11.8593 13.8828 11.6857L10.6828 8.13017Z\" fill=\"currentColor\"/>\n    </svg>","arrowIconColor":"#000000","arrowNavBorder":{"border":"none","borderType":"none","borderWidth":"1px","isCustom":false,"width":"1px 1px 1px 1px"},"arrowNavRadius":{"bblr":"0px","bbrr":"0px","btlr":"0px","btrr":"0px","radiusType":"none"},"borderActive":{"border":"solid","borderType":"none","borderWidth":"1px","color":"#000000","isCustom":false,"width":"1px 1px 1px 1px"},"clickOpenLightBox":{"desktop":false},"dragToScroll":true,"ftAnimationMode":"ease-out","ftAnimationSpeed":500,"ftArrowIcon":"<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0ZM10.6828 8.13017C10.5266 7.95661 10.2734 7.95661 10.1172 8.13017C9.96095 8.30374 9.96095 8.58515 10.1172 8.75871L13.0343 12L10.1172 15.2413C9.96095 15.4149 9.96095 15.6963 10.1172 15.8698C10.2734 16.0434 10.5266 16.0434 10.6828 15.8698L13.8828 12.3143C14.0391 12.1407 14.0391 11.8593 13.8828 11.6857L10.6828 8.13017Z\" fill=\"currentColor\"/>\n    </svg>","ftArrowIconColor":"#000000","ftArrowNavBorder":{"border":"none","borderType":"none","borderWidth":"1px","isCustom":false,"width":"1px 1px 1px 1px"},"ftArrowNavRadius":{"bblr":"0px","bbrr":"0px","btlr":"0px","btrr":"0px","radiusType":"none"},"ftClickOpenLightBox":{"desktop":"product-link"},"ftClickOpenNewTab":false,"ftDotActiveColor":{"desktop":"line-3"},"ftDotColor":{"desktop":"bg-1"},"ftDotGapToCarousel":{"desktop":16},"ftDotSize":{"desktop":12},"ftDotStyle":{"desktop":"none"},"ftDragToScroll":false,"ftLoop":{"desktop":false},"ftNavigationPosition":{"desktop":"none"},"ftPauseOnHover":true,"galleryHoverEffect":"none","galleryZoom":150,"galleryZoomType":"default","hoverEffect":"none","loop":{"desktop":true},"navigationPosition":{"desktop":"inside"},"otherImage":0,"pauseOnHover":true,"preDisplay":"1st-available-variant","preload":false,"qualityPercent":{"desktop":100},"qualityType":{"desktop":"high"},"speed":1,"type":{"desktop":"slider"},"typeDisplay":"all-images","zoom":150,"zoomType":"default"},
+      "styles":{"align":{"desktop":"center"},"corner":{"bblr":"0px","bbrr":"0px","btlr":"0px","btrr":"0px","radiusType":"none"},"ftCorner":{"bblr":"0px","bbrr":"0px","btlr":"0px","btrr":"0px","radiusType":"none"},"ftLayout":{"desktop":"cover"},"ftShape":{"desktop":{"gap":"","height":"","shape":"square","shapeLinked":true,"shapeValue":"1/1","width":"80%"}},"itemSpacing":{"desktop":"var(--g-s-s)","mobile":"var(--g-s-s)"},"layout":{"desktop":"cover"},"position":{"desktop":"only-feature","mobile":"only-feature"},"ratioLayout":{"desktop":[2,10]},"ratioLayoutRight":{"desktop":[10,2]},"shape":{"desktop":{"shape":"square","shapeLinked":true,"shapeValue":"1/1","width":"100%"}},"shapeFor1Col":{"desktop":{"shape":"square","shapeLinked":true,"shapeValue":"1/1","width":"100%"}},"shapeFor2Col":{"desktop":{"shape":"square","shapeLinked":true,"shapeValue":"1/1","width":"50%"}},"shapeForBottom":{"desktop":{"shape":"square","shapeLinked":true,"shapeValue":"1/1","width":"20%"}},"shapeForFtOnly":{"desktop":{"shape":"square","shapeLinked":true,"shapeValue":"1/1","width":"100%"}},"shapeForInside":{"desktop":{"shape":"square","shapeLinked":true,"shapeValue":"1/1","width":"20%"}},"shapeForInsideBottom":{"desktop":{"shape":"square","shapeLinked":true,"shapeValue":"1/1","width":"20%"}},"spacing":{"desktop":"var(--g-s-s)","mobile":"var(--g-s-s)"}},
+      "productUrl":{{product.url | json | escape}},
+      "product":{{product | json | escape}},
+      "collectionUrl": {{ collection.url | json | escape }},
+      "collection": {{ collection | json | escape}}
+    }
+  '
+      section-id="{{section.id}}" data-id="gxUd0A_n3r"
+      style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:5px;--bbrr:5px;--btlr:5px;--btrr:5px;--mb:var(--g-s-l)"
+      class="gp-relative gp-w-full gxUd0A_n3r  gp-overflow-hidden"
+    >
+      <div
+        class="{% if product.media.size > 1 %}gp-grid gp-w-full !gp-m-0 gp-relative{% else %}gp-w-full !gp-m-0 gp-relative{% endif %}"
+        style="{% if product.media.size > 1 %}--gtc: minmax(0, 12fr);--gtc-tablet: minmax(0, 12fr);--gtc-mobile: minmax(0, 12fr);--gg: var(--g-s-s);--gg-mobile: var(--g-s-s);{% else %}--gtc: minmax(0, 12fr);--gg: var(--g-s-s);--gg-mobile: var(--g-s-s);{% endif %}"
+      >
+        
+    {% capture featureImageOnlyOne %}
+      
+        {% assign featureMedia = variant.featured_media %}
+        {% unless featureMedia %}
+        {% assign featureMedia = product.featured_media %}
+        {% endunless %}
+        {% if product.media.size > 1 %}
+          {% assign featureMedia = variant.featured_media %}
+          {% unless featureMedia %}
+          {% assign featureMedia = product.featured_media %}
+          {% endunless %}
+        {% endif %}
+        {% assign largestRatio = 0 %}
+        {% assign height = featureMedia.height | times: 1.0 %}
+        {% assign width = featureMedia.width | times: 1.0 %}
+        {% assign ratio = height | divided_by: width %}
+        {% if ratio > largestRatio %}{% assign largestRatio = ratio %}{% endif %}
+        {% assign productImageWidth = 0 %}
+        {% case featureMedia.media_type %}
+          {% when 'image' %}
+            {% assign productImageWidth = featureMedia.width %}
+          {% else %}
+            {% assign productImageWidth = featureMedia.preview_image.width %}
+        {% endcase %}
+        {% if featureMedia == null %}{% assign productImageWidth = 1600 %}{% endif %}
+        <div
+          class='gp-feature-image-carousel gp-feature-image-only'
+          style="--jc: center;--o: 0;--o-tablet: 0;--o-mobile: 0;--d: flex;--d-mobile: flex;--d-tablet: flex;"
+        >
+          <div
+            class="gp-relative"
+            style="--w: 80%;--w-tablet: 80%;--w-mobile: 80%;--bblr: 0px;--bbrr: 0px;--btlr: 0px;--btrr: 0px;--hvr-bblr: 0px;--hvr-bbrr: 0px;--hvr-btlr: 0px;--hvr-btrr: 0px;--focus-bblr: 0px;--focus-bbrr: 0px;--focus-btlr: 0px;--focus-btrr: 0px;-undefined-bblr: 0px;-undefined-bbrr: 0px;-undefined-btlr: 0px;-undefined-btrr: 0px;--h: auto;--h-tablet: auto;--h-mobile: auto;"
+          >
+            
+      
+    
+            <div
+              type="gp-feature-image-only"
+              product-id="{{product.id}}"
+              product-media="{{product.media.size}}"
+              class="gp-group gp-z-0 gp-flex !gp-min-w-full !gp-max-w-full gp-w-full gp-relative gp-items-start gp-justify-center gp-overflow-hidden gp-outline-1 -gp-outline-offset-1 gp-image-item gp-ft-image-item data-[outline=active]:gp-outline gp-featured-image-wrapper"
+              style="max-width: 100%;outline-color: var(--g-c-brand, brand);--bblr: 0px;--bbrr: 0px;--btlr: 0px;--btrr: 0px;--hvr-bblr: 0px;--hvr-bbrr: 0px;--hvr-btlr: 0px;--hvr-btrr: 0px;--focus-bblr: 0px;--focus-bbrr: 0px;--focus-btlr: 0px;--focus-btrr: 0px;-undefined-bblr: 0px;-undefined-bbrr: 0px;-undefined-btlr: 0px;-undefined-btrr: 0px;--h: auto;--h-tablet: auto;--h-mobile: auto;width: {{productImageWidth}}px;"
+            >
+              <div
+                class="gp-w-full gp-relative {% if featureMedia == null or featureMedia.media_type == 'image' %}{{ 'gp-h-0' }}{% else %}{{ 'gp-h-full !gp-pb-0' }}{% endif %}"
+                style="--pb: calc((1/1)*100%);--pb-tablet: calc((1/1)*100%);--pb-mobile: calc((1/1)*100%); {% if featureMedia.media_type == 'video' or featureMedia.media_type == 'external_video' %}{{ 'display: flex; align-items: center; justify-content: center' }}{% endif %}"
+              >
+                
+    {% case featureMedia.media_type %}
+      {% when 'image' %}
+        
+      
+    {% assign src = featureMedia.src %}
+    
+    
+    <img
+      alt="{{featureMedia.alt | escape}}" width="{{featureMedia.width}}" height="{{featureMedia.height}}" draggable="false" quality-type="{&quot;desktop&quot;:&quot;high&quot;}" quality-percent="{&quot;desktop&quot;:100}" data-sizes="auto" sizes="(max-width: 768px) 50vw, 100vw" src="{{src | image_url}}" isNotLazyload="true" srcset="{{src | image_url: width: 480}} 480w, {{src | image_url: width: 768}} 768w, {{src | image_url: width: 1024}} 1024w, {{src | image_url: width: 1440}} 1440w" base-src="{{src | image_url}}" loading="lazy"
+      id="{% if featureMedia != null %}{{featureMedia.id}}{% endif %}"
+      style="--aspect:1/1;--aspect-tablet:1/1;--aspect-mobile:1/1;--objf:cover"
+      class="gp-w-full gp-h-full gp-absolute gp-top-0 gp-left-0 featured-image-only gp-cursor-pointer !gp-rounded-none gp-w-full gp-transition-opacity {{shouldHidden}}"
+    />
+       
+       
+    
+      {% when 'external_video' %}
+        {% assign mediaSourceVideo = featureMedia | external_video_url %}
+        
+    <iframe
+      src="{{mediaSourceVideo}}" alt="{{featureMedia.alt | escape}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" width="100%" height="100%" controls="true" allowfullscreen="true"
+      style="--aspect:1/1;--aspect-tablet:1/1;--aspect-mobile:1/1"
+      class="feature-video gp-w-full gp-h-full gp-relative"
+    >
+    </iframe>
+  
+      {% when 'video' %}
+        {% assign mediaSourceVideo = featureMedia.sources.last.url %}
+        
+  <gp-lite-html5-embed is-check-loaded="true" >
+    
+    <video
+    id="gp-video-undefined" title="{{featureMedia.alt | escape}}" preload="none" data-src="{{mediaSourceVideo}}" poster="{{featureMedia.preview_image.src | product_img_url: '1024x1024'}}" data-poster="{{featureMedia.preview_image.src | product_img_url: '1024x1024'}}"
+      style="width:100%;max-height:100%"
+      class="gp-w-full gp-invisible gp-lazyload-video"
+      controls
+      
+      
+      
+      playsinline
+      
+    ></video>
+    
+     <div
+        role="presentation"
+        style="width:100%;max-height:100%"
+        class="gp-absolute gp-top-0 gp-left-0  gp-w-full gp-thumbnail-video gp-h-full"
+        >
+           
+    <img
+      width="2237" height="1678" draggable="false" quality-type quality-percent data-sizes="auto" sizes="100vw" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIzNyIgaGVpZ2h0PSIxNjc4IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGRlZnM+CiAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZy0yMjM3LTE2NzgiPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iMjAlIiAvPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iNTAlIiAvPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iNzAlIiAvPgogICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPC9kZWZzPgogICAgPHJlY3Qgd2lkdGg9IjIyMzciIGhlaWdodD0iMTY3OCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMjIzNyIgaGVpZ2h0PSIxNjc4IiBmaWxsPSJ1cmwoI2ctMjIzNy0xNjc4KSIgLz4KICAgIDxhbmltYXRlIHhsaW5rOmhyZWY9IiNyIiBhdHRyaWJ1dGVOYW1lPSJ4IiBmcm9tPSItMjIzNyIgdG89IjIyMzciIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" base-src="{{featureMedia.preview_image.src | product_img_url: '1024x1024'}}" data-src="{{featureMedia.preview_image.src | product_img_url: '1024x1024'}}" data-srcset="{{featureMedia.preview_image.src | product_img_url: '1024x1024'}}"
+      id="video-thumbnail"
+      
+      class="gp-w-full gp-h-full gp-object-cover gp_lazyload"
+    />
+          <button type="button" class="gp-absolute gp-left-1/2 gp-top-1/2 gp-flex gp-aspect-[56/32] gp-w-14 -gp-translate-x-1/2 -gp-translate-y-1/2 gp-items-center gp-justify-center gp-rounded gp-bg-black/80 gp-transition-colors hover:gp-bg-[#ef0800]" aria-label="Play">
+            <svg class="gp-w-5 gp-text-white" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M5 5.274c0-1.707 1.826-2.792 3.325-1.977l12.362 6.726c1.566.853 1.566 3.101 0 3.953L8.325 20.702C6.826 21.518 5 20.432 5 18.726V5.274Z"
+              />
+            </svg>
+          </button>
+        </div>
+  
+  </gp-lite-html5-embed>
+        <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-lite-html5-embed-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+  
+      {% when 'model' %}
+        
+    <model-viewer
+      src="{% if featureMedia.sources.first.url contains '.glb' %}{{ featureMedia.sources.first.url }}{% else %}{{featureMedia.sources.last.url}}{% endif %}" alt="{{featureMedia.preview_image.alt}}" data-shopify-feature="1.12" width="100%" poster="{{featureMedia.preview_image.src | product_img_url: '1024x1024'}}" ar-status="not-presenting" camera-controls="true"
+      class="gp-w-full gp-h-full model-viewer gp-z-[90]"
+      style="--aspect:1/1;--aspect-tablet:1/1;--aspect-mobile:1/1">
+    </model-viewer>
+  
+      {% else %}
+        
+    
+    <img
+      alt="No Image" width="2237" height="1678" draggable="false" quality-type="{&quot;desktop&quot;:&quot;high&quot;}" quality-percent="{&quot;desktop&quot;:100}" data-sizes="auto" sizes="(max-width: 768px) 50vw, 100vw" src isNotLazyload="true" srcset loading="lazy"
+      id=""
+      style="--aspect:1/1;--aspect-tablet:1/1;--aspect-mobile:1/1;--objf:cover"
+      class="gp-w-full gp-h-full gp-absolute gp-top-0 gp-left-0 featured-image-only gp-cursor-pointer !gp-rounded-none"
+    />
+    {% endcase %}
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      
+    {% endcapture %}
+    {% if product.media.size > 1 %}
+         
+        {{ featureImageOnlyOne }}
+      {% else %}{{ featureImageOnlyOne }}{% endif %}
+  
+        
+      </div>
+    </gp-product-images>
+    <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-product-images-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+  
+    </div><div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gDo6fbSEGB gp-relative gp-flex gp-flex-col"
+    >
+      <div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:0px" class="gBInbczn4C ">
+      {% unless product %}<p>{{ 'gempages.ProductTitle.product_not_found' | t }}</p>{% else %}
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gBInbczn4C"
+        class="gBInbczn4C"
+        style="--dynamic-source-color:#F4F4F4"
+      >
+      <div  >
+        <h4
+          data-gp-text
+          class="gp-g-subheading-3 gp-text-g-text-2 gp-text-instant"
+          style="--w:100%;--tdt:auto;--ta:center;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--c:var(--g-c-text-2, text-2);word-break:break-word;overflow:hidden"
+        >
+          {{ product.title }}
+        </h4>
+      </div>
+    </div>
+    {% endunless %}
+      </div>
+      <gp-product-price
+        id="shopify-text-element-gEyxTBXsgo" data-id="gEyxTBXsgo"
+        class="gp-product-price group-data-[state=loading]:gp-invisible data-[hidden=true]:!gp-hidden gEyxTBXsgo"
+        style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:0px"
+        gp-data='{"priceType":"regular","uid":"gEyxTBXsgo","locale":"{{shop.locale}}","currency":"{{shop.currency}}","moneyFormat":"{{ shop.money_format | replace: '"', '\\"' | escape }}"}'
+      >
+        
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div id="p-price-gEyxTBXsgo" data-id
+        
+        style="--dynamic-source-color:#F4F4F4"
+      >
+      <div  >
+        <div
+          data-gp-text
+          class="gp-price gp-money gp-decoration-g-text-2 gp-g-paragraph-1 gp-text-g-text-2 gp-text-instant"
+          style="--w:100%;--tdc:var(--g-c-text-2, text-2);--tdt:1px;--ta:center;--c:var(--g-c-text-2, text-2);word-break:break-word;overflow:hidden;--tdl:"
+        >
+          
+     {% if variant.price %}
+       {{ variant.price | money}}
+     {% endif %}
+   
+        </div>
+      </div>
+    </div>
+    
+      </gp-product-price>
+      <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-product-price-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+  <div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:10px;--mb:10px;--pt:0px" class="gkFS1x9LYz ">
+      
+    <gp-product-view-more>
+      
+    <gp-button
+      gp-data='{"btnLink":{"link":"{% if collection %}{{ collection.url }}{{ product.url }}{% else %}{{ product.url }}{% endif %}","target":"_self"}}'
+      
+      class="gp-flex gp-flex-col"
+    >
+      <div style="--ta:center" >
+        <style>[data-id="gkFS1x9LYz"].gp-button-base::before, [data-id="gkFS1x9LYz-interaction"].gp-button-base::before {
+      
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    border-style: none;
+  border-width: 1px 1px 1px 1px;
+  
+  
+    
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      
+  
+    }
+  
+      
+  [data-id="gkFS1x9LYz"]:hover::before, [data-id="gkFS1x9LYz-interaction"]:hover::before {
+    border-style: none;
+  border-width: 1px 1px 1px 1px;
+  
+  
+    
+  }</style>
+        
+        <a
+          data-id="gkFS1x9LYz" dataId="gkFS1x9LYz" data-state="idle" aria-label="See more"
+          
+          href="{% if collection %}{{ collection.url }}{{ product.url }}{% else %}{{ product.url }}{% endif %}" target="_self"
+          style="--w:Auto;--w-tablet:Auto;--w-mobile:Auto;--h:Auto;--h-tablet:Auto;--h-mobile:Auto;--pl:24px;--pr:24px;--pt:8px;--pb:8px;--bblr:5px;--bbrr:5px;--btlr:5px;--btrr:5px;--hvr-bblr:5px;--hvr-bbrr:5px;--hvr-btlr:5px;--hvr-btrr:5px;--shadow:none;--bgi:;--hvr-bgi:;--hvr-bg:var(--g-c-highlight, highlight);--bg:var(--g-c-brand, brand);--c:var(--g-c-text-3, text-3);--size:14px;--size-tablet:14px;--size-mobile:14px;--weight:bold;--tt:uppercase"
+          class="btn-view-more gkFS1x9LYz gp-text-center gp-button-base gp-group gp-relative gp-inline-flex gp-max-w-full gp-items-center gp-justify-center gp-no-underline gp-transition-colors gp-duration-200 disabled:gp-btn-disabled disabled:gp-opacity-30 gp-text-g-text-3 gp-g-paragraph-1"
+        >
+        
+        <div class="gp-inline-flex">
+          
+          
+    <span
+      data-gp-text
+      style="--size:14px;--size-tablet:14px;--size-mobile:14px;--weight:bold;--tt:uppercase;word-break:break-word"
+      class="gp-content-product-button group-active/button:!gp-text-inherit gp-relative gp-flex gp-h-full gp-items-center gp-overflow-hidden gp-break-words group-data-[state=loading]:gp-invisible [&_p]:gp-whitespace-pre-line gp-text button-text"
+    >
+      {{ section.settings.ggkFS1x9LYz_label }}
+    </span>
+        </div>
+        
+        </a>
+      </div>
+      <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-button-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+    </gp-button>
+  
+      <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-product-view-more-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+    </gp-product-view-more>
+  
+      </div>
+    </div>
+
+      
+    </gp-row>
+  
+  
+          {%- endform -%}
+        </product-form>
+      </gp-product>
+      {%- assign product = gpBkProduct -%}
+    {% else %}
+      <div class="gp-text-center">{{ 'gempages.Product.product_not_found' | t }}</div>
+    {% endif %}
+    <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-product-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+  
+      </div>
+    </div>
+  

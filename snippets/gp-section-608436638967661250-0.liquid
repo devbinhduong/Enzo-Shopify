@@ -1,0 +1,53 @@
+
+  
+    <div
+      
+      style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_ARTICLE;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll"
+      data-keep-class="true"
+      class="g8wjPiZGOZ gp-custom-code">
+      <div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    </div>
+    </div>
+  
+      <style id="custom-css-g8wjPiZGOZ">
+        .gp-scroll-links .gp-active, .gp-scroll-links .gp-active * {
+    font-weight: 600 !important;
+    color: #FD76A9 !important;
+    font-size: 13px !important; /* Added font-size 14px */
+}
+
+      </style>
+    
+      <script id="custom-js-g8wjPiZGOZ">
+        try {
+          (function( jQuery ){
+  $(window).scroll(doStickyMenu);
+ 
+  function doStickyMenu(){
+    var tArray = $('.gp-title-page');
+    for(var i = 0; i < tArray.length; i++){
+        
+        var tArrOffset = $(tArray[i]).offset().top - 80 -82; 
+      
+      if( ( !tArray[i + 1] && tArrOffset < window.scrollY ) || (  tArrOffset < window.scrollY && $(tArray[i + 1]).offset().top -80 -82 > window.scrollY ) ){
+        $('.gp-scroll-links a').removeClass('gp-active');
+        var id = $(tArray[i]).parents('.gp-target-row').attr('id');
+        
+        $('.gp-scroll-links a').each(function(){
+          if($(this).attr('href') == '#' + id){
+            $(this).addClass('gp-active');
+          }
+        });
+        break;
+      }
+      
+    }
+    
+  }
+  
+
+})( window.GemQuery || jQuery );
+        } catch(err){}
+      </script>
+    
