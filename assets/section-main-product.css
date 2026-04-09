@@ -587,17 +587,7 @@ featured-product product-recommendations swiper-component,
   }
 }
 
-@media (min-width: 750px) {
-  .block-product-tabs.hide-on-desktop {
-    display: none;
-  }
-}
-
 @media (max-width: 749px) {
-  .block-product-tabs.hide-on-mobile {
-    display: none;
-  }
-
   .product-form__buttons {
     display: flex;
     flex-wrap: nowrap;
@@ -613,6 +603,14 @@ featured-product product-recommendations swiper-component,
     .card-wishlist {
       max-width: 4.5rem;
     }
+  }
+
+  .quick-add-modal .product-form__buttons {
+    flex-wrap: wrap;
+  }
+
+  .quick-add-modal .variant-option:first-child {
+    margin-bottom: 0;
   }
 }
 
@@ -647,6 +645,7 @@ featured-product product-recommendations swiper-component,
     border-radius: 5px;
     border: 1px solid rgba(26, 26, 26, 0.30);
     height: 52px;
+    padding-right: 3rem;
   }
 
   .sticky-cart__quantity {
@@ -674,7 +673,7 @@ featured-product product-recommendations swiper-component,
   }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1400px) {
   .sticky-atc.sticky-atc--combined-dropdown {
     .sticky-combined-variant-select {
       padding: 0 2rem;
@@ -718,9 +717,64 @@ featured-product product-recommendations swiper-component,
   .sticky-atc.sticky-atc--combined-dropdown .sticky-atc__action {
     width: 100%;
   }
+
+  .sticky-atc.sticky-atc--combined-dropdown .section {
+    padding: 0;
+    display: flex;
+  }
+
+  .sticky-atc__variant > .section {
+    flex-direction: column;
+    padding-inline-end: 1.5rem !important;
+    padding-inline-start: 1.5rem !important;
+  }
 }
 
 /* style for review app */
 .shopify-app-block:has(.jdgm--done-setup-widget) {
   width: 100%;
+}
+
+.product-information__media .swiper-main {
+  border-radius: 5px;
+  border: 1px solid #FFF3F9;
+  margin-block-end: 2rem;
+}
+
+.product-information__media .swiper-controls__thumbnails-container {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #FFF3F9;
+}
+
+.price-product-container.price--on-sale .compare-at-price {
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: line-through;
+}
+
+.sticky-atc .price-product-container.price--on-sale .compare-at-price {
+  font-size: 14px;
+}
+
+.sticky-atc .quantity {
+  border: 1px solid rgba(26, 26, 26, 0.30);
+
+  &::after,
+  &::before {
+    display: none;
+  }
+}
+
+.sticky-atc .select {
+  &::after,
+  &::before {
+    display: none;
+  }
+}
+
+.sticky-atc .product-form__submit.loading .loading__spinner{
+  display: flex !important;
 }

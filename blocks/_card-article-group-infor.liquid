@@ -11,6 +11,7 @@
   "blocks": [
     { "type": "@app" },
     { "type": "_card-article-button-flex" },
+    { "type": "_card-article-tag-flex" },
     { "type": "_card-article-title-flex" },
     { "type": "_card-article-description-flex" },
     { "type": "_card-article-details-flex" }
@@ -201,6 +202,23 @@
       "step": 1,
       "unit": "px",
       "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_gap_mobile",
+      "label": "Custom gap mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 9,
+      "visible_if": "{{ block.settings.custom_gap_mobile == true }}"
     },
     {
       "type": "header",

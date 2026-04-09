@@ -11,6 +11,8 @@
 
 .search__button .svg-wrapper {
   color: inherit;
+  width: 2.2rem;
+  height: 2.2rem;
 }
 
 .reset__button {

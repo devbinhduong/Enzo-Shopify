@@ -136,6 +136,7 @@ email-signup__button--size-{{ block.settings.submit_width }} {{ block.settings.b
             {% elsif form.posted_successfully? %}
               aria-describedby="Email-signup__message-success-{{ block.id }}"
             {% endif %}
+            style="--font-body--style: {{ block.settings.input_font_style }};"
           >
           {% if block.settings.input_focus_effect != 'none' %}
             <span class="focus-border">
@@ -147,7 +148,7 @@ email-signup__button--size-{{ block.settings.submit_width }} {{ block.settings.b
         <button
           id="EmailSignup-submit-{{ block.id }}"
           type="submit"
-          class="size-style email-signup__button{% if block.settings.integrated_button %} email-signup__button--integrated{% endif %} email-signup__button--{{ block.settings.display_type }} {{ submit_class }}{% if block.settings.display_type == 'icon' and block.settings.background_button == false %} email-signup__button--icon-fill{% endif %}{% if block.settings.display_type == 'icon' %} submit-icon-size{% endif %} {{ submit_class }}"
+          class="size-style email-signup__button{% if block.settings.integrated_button %} email-signup__button--integrated{% endif %} email-signup__button--{{ block.settings.display_type }} {{ submit_class }}{% if block.settings.display_type == 'icon' and block.settings.background_button == false %} email-signup__button--icon-fill{% endif %}{% if block.settings.display_type == 'icon' %} submit-icon-size{% endif %} {{ submit_class }} {% if block.settings.custom_font_size_mb %} custom-font-size-mb{% endif %}"
           {% if block.settings.display_type != 'text' %}
             aria-label="{{ 'content.button_label' | t }}"
           {% endif %}
@@ -172,6 +173,10 @@ email-signup__button--size-{{ block.settings.submit_width }} {{ block.settings.b
               --size-style-width-mobile-min: {{ block.settings.submit_width_mobile }};
             {%- endif -%}
             {%- endif -%}
+
+            {% if block.settings.custom_font_size_mb %}
+              --custom-font-size-mb: {{ block.settings.font_size_mb }};
+            {% endif %}
           "
         >
           {% if block.settings.display_type == 'text' %}
@@ -637,6 +642,23 @@ email-signup__button--size-{{ block.settings.submit_width }} {{ block.settings.b
       "visible_if": "{{ block.settings.open_newsletter_popup == false }}"
     },
     {
+      "type": "select",
+      "id": "input_font_style",
+      "label": "Font style",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "italic",
+          "label": "Italic"
+        }
+      ],
+      "default": "normal",
+      "visible_if": "{{ block.settings.open_newsletter_popup == false }}"
+    },
+    {
       "type": "checkbox",
       "id": "custom_input_height",
       "label": "t:settings.custom_height",
@@ -987,6 +1009,73 @@ email-signup__button--size-{{ block.settings.submit_width }} {{ block.settings.b
       "label": "t:settings.background_button",
       "default": true,
       "visible_if": "{{ block.settings.display_type == 'icon' and block.settings.open_newsletter_popup == false }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_font_size_mb",
+      "label": "Custom font size mobile",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "font_size_mb",
+      "label": "t:settings.font_size",
+      "options": [
+        {
+          "value": "0.8rem",
+          "label": "8px"
+        },
+        {
+          "value": "0.9rem",
+          "label": "9px"
+        },
+        {
+          "value": "1.0rem",
+          "label": "10px"
+        },
+        {
+          "value": "1.1rem",
+          "label": "11px"
+        },
+        {
+          "value": "1.2rem",
+          "label": "12px"
+        },
+        {
+          "value": "1.3rem",
+          "label": "13px"
+        },
+        {
+          "value": "1.4rem",
+          "label": "14px"
+        },
+        {
+          "value": "1.5rem",
+          "label": "15px"
+        },
+        {
+          "value": "1.6rem",
+          "label": "16px"
+        },
+        {
+          "value": "1.7rem",
+          "label": "17px"
+        },
+        {
+          "value": "1.8rem",
+          "label": "18px"
+        },
+        {
+          "value": "1.9rem",
+          "label": "19px"
+        },
+        {
+          "value": "2.0rem",
+          "label": "20px"
+        }
+      ],
+      "default": "1.6rem",
+      "visible_if": "{{ block.settings.custom_font_size_mb }}"
     },
     {
       "type": "checkbox",

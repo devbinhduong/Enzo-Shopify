@@ -4,6 +4,7 @@
   assign form_style = font | append: font_size
   assign font_weight = 'font-weight: [font_weight]; ' | replace: '[font_weight]', block.settings.font_weight
   assign text_align = 'text-align: [text_align]; ' | replace: '[text_align]', block.settings.text_align
+  assign letter_spacing = 'letter-spacing: var(--letter-spacing--[font]-[letter_spacing]); ' | replace: '[font]', block.settings.font | replace: '[letter_spacing]', block.settings.letter_spacing
 -%}
 <div
   class="swiper-slide"
@@ -20,7 +21,7 @@
     {{ block.shopify_attributes }}
     style="{{ form_style }}"
   >
-    <p class="announcement-bar__message" style="{{ font_weight }} {{ text_align }}">
+    <p class="announcement-bar__message" style="{{ font_weight }} {{ text_align }} {{ letter_spacing }}">
       <span>{{ block.settings.text }}</span>
     </p>
   </div>
@@ -116,6 +117,26 @@
         }
       ],
       "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "letter_spacing",
+      "label": "t:settings.letter_spacing",
+      "options": [
+        {
+          "value": "tight",
+          "label": "t:options.tight"
+        },
+        {
+          "value": "normal",
+          "label": "t:options.normal"
+        },
+        {
+          "value": "loose",
+          "label": "t:options.loose"
+        }
+      ],
+      "default": "loose"
     },
     {
       "type": "select",

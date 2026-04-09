@@ -13,6 +13,8 @@
   endif
 
   assign columns_desktop = sec_stts.columns_desktop
+  assign columns_small_desktop = 4
+  
   assign columns_tablet = 2
   if columns_desktop == 1
     assign columns_tablet = 1
@@ -236,12 +238,12 @@
             {%- capture breakpoints -%}
               {
                 "768": { "slidesPerView": {{ columns_tablet }} },
-                "1024": { "slidesPerView": {{ columns_tablet }} },
+                "1024": { "slidesPerView": {{ columns_small_desktop }} },
                 "1400": { "slidesPerView": {{ columns_desktop }} }
               }
             {%- endcapture -%}
             <swiper-component
-              class="collection-carousel-swiper-component{% if sec_stts.full_width and page_width == 'page-width' %} full-width{% endif %}"
+              class="collection-carousel-swiper-component test121212{% if sec_stts.full_width and page_width == 'page-width' %} full-width{% endif %}"
               {%- render 'swiper-data',
                 settings: section.settings,
                 slides_per_view: slides_per_view,

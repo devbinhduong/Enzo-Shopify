@@ -147,6 +147,16 @@
 
 {%- liquid
   assign fluid_font_size = settings.font_size | replace: 'rem', '' | times: 0.5 | append: 'vw'
+
+    assign hide_on_desktop = false
+    if settings.hide_on_desktop
+      assign hide_on_desktop = true
+    endif
+
+    assign hide_on_mobile = false
+    if settings.hide_on_mobile
+      assign hide_on_mobile = true
+    endif
 -%}
 
 <script type="application/ld+json">
@@ -175,7 +185,7 @@
   class="link link--hover-underline link--text"
 {%- endcapture -%}
 
-<nav class="breadcrumbs element-margin-bottom custom-font-size" role="navigation" aria-label="{{ 'content.breadcrumb.title' | t }}" style="--font-size: {{ settings.font_size }};--button-font-size-link: var(--font-size);--fluid-font-size: {{ fluid_font_size }}">
+<nav class="breadcrumbs element-margin-bottom custom-font-size test12121212121212 {% if hide_on_desktop %}hide-on-desktop{% endif %} {% if hide_on_mobile %}hide-on-mobile{% endif %}" role="navigation" aria-label="{{ 'content.breadcrumb.title' | t }}" style="--font-size: {{ settings.font_size }};--button-font-size-link: var(--font-size);--fluid-font-size: {{ fluid_font_size }}">
   <ol
     class="breadcrumbs__list list-unstyled max-sm:flex justify-{{ settings.horizontal_alignment }} items-center gap-style overflow-x-a hide-scrollbar"
     style="{% render 'gap-style', value: settings.gap %}"

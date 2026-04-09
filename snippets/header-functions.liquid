@@ -59,7 +59,7 @@
   <a
     {% if wishlist_disabled %}role="link" aria-disabled="true"{% else %}href="{{ wishlist_href }}"{% endif %}
     class="
-      header__icon header-wishlist header__icon--wishlist button relative focus-inset
+      header__icon header-wishlist header__icon--wishlist hide-on-tablet button relative focus-inset
       {{ class_icon_type }}
       {% if extra_class != blank %} {{ extra_class }}{% endif %}
       {% if wishlist_disabled %} disabled{% endif %}
@@ -173,7 +173,7 @@
       data-side-drawer="#Cart-Drawer"
     >
       <button
-        class="header__icon button relative focus-inset cart-icon--drawer
+        class="header__icon tetsa121212121 button relative focus-inset cart-icon--drawer
         {{ class_icon_type }}{%  if actions_type != 'text' %} header__icon--cart{% endif %}{% if extra_class != blank %} {{ extra_class }}{% endif %}"
         type="button"
         aria-haspopup="dialog"
@@ -199,7 +199,7 @@
           </span>
         {%- endif -%}
 
-        {%- if cart != empty and actions_type != 'text' -%}
+        {%- if actions_type != 'text' -%}
           <div class="cart-count-bubble">
             <span aria-hidden="true" data-cart-count>
               {%- if cart.item_count < 100 -%}

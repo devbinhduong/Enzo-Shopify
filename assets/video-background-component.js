@@ -1,6 +1,9 @@
-let is_load_js = false;
-
 (function(){
+  if (window.videoBackgroundComponentLoaded) return;
+  window.videoBackgroundComponentLoaded = true;
+
+  let is_load_js = false;
+
   document.addEventListener('DOMContentLoaded', function() {
     ['keydown', 'mousemove', 'touchstart'].forEach((event) => {
       document.addEventListener(event, () => {

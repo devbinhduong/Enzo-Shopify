@@ -54,7 +54,7 @@
           >
             <span class="header__icon header__icon--{{ display_type }}{% if display_type == 'both' %} header__icon--layout-{{ display_layout }}{% endif %}">
               <span class="svg-wrapper{% if display_type == 'text' %} lg:none{% endif %}">
-                {{- 'icon-search.svg' | inline_asset_content -}}
+                {{- 'icon-search-2.svg' | inline_asset_content -}}
               </span>
               {%- if display_type == 'text' or display_type == 'both' -%}
                 <span class="text max-md:hidden{% if display_type == 'icon' %} visually-hidden{% endif %} {{ account_custom_class }}" style="{{ header_utility_custom_style }}">

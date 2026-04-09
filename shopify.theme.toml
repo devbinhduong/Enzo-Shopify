@@ -4,6 +4,12 @@ theme = "186130530684"
 theme-editor-sync = true
 ignore = "*.json"
 
+[environments.mint1]
+store = "korean-skincare-uk"
+theme = "186188562812"
+theme-editor-sync = true
+ignore = "*.json"
+
 [environments.qmcar]
 store = "qmcar"
 theme = "185698910510"

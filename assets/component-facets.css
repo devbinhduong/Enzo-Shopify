@@ -363,12 +363,17 @@ dialog-component.facets-block-wrapper:not(:has(.facets--drawer[open])) {
 
   > .svg-wrapper {
     margin-right: 0;
+    margin-left: 0;
   }
 
   @media screen and (min-width: 750px) {
     --variant-picker-swatch-width: 26px;
     --variant-picker-swatch-height: 26px;
   }
+}
+
+#Details-SortBy .details__summary svg {
+  margin-left: 2rem;
 }
 
 .facets__filters-wrapper:hover .facets__summary,

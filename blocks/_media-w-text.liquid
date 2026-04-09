@@ -2,6 +2,11 @@
   assign mobile_columns = block.settings.mobile_columns
   assign mobile_columns_int = mobile_columns | plus: 0
   assign show_mobile_slider = false
+  assign show_tablet_slider = false
+
+  if block.settings.carousel_on_tablet and block.blocks.size > columns_tablet
+    assign show_tablet_slider = true
+  endif
 
   if block.settings.carousel_on_mobile and block.blocks.size > mobile_columns_int
     assign show_mobile_slider = true
@@ -20,6 +25,10 @@
     assign columns_tablet = 3
   endif
 
+  if block.settings.carousel_on_tablet
+    assign columns_tablet = block.settings.tablet_columns
+  endif
+
   assign enable_navigation = false
   if block.settings.navigation == 'arrows-pagination' or block.settings.navigation == 'arrows'
     assign enable_navigation = true
@@ -35,7 +44,7 @@
   {% for child_block in block.blocks %}
     <li
       id="Slide-{{ child_block.id }}-{{ forloop.index }}"
-      class="grid__item{% if show_mobile_slider or block.settings.layout_type == 'carousel' %} swiper-slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      class="grid__item {% if show_tablet_slider %} swiper-slide{% endif %} {% if show_mobile_slider or block.settings.layout_type == 'carousel' %} swiper-slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
       {% if settings.animations_reveal_on_scroll %} style="--animation-order: {{ forloop.index }};"{% endif %}
     >
       {% render child_block %}
@@ -80,10 +89,11 @@
   {% case block.settings.layout_type %}
     {% when 'grid' %}
       <div class="collection--grid-layout size-full block">
-        {%- if show_mobile_slider -%}
+        {%- if show_mobile_slider or show_tablet_slider -%}
           <swiper-component
             class="swiper-component-mobile"
-            data-swiper-mobile
+            {% if show_mobile_slider %}data-swiper-mobile{% endif %}
+            {% if show_tablet_slider %}data-swiper-tablet{% endif %}
             {%- render 'swiper-data',
               settings: block.settings,
               loop: false,
@@ -106,7 +116,7 @@
           data-id="{{ block.id }}"
           class="
             grid grid-layout section-content-wrapper list-unstyled
-            {% if show_mobile_slider %} swiper-wrapper md:grid{% endif %}
+            {% if show_tablet_slider %} swiper-wrapper lg:grid{% elsif show_mobile_slider %} swiper-wrapper md:grid{% endif %}
             lg:grid-layout--{{ columns_desktop }} md:grid-layout--{{ columns_tablet }} max-sm:grid-layout--{{ mobile_columns }}
           "
           role="list"
@@ -220,6 +230,13 @@
     },
     {
       "type": "checkbox",
+      "id": "carousel_on_tablet",
+      "label": "Carousel on tablet",
+      "default": false,
+      "visible_if": "{{ block.settings.layout_type != 'carousel' }}"
+    },
+    {
+      "type": "checkbox",
       "id": "carousel_on_mobile",
       "label": "t:settings.carousel_on_mobile",
       "default": false,
@@ -244,6 +261,16 @@
       "default": 4,
       "label": "t:settings.columns",
       "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+    },
+    {
+      "type": "range",
+      "id": "tablet_columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1,
+      "label": "Tablet columns",
+      "visible_if": "{{ block.settings.carousel_on_tablet == true }}"
     },
     {
       "type": "select",

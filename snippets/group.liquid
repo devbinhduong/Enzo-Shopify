@@ -69,6 +69,8 @@
   assign content_direction_mobile = content_direction_mobile | default: settings.content_direction_mobile
   assign disable_parallax_mobile = disable_parallax_mobile | default: settings.disable_parallax_mobile
   assign toggle_overlay = toggle_overlay | default: settings.toggle_overlay
+  assign custom_gap_mobile = custom_gap_mobile | default: settings.custom_gap_mobile
+  assign gap_mobile = gap_mobile | default: settings.gap_mobile
 
   case image_ratio
     when 'landscape'
@@ -178,8 +180,11 @@
       {% endif %}
       mobile-{{ content_direction_mobile | default: 'column' }}
       {{ class_content }}
+      {% if custom_gap_mobile %}
+        custom-gap-mobile
+      {% endif %}
     "
-    style="{%- render 'layout-panel-style', settings: settings, scale_min: 0 -%}"
+    style="{%- render 'layout-panel-style', settings: settings, scale_min: 0 -%} {% if custom_gap_mobile %} --custom-gap-mobile: {{ gap_mobile }}px; {% endif %}"
   >
     {{- children -}}
   </div>

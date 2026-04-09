@@ -467,7 +467,11 @@ class SectionFetcher extends HTMLElement {
 if (!customElements.get('section-fetcher')) customElements.define('section-fetcher', SectionFetcher);
 
 function getScrollbarWidth() {
-  const width = window.innerWidth - document.documentElement.clientWidth;
+  let width = window.innerWidth - document.documentElement.clientWidth;
+  
+  if (width == 0) {
+    width = 15;
+  }
 
   if (width > 18) return;
   document.documentElement.style.setProperty('--scrollbar-width', `${width}px`);
@@ -1871,6 +1875,7 @@ class SwiperComponent extends HTMLElement {
   constructor() {
     super();
     this.isMobileOnly = this.hasAttribute("data-swiper-mobile");
+    this.isTablet = this.hasAttribute("data-swiper-tablet");
     this.swiperEl = null;
     this.initSwiper = null;
     this.options = null;
@@ -2000,6 +2005,12 @@ class SwiperComponent extends HTMLElement {
               direction: isVerticalThumbnails ? "vertical" : "horizontal"
             }
           },
+          navigation: {
+            nextEl: thumbnailContainer ? thumbnailContainer.querySelector(".swiper-button-next") : null,
+            prevEl: thumbnailContainer ? thumbnailContainer.querySelector(".swiper-button-prev") : null,
+            disabledClass: "swiper-button-disabled",
+            hiddenClass: "swiper-button-hidden",
+          },
           pagination: {
             el: ".swiper-controls__thumbnails-container .swiper-pagination",
             type: "bullets",
@@ -2078,7 +2089,7 @@ class SwiperComponent extends HTMLElement {
       //   }
       // }
 
-      if (this.isMobileOnly || this.isFreeModeMobile) {
+      if (this.isMobileOnly || this.isFreeModeMobile || this.isTablet) {
         this.initSwiperMobile();
       } else {
         this.initSwiper = new Swiper(this.swiperEl, this.options);
@@ -2181,7 +2192,23 @@ class SwiperComponent extends HTMLElement {
         return;
       }
 
-      if (this.isMobileOnly) {
+      if (this.isTablet) {
+        if (window.innerWidth >= 1025) {
+          if (this.initSwiper) {
+            this.initSwiper.destroy(true, true);
+            this.initSwiper = null;
+          }
+        } else if (window.innerWidth < 750 && !this.isMobileOnly) {
+          if (this.initSwiper) {
+            this.initSwiper.destroy(true, true);
+            this.initSwiper = null;
+          }
+        } else {
+          if (!this.initSwiper) {
+            enableSwiper();
+          }
+        }
+      } else if (this.isMobileOnly) {
         if (this.breakpoint.matches) {
           if (this.initSwiper) {
             this.initSwiper.destroy(true, true);

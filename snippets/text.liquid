@@ -150,6 +150,9 @@
       if bl_stts.font_size != ''
         echo ' custom-font-size '
       endif
+      if bl_stts.custom_font_size_mb
+        echo ' custom-font-size-mb '
+      endif
     endif
     if type_preset != 'rte'
       if bl_stts.color != ''
@@ -226,6 +229,11 @@
     {%- if enable_rotation_classes -%}
       {{ enable_rotation_style }}
     {%- endif -%}
+    {%- if type_preset == 'custom' -%}
+      {%- if bl_stts.custom_font_size_mb -%}
+        --custom-font-size-mb: {{ bl_stts.font_size_mb }};
+      {%- endif -%}
+    {%- endif -%}
   "
   {% if bl_stts.typing_text %}data-texts='["{{ bl_stts.primary_text }}", "{{ bl_stts.secondary_text }}", "{{ bl_stts.third_text }}"]'{% endif %}
 
@@ -292,7 +300,7 @@
             {{ text }}
           </div>
           <div class="collection-description-preview" data-content-preview>
-            {{ text | truncatewords: 100 }}
+            {{ text | truncatewords: 40 }}
           </div>
           <div class="collapsible-buttons" style="--text-align:{{ bl_stts.alignment | default: 'left' }};">
             <button data-collapse-button-more type="button" class="link link--underline">{{ 'actions.show_more' | t }}</button>

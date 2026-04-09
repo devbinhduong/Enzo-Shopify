@@ -40,6 +40,7 @@
 .list-social--custom .list-social__item .list-social__link {
   transition: all 0.2s ease;
   color: inherit;
+  padding: 2px;
 }
 
 @media (hover: hover) {
@@ -54,5 +55,11 @@
   .list-social--custom .list-social__item {
     width: var(--social-item-size-mobile);
     height: var(--social-item-size-mobile);
+  }
+
+  .list-social--custom .list-social__item .list-social__link {
+    transition: all 0.2s ease;
+    color: inherit;
+    padding: 0;
   }
 }

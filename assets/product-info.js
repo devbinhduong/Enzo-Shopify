@@ -2022,13 +2022,53 @@ if (!customElements.get('sticky-atc')) {
           const selectedOption = event.target.options[event.target.selectedIndex];
           if (!selectedOption || !this.mainVariantSelects) return;
 
+          const optionInventory = selectedOption.getAttribute("data-inventory-quantity");
+          const optionPrice = selectedOption.getAttribute("data-variant-price");
+          const optionSalePrice = selectedOption.getAttribute("data-variant-price-sale");
+
+          console.log("optionPrice", optionPrice)
+          console.log("optionSalePrice", optionSalePrice)
+
+          let priceTmp = "";
+
+          if (optionSalePrice && optionSalePrice != optionPrice) {
+            priceTmp = `
+            <div class="price-product-container price price--on-sale">
+                <span role="group">
+                  <span class="visually-hidden">Sale price&nbsp;</span>
+                  <span class="price price-item price-item--sale price-item--last">${optionPrice}</span>
+                </span>
+                <span role="group">
+                  <span class="visually-hidden">Regular price&nbsp;</span>
+                  <span class="compare-at-price price-item price-item--regular">${optionSalePrice}</span>
+                </span>
+            </div>`
+          } else {
+            priceTmp = `
+            <div class="price-product-container price">
+              <span class="price price-item price-item--sale price-item--last">${optionPrice}</span>
+            </div>`
+          }
+
+          const stickyATCPriceBlock = document.querySelector(".sticky-atc__wrapper .sticky-atc__price");
+
+          console.log("stickyATCPriceBlock", stickyATCPriceBlock)
+          stickyATCPriceBlock.innerHTML = priceTmp;
+
+          if (optionInventory > 0) {
+            const stickyAtcButton = document.querySelector(".sticky-cart__button .product-form__submit");
+
+            stickyAtcButton.disabled = false;
+
+            stickyAtcButton.querySelector('.add-to-cart-text').textContent = "Add to Cart";
+
+          }
+
           const options = [
              selectedOption.dataset.option1,
              selectedOption.dataset.option2,
              selectedOption.dataset.option3
           ];
-
-          const groups = Array.from(this.mainVariantSelects.querySelectorAll('fieldset, .product-form__input'));
 
           const newVariantId = selectedOption.value;
           if (newVariantId && this.form) {
@@ -2036,35 +2076,51 @@ if (!customElements.get('sticky-atc')) {
             if (mainInputId) mainInputId.value = newVariantId;
           }
 
-          groups.forEach((group, index) => {
-            const optValue = options[index];
+          const radios = Array.from(this.mainVariantSelects.querySelectorAll('input[type="radio"]'));
+          const selects = Array.from(this.mainVariantSelects.querySelectorAll('select'));
+
+          options.forEach((optValue, index) => {
             if (!optValue) return;
 
-            const inputs = Array.from(group.querySelectorAll('input[type="radio"], select option'));
             const cleanOptValue = optValue.trim().toLowerCase();
-            const matchingInput = inputs.find(el => el.value.trim().toLowerCase() === cleanOptValue);
+            const optionStringIndex = `-${index + 1}`;
 
-            if (matchingInput) {
-              if (matchingInput.tagName === 'INPUT' && matchingInput.type === 'radio') {
-                const groupName = matchingInput.name;
-                Array.from(document.getElementsByName(groupName)).forEach((el) => {
-                  if (el instanceof HTMLInputElement && el.type === 'radio') {
-                    el.checked = false;
-                  }
-                });
-                matchingInput.checked = true;
-                matchingInput.dispatchEvent(new Event('change', { bubbles: true }));
-              } else if (matchingInput.tagName === 'OPTION') {
-                const select = matchingInput.closest('select');
-                if (select) {
-                  Array.from(select.options).forEach(opt => opt.removeAttribute('selected'));
-                  matchingInput.setAttribute('selected', 'selected');
-                  select.value = matchingInput.value;
-                  select.dispatchEvent(new Event('change', { bubbles: true }));
+            // Find matching radio for this position group
+            const matchingRadio = radios.find(radio => 
+              radio.value.trim().toLowerCase() === cleanOptValue && 
+              radio.name.endsWith(optionStringIndex)
+            );
+
+            if (matchingRadio) {
+              const groupName = matchingRadio.name;
+              Array.from(document.getElementsByName(groupName)).forEach((el) => {
+                if (el instanceof HTMLInputElement && el.type === 'radio') {
+                  el.checked = false;
                 }
-              }
+              });
+              matchingRadio.checked = true;
+              matchingRadio.dispatchEvent(new Event('change', { bubbles: true }));
+              return;
+            }
+
+            // Fallback for dropdowns
+            const matchingSelect = selects.find(sel => {
+               const matchedOpt = Array.from(sel.options).find(opt => opt.value.trim().toLowerCase() === cleanOptValue);
+               return !!matchedOpt; // we could also verify sel.id or name but value match is usually enough in a select
+            });
+
+            if (matchingSelect) {
+               const matchedOpt = Array.from(matchingSelect.options).find(opt => opt.value.trim().toLowerCase() === cleanOptValue);
+               if (matchedOpt) {
+                 Array.from(matchingSelect.options).forEach(opt => opt.removeAttribute('selected'));
+                 matchedOpt.setAttribute('selected', 'selected');
+                 matchingSelect.value = matchedOpt.value;
+                 matchingSelect.dispatchEvent(new Event('change', { bubbles: true }));
+               }
             }
           });
+        } catch(e) {
+          console.error("StickyCombined Sync Error:", e);
         } finally {
           this.isSyncing = false;
         }

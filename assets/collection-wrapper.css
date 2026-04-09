@@ -194,3 +194,10 @@
   max-width: var(--product-listing-custom-width, 100%);
   margin: 0 auto;
 }
+
+#ProductCount {
+  font-size: 13.477px;
+  font-weight: 600;
+  line-height: 21px;
+  text-transform: capitalize;
+}

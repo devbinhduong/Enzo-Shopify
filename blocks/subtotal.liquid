@@ -36,7 +36,7 @@
   </div>
 {%- endif -%}
 
-{% javascript %}
+<script defer>
   (() => {
     const initSubtotal = (subtotalNode) => {
       if (!subtotalNode || subtotalNode.dataset.subtotalReady === 'true') return;
@@ -100,7 +100,7 @@
     document.addEventListener('shopify:section:load', initAllSubtotals);
     document.addEventListener('product-info:loaded', initAllSubtotals);
   })();
-{% endjavascript %}
+</script>
 
 {% schema %}
 {

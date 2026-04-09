@@ -175,3 +175,8 @@ cart-items-component {
     min-width: 100%;
   }
 }
+
+
+#Cart-Drawer .metafields-block-blank {
+  display: none;
+}
