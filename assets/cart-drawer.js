@@ -2,10 +2,14 @@ class CartDrawer extends HTMLElement {
   constructor() {
     super();
 
+    this._moreBlockProductCache = null;
+
     this.addEventListener('keyup', (evt) => evt.code === 'Escape' && this.close());
     this.overlay = this.querySelector('[id^="CartDrawer-Overlay"]');
     this.overlay?.addEventListener('click', this.close.bind(this));
     this.setHeaderCartIconAccessibility();
+
+    this._cacheMoreBlockOnInteraction();
 
     if (Shopify.designMode) {
       document.addEventListener('shopify:section:select', (e) => {
@@ -22,6 +26,33 @@ class CartDrawer extends HTMLElement {
     if (!this.dataset.moved) {
       this.dataset.moved = true;
       document.body.appendChild(this);
+    }
+  }
+
+  _cacheMoreBlockOnInteraction() {
+    const events = ['mouseover', 'touchstart', 'keydown'];
+    const handler = () => {
+      if (!this._moreBlockProductCache) {
+        const block = document.querySelector('.drawer__more-block-product');
+        if (block && block.innerHTML.trim() !== '') {
+          this._moreBlockProductCache = block.innerHTML;
+        }
+      }
+      if (this._moreBlockProductCache) {
+        events.forEach(evt => document.removeEventListener(evt, handler));
+      }
+    };
+    events.forEach(evt => document.addEventListener(evt, handler, { passive: true }));
+  }
+
+  _restoreMoreBlockProduct() {
+    if (!this._moreBlockProductCache) return;
+    const shopifyBlock = this.querySelector('.drawer__more-block-product > .shopify-block');
+    if (shopifyBlock && shopifyBlock.innerHTML.trim() === '') {
+      const block = this.querySelector('.drawer__more-block-product');
+      console.log("add block");
+
+      if (block) block.innerHTML = this._moreBlockProductCache;
     }
   }
 
@@ -49,6 +80,8 @@ class CartDrawer extends HTMLElement {
     setTimeout(() => {
       this.classList.add('animate', 'active');
     });
+
+    this._restoreMoreBlockProduct();
 
     const cartDrawerDirection = this.getAttribute("data-drawer-direction");
     const contentElement = this.querySelector("[data-drawer-content]");
@@ -164,6 +197,8 @@ class CartDrawer extends HTMLElement {
         }
       }
     }
+
+
 
     setTimeout(() => {
       this.querySelector('#CartDrawer-Overlay').addEventListener('click', this.close.bind(this));

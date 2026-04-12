@@ -9584,7 +9584,7 @@ sold-in-last-component.loading {
 }
 
 .sticky-atc__variant {
-  padding: 1.5rem 0 0;
+  padding: 1.5rem 0 1.5rem;
   width: 100%;
   position: absolute;
   top: 0;
@@ -9706,7 +9706,7 @@ sold-in-last-component.loading {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: calc(var(--spacing--size) / 2) var(--spacing--size);
+    gap: var(--spacing--size);
 
     .menu__item {
       margin: 0;
@@ -12296,6 +12296,7 @@ product-recommendations:has([data-has-recommendations='false']) {
 
 .breadcrumbs__item {
   padding-right: calc(var(--gap) - var(--size-5));
+  text-transform: var(--text-transform);
 }
 
 .button.size-style {
@@ -13371,6 +13372,7 @@ deferred-media[class].media-block__media
   width: 100%;
   transition: transform var(--animation-speed-slow) var(--ease-out-smooth);
   position: relative;
+  max-height: var(--header-icon-size);
 
   .icon-hamburger-custom__line {
     width: var(--size-22);
@@ -16449,8 +16451,11 @@ body:has(> #header-group:empty) {
     }
 
     @media screen and (max-width: 749px) {
-      padding-block-start: var(--padding-block-start-top) * 0.5;
-      padding-block-end: var(--padding-block-end-top) * 0.5;
+      /* padding-block-start: var(--padding-block-start-top) * 0.5;
+      padding-block-end: var(--padding-block-end-top) * 0.5; */
+      padding-left: var(--padding-block-start-top);
+      padding-right: var(--padding-block-start-top);
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.10);
     }
   }
   .header__row--bottom {
@@ -19086,7 +19091,13 @@ details-disclosure > details {
 .add-to-cart-button-inner .wishlist-button.wishlist-added {
   color: var(--color-primary-button-hover-text);
   background-color: var(--color-primary-button-hover-background);
+  background-color: var(--color-primary-button-background);
   box-shadow: rgb(99 99 99 / var(--opacity-20)) 0px .2rem .8rem 0px;
+}
+
+.add-to-cart-button-inner .wishlist-button.wishlist-added:hover .wishlist-button__icon{
+  background-color: transparent !important;
+  transition: none !important;
 }
 
 
@@ -19693,4 +19704,8 @@ details-disclosure > details {
   .hide-on-tablet {
     display: none !important;
   }
+}
+
+.recently-viewed-products .card-product-information {
+  padding: 13px 14px 8px 14px !important;
 }

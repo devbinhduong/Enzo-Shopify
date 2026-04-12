@@ -106,7 +106,7 @@ input::-webkit-search-decoration {
 
 .template-search__search .field__input ,
 .template-search__search .field__input:focus {
-  padding: 1.5rem 0.5rem 1.5rem 2rem;
+  padding: 1.5rem 0.5rem 1.5rem 4rem;
 }
 
 .template-search__search predictive-search[open] .field {

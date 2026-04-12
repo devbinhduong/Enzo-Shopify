@@ -4,7 +4,7 @@
   assign max_items = bl_stts.popular_products_show | default: 3 | at_least: 1
   assign show_arrows = bl_stts.popular_products_arrows
   assign columns_gap = 12
-  assign bl_id = block.id
+  assign bl_id = section.id | append: '-' | append: block.id
 
   assign pagination_type = nil
 -%}

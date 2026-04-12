@@ -468,10 +468,6 @@ if (!customElements.get('section-fetcher')) customElements.define('section-fetch
 
 function getScrollbarWidth() {
   let width = window.innerWidth - document.documentElement.clientWidth;
-  
-  if (width == 0) {
-    width = 15;
-  }
 
   if (width > 18) return;
   document.documentElement.style.setProperty('--scrollbar-width', `${width}px`);
@@ -2801,7 +2797,8 @@ class Wishlist extends HTMLElement {
 
   init() {
     this.wishlistButton = this.querySelector("[data-wishlist]");
-    if (this.wishlistButton) {
+    if (this.wishlistButton && !this.wishlistButton.dataset.eventBound) {
+      this.wishlistButton.dataset.eventBound = 'true';
       this.wishlistButton.addEventListener(
         "click",
         this.onWishlistButtonClick.bind(this)
@@ -2809,11 +2806,17 @@ class Wishlist extends HTMLElement {
     }
   }
 
+
   onWishlistButtonClick(event) {
     event.preventDefault();
     event.stopPropagation();
 
-    const target = event.currentTarget;
+
+    const target = event.currentTarget.closest('[data-wishlist]');
+    if (!target) return;
+
+    console.log("target", target)
+
     const isInGrid = target.classList.contains("is-in-grid");
 
     if (!isInGrid) {
@@ -2864,7 +2867,9 @@ class Wishlist extends HTMLElement {
     }
 
     checkWishlistCountGlobal(wishlistList);
-    setProductForWishlistGlobal(handle);
+    // User requirement: Scoped Context limit visual updates to the clicked element within modal.
+    // We suppress the global wishlist button sync which modifies the Drawer elements globally.
+    // If you wish to sync globally, call setProductForWishlistGlobal(handle) instead.
   }
 
   setProductForWishlist(handle) {

@@ -17,6 +17,8 @@
   endif
 
   assign columns_desktop = sec_stts.columns_desktop
+  assign columns_small_desktop = 4
+
   assign columns_tablet = 2
   if columns_desktop == 1
     assign columns_tablet = 1
@@ -102,8 +104,8 @@
         {%- assign slides_per_view = columns_mobile -%}
         {%- capture breakpoints -%}
           {
-            "768": { "slidesPerView": {{ columns_mobile }} },
-            "1024": { "slidesPerView": {{ columns_tablet }} },
+            "768": { "slidesPerView": {{ columns_tablet }} },
+            "1024": { "slidesPerView": {{ columns_small_desktop }} },
             "1400": { "slidesPerView": {{ columns_desktop }} }
           }
         {%- endcapture -%}
@@ -416,6 +418,14 @@
         {
           "value": "2",
           "label": "t:options.two_columns"
+        },
+        {
+          "value": "1.2",
+          "label": "1.2"
+        },
+        {
+          "value": "2.1",
+          "label": "2.1"
         }
       ]
     },

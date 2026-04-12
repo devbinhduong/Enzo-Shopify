@@ -340,6 +340,28 @@ class CartItemsComponent extends HTMLElement {
             el.textContent = '(' + window.cartStrings.items.replace('[count]', json.item_count) + ')';
           }
         });
+        if (json.item_count == 0) {
+            const cartDrawer = document.querySelector('cart-drawer');
+
+            if (!cartDrawer.querySelector('.cart-drawer__warnings')) {
+              cartDrawer.classList.add('is-empty');
+              cartDrawer.querySelector('cart-drawer-items').classList.add('is-empty');
+
+              cartDrawer.querySelector('.drawer__inner').style.display = 'flex';
+              cartDrawer.querySelector('.drawer__header').style.width = '100%';
+
+              const emptyTmp = `
+                <div class="cart-drawer__warnings flex flex-column flex-1 justify-center center cart-drawer__warnings--has-collection">
+                  <div class="cart-drawer__empty-content">
+                    <h4 class="cart__empty-text">Your cart is empty</h4>
+                    <a href="/collections/all" class="button">
+                      Continue shopping
+                    </a></div>
+                </div>
+                `
+                cartDrawer.querySelector('.drawer__header').insertAdjacentHTML('afterend', emptyTmp);
+            }
+        }
       }
 
     } catch (err) {
@@ -363,6 +385,8 @@ class CartItemsComponent extends HTMLElement {
 
     resetSpinner(this);
     resetShimmer(this);
+
+    console.log("sections", sections);
 
     Object.entries(sections).forEach(([id, html]) => {
       this.#updateSingleSection(id, html);
@@ -491,6 +515,23 @@ class CartDrawerItems extends CartItemsComponent {
     const newDOM = new DOMParser().parseFromString(html, 'text/html');
     const newCartDrawerItems = newDOM.querySelector('cart-drawer-items');
     const newCartDrawerFooter = newDOM.querySelector('.cart-drawer__footer');
+
+    const newIsEmpty = newDOM.querySelector('.drawer__inner-empty') !== null ||
+                       newCartDrawerItems?.classList.contains('is-empty');
+
+    if (newIsEmpty) {
+      const newCartDrawerEl = newDOM.getElementById('CartDrawer');
+      const targetCartDrawerEl = document.getElementById('CartDrawer');
+      if (newCartDrawerEl && targetCartDrawerEl) {
+        targetCartDrawerEl.innerHTML = newCartDrawerEl.innerHTML;
+      }
+      // Sync class is-empty lên cart-drawer element
+      const cartDrawer = document.querySelector('cart-drawer');
+      if (cartDrawer) {
+        cartDrawer.classList.add('is-empty');
+      }
+      return;
+    }
     
     if (newCartDrawerItems) {
       const target = document.querySelector('cart-drawer-items');

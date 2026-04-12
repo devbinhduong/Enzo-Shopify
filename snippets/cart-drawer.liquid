@@ -21,17 +21,25 @@
     >
       {%- if cart == empty -%}
         <div class="drawer__inner-empty h-full overflow-hidden flex flex-column" style="--p: 0 1.5rem;">
-          <div class="drawer__header flex justify-end items-center relative" style="--p: var(--padding-xs) 0;">
+          <div class="drawer__header flex justify-between items-center relative" style="--p: 0.35rem 1.5rem;">
+            <h2 class="drawer__heading flex items-center break m-0 h5">
+              <span class="svg-wrapper icon-cart" style="--m: 0 1rem 0 0;">
+                {{- 'icon-cart.svg' | inline_asset_content -}}
+              </span>
+              {{ 'content.your_cart' | t }}
+              <span class="wrapper-cart-count" data-cart-text>(0 item)</span>
+            </h2>
             <button
               class="drawer__close block t-button bor-none rounded-full cursor-pointer"
               type="button"
               onclick="this.closest('cart-drawer').close()"
               aria-label="{{ 'accessibility.close_dialog' | t }}"
-              style="--top: 0.3rem; --right: 0.3rem;"
             >
-            <span class="svg-wrapper"> {{- 'icon-close.svg' | inline_asset_content -}} </span>
+              <span class="svg-wrapper"> {{- 'icon-close.svg' | inline_asset_content -}} </span>
             </button>
           </div>
+
+          
           <div class="cart-drawer__warnings flex flex-column flex-1 justify-center center{% if section.settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
             <div class="cart-drawer__empty-content">
               <h4 class="cart__empty-text">{{ 'content.empty' | t }}</h4>
@@ -99,9 +107,6 @@
                   {{ cart_drawer_product_block }}
                 </div>
               {%- endif -%}
-              {%- if cart_drawer_popular_products_block != blank -%}
-                {{ cart_drawer_popular_products_block }}
-              {%- endif -%}
               <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
               <p id="CartDrawer-LineItemStatus" class="visually-hidden" aria-hidden="true" role="status">
                 {{ 'accessibility.loading' | t }}
@@ -118,6 +123,7 @@
             endif
           -%}
 
+          {% if cart != empty %}
           <div class="drawer__footer">
             {% if settings.show_cart_note or settings.show_cart_estimate_shipping or settings.show_cart_coupon %}
             <div class="drawer--function-blocks">
@@ -446,6 +452,20 @@
               </button>
             </div>
           </div>
+        {% endif %}
+        <div class="drawer__more-block">
+          {%- if cart_drawer_payment_icons -%}
+            <div class="drawer__more-block-icons">
+              {{ cart_drawer_payment_icons }}
+            </div>
+          {%- endif -%}
+
+          {%- if cart_drawer_popular_products_block -%}
+            <div class="drawer__more-block-product">
+              {{ cart_drawer_popular_products_block }}
+            </div>
+          {%- endif -%}
+        </div>
         </div>
       </cart-drawer-items>
     </div>

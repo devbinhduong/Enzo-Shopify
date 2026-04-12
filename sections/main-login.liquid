@@ -48,9 +48,9 @@
     --p-spacing-b: {{ section.settings.padding_bottom }}px;
   "
 >
-  <h2 id="recover" tabindex="-1" class="center">
+  <h1 id="recover" tabindex="-1" class="center">
     {{ 'customer.recover_password.title' | t }}
-  </h2>
+  </h1>
   <div>
     <p class="center">
       {{ 'customer.recover_password.subtext' | t }}
@@ -191,7 +191,7 @@
               >
             </div>
           {%- endif -%}
-          <div class="field items-center gap-4xl">
+          <div class="field items-center gap-4xl max-sm:flex-wrap">
             <button class="button button--primary button--login">
               <span class="button-overflow relative overflow-hidden" data-button-text="{{ 'customer.login_page.title' | t }}">
                 <span class="button-text-main inline-block relative z-1">

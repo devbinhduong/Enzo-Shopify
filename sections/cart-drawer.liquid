@@ -24,11 +24,15 @@
     {% content_for 'block', id: 'cart-product', type: '_cart-product' %}
   {% endcapture %}
 
+  {%- capture cart_drawer_payment_icons -%}
+    {% content_for 'block', id: 'cart-payment-icons', type: 'payment-icons' %}
+  {%- endcapture -%}
+
   {% capture cart_drawer_popular_products_block %}
     {% content_for 'block', id: 'cart-popular-products', type: '_cart-popular-products' %}
   {% endcapture %}
 
-  {%- render 'cart-drawer', cart_drawer_product_block: cart_drawer_product_block, cart_drawer_popular_products_block: cart_drawer_popular_products_block, section_fetch: section_fetch -%}
+  {%- render 'cart-drawer', cart_drawer_product_block: cart_drawer_product_block, cart_drawer_payment_icons: cart_drawer_payment_icons, cart_drawer_popular_products_block: cart_drawer_popular_products_block, section_fetch: section_fetch -%}
 
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>

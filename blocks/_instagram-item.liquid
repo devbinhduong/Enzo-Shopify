@@ -201,6 +201,7 @@
                   src="{{ sourceElement.url }}"
                   type="{{ sourceElement.mime_type }}"
                 >
+                <track kind="captions" srclang="en" label="English" default>
               {% endif %}
             {%- endfor -%}
             </video>

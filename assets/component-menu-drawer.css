@@ -280,6 +280,11 @@ details[open].menu-opening > .menu-drawer__submenu {
 
   .search__button {
     color: var(--color-foreground-heading);
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
   }
 
   .search__input.field__input {

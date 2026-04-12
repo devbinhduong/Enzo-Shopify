@@ -185,9 +185,9 @@
   class="link link--hover-underline link--text"
 {%- endcapture -%}
 
-<nav class="breadcrumbs element-margin-bottom custom-font-size test12121212121212 {% if hide_on_desktop %}hide-on-desktop{% endif %} {% if hide_on_mobile %}hide-on-mobile{% endif %}" role="navigation" aria-label="{{ 'content.breadcrumb.title' | t }}" style="--font-size: {{ settings.font_size }};--button-font-size-link: var(--font-size);--fluid-font-size: {{ fluid_font_size }}">
+<nav class="breadcrumbs element-margin-bottom custom-font-size {% if hide_on_desktop %}hide-on-desktop{% endif %} {% if hide_on_mobile %}hide-on-mobile{% endif %}" role="navigation" aria-label="{{ 'content.breadcrumb.title' | t }}" style="--font-size: {{ settings.font_size }};--button-font-size-link: var(--font-size);--fluid-font-size: {{ fluid_font_size }}">
   <ol
-    class="breadcrumbs__list list-unstyled max-sm:flex justify-{{ settings.horizontal_alignment }} items-center gap-style overflow-x-a hide-scrollbar"
+    class="breadcrumbs__list list-unstyled max-sm:flex flex justify-{{ settings.horizontal_alignment }} items-center gap-style overflow-x-a hide-scrollbar"
     style="{% render 'gap-style', value: settings.gap %}"
   >
     <li {{ attr_item }}>

@@ -53,6 +53,7 @@
       <div class="accountTabs__content" id="accountTabs-2" role="tabpanel" aria-labelledby="accountTabs-2-tab">
         <h2 class="accountTabs__title">{{ 'customer.orders.title' | t }}</h2>
 
+        {% if customer.orders.size > 0 %}
         <div class="orders-table">
           <div class="orders-table__head">
             <div class="orders-table__head__item orders-table__head__item--date">Date</div>
@@ -119,6 +120,9 @@
             </div>
           {% endfor %}
         </div>
+        {% else %}
+          <p>No orders found</p>
+        {% endif %}
       </div>
       <div class="accountTabs__content" id="accountTabs-3" role="tabpanel" aria-labelledby="accountTabs-3-tab">
         <h2 class="accountTabs__title">My Wishlist</h2>
