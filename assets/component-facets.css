@@ -259,8 +259,8 @@ dialog-component.facets-block-wrapper:not(:has(.facets--drawer[open])) {
   }
 
   .collection-wrapper {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
   }
 
   .mobile-facets__open {
@@ -3169,12 +3169,12 @@ body:not(.firefox) .facets-price__range:before {
   .filter-block-left .results-count::after {
     content: "";
     width: 1px;
-    height: 140%;
+    height: 100%;
     position: absolute;
     top: 50%;
     right: -3rem;
     transform: translateY(-50%);
-    background-color: #1A1A1A;
+    background-color: var(--color-foreground);
   }
 
   .sorting-wrapper .facets__summary > span {

@@ -20,12 +20,11 @@
     aria-controls="{{ localPosition }}List"
     aria-describedby="{{ localPosition }}Label"
   >
-    {% comment %} <span class="icon-flag icon-flag--{{ localization.language.iso_code }}"></span> {% endcomment %}
     {% if country_style == true %}
       <span class="icon-flag icon-flag--{{ localization.language.iso_code }}"></span>
     {% endif %}
     <span>{{ localization.language.endonym_name | capitalize }}</span>
-    {% comment %} {{ 'icon-caret.svg' | inline_asset_content }} {% endcomment %}
+    {{ 'icon-caret-custom.svg' | inline_asset_content }}
   </button>
   <div class="selector__dropdown" element-s-up>
     <div id="Selector-Overlay" class="slide__overlay--mb"></div>

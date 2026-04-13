@@ -57,7 +57,7 @@
     data-product-id="{{ closest.product.id }}"
     data-update-url="true"
     data-url="{{ closest.product.url }}"
-    style="{% render 'spacing-style', settings: section.settings %} --gap: {{ section.settings.gap }}px;"
+    style="{% render 'spacing-style', settings: section.settings %} --gap: {{ section.settings.gap }}px; {% if section.settings.custom_padding_mb %} padding-block-start: {{ section.settings.padding-block-start-mb }}px !important; padding-block-end: {{ section.settings.padding-block-end-mb }}px !important; {% endif %}"
   >
     {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
     {{ 'component-rating.css' | asset_url | stylesheet_tag }}
@@ -274,6 +274,34 @@
       "step": 1,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "checkbox",
+      "label": "Custom padding mobile",
+      "id": "custom_padding_mb",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start-mb",
+      "label": "Top (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.custom_padding_mb }}"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end-mb",
+      "label": "Bottom (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.custom_padding_mb }}"
     }
   ],
   "presets": []

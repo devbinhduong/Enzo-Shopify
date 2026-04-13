@@ -16633,7 +16633,7 @@ body:has(> #header-group:empty) {
 
   &:has(.header__search .search--inline) {
     .search__input.field__input {
-      padding: 1rem 1.5rem 1rem 6.5rem;
+      padding: 1rem 1.5rem 1rem 5.3rem;
     }
 
     .header__search--underline .search__input.field__input {
@@ -18376,6 +18376,13 @@ details[open] > .header__icon--menu .icon-hamburger {
   font-family: var(--button-type-font-link);
   padding: 1rem calc(var(--gap-x) / 2 + 1rem);
 }
+
+@media (min-width: 1025px) and (max-width: 1400px) {
+  .header__menu-item.menu__link--level-1 {
+    padding: 1rem;
+  }
+}
+
 .header__menu-item span:not(.svg-wrapper) {
   &.svg-wrapper {
     margin-right: 0;
@@ -18786,7 +18793,7 @@ details-disclosure > details {
 }
 
 .header__search .search--inline .predictive-search--center .search__button {
-  left: 1rem;
+  left: 0.5rem;
   top: 1px;
   border-top-right-radius: var(--inputs-radius);
   border-bottom-right-radius: var(--inputs-radius);
@@ -19698,14 +19705,48 @@ details-disclosure > details {
   .hide-on-mobile {
     display: none;
   }
+
+  .button.email-signup__button {
+    line-height: 1;
+  }
 }
 
 @media (max-width: 1024px) {
   .hide-on-tablet {
     display: none !important;
   }
+
+  .cart-count-bubble {
+    top: -8px;
+  }
 }
 
 .recently-viewed-products .card-product-information {
   padding: 13px 14px 8px 14px !important;
+}
+
+.desktop-localization-wrapper {
+  flex-wrap: nowrap !important;
+  flex-direction: row-reverse;
+}
+
+.desktop-localization-wrapper svg {
+  width: 10px;
+  height: 5px;
+  min-width: 10px;
+  min-height: 5px;
+}
+
+.header-localization:not(.menu-drawer__localization) .localization-form__select:not(.localization-form__select--icon):not(:has(.icon-caret)) {
+  padding-left: 5px;
+}
+
+.header-localization:not(.menu-drawer__localization) .localization-form__select:not(.localization-form__select--icon):not(:has(.icon-caret)) {
+  padding-right: 5px;
+}
+
+@media (min-width: 751px) and (max-width: 1024px) {
+  .section-footer .shopify-block.payment-icons {
+    margin-top: 1rem !important;
+  }
 }

@@ -575,6 +575,7 @@ featured-product product-recommendations swiper-component,
 
 .product-form__buttons .quantity {
   min-height: 5.2rem;
+  max-width: 10.5rem;
 }
 
 .product-information__grid {
@@ -640,12 +641,11 @@ featured-product product-recommendations swiper-component,
   }
 
   .sticky-combined-variant-select {
-    padding: 0 2rem;
+    padding: 0 3.5rem 0 2rem;
     min-width: 12rem;
     border-radius: 5px;
     border: 1px solid rgba(26, 26, 26, 0.30);
     height: 52px;
-    padding-right: 3rem;
   }
 
   .sticky-cart__quantity {

@@ -87,7 +87,7 @@ style="
           <div class="sticky-atc__combined-dropdown w-full">
             <div class="product-form__input product-form__input--dropdown" data-context="sticky" style="margin-bottom: 0;">
               <div class="select">
-                <select class="select__select sticky-combined-variant-select w-full font-body" style="padding-top: 1rem; padding-bottom: 1rem;">
+                <select id="sticky-combined-variant-select-mb" class="select__select sticky-combined-variant-select w-full font-body" style="padding-top: 1rem; padding-bottom: 1rem;">
                   {%- for variant in product.variants -%}
                     <option value="{{ variant.id }}"
                       data-inventory-quantity="{{ variant.inventory_quantity }}"
@@ -176,7 +176,7 @@ style="
               <div class="sticky-atc__combined-dropdown flex-shrink-0 small-hide">
                 <div class="product-form__input product-form__input--dropdown" data-context="sticky" style="margin-bottom: 0;">
                   <div class="select">
-                    <select class="select__select sticky-combined-variant-select w-full font-body" style="padding-top: 1rem; padding-bottom: 1rem;">
+                    <select id="sticky-combined-variant-select" class="select__select sticky-combined-variant-select w-full font-body" style="padding-top: 1rem; padding-bottom: 1rem;">
                       {%- for variant in product.variants -%}
                         <option value="{{ variant.id }}"
                           data-inventory-quantity="{{ variant.inventory_quantity }}"

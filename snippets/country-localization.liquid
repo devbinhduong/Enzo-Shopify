@@ -39,14 +39,14 @@
     aria-controls="{{ localPosition }}-country-results"
     aria-describedby="{{ localPosition }}Label"
   >
+  <span class="icon-flag icon-flag--{{ localization.country.iso_code }}"></span>
     {% if country_style == true %}
-      <span class="icon-flag icon-flag--{{ localization.country.iso_code }}"></span>
     {% endif %}
     <span>
       {{ localization.country.currency.symbol -}}
       {{ localization.country.currency.iso_code }}
     </span>
-    {{ 'icon-caret.svg' | inline_asset_content }}
+    {{ 'icon-caret-custom.svg' | inline_asset_content }}
   </button>
   <div class="selector__dropdown" element-s-up>
     <div id="Selector-Overlay" class="slide__overlay--mb"></div>

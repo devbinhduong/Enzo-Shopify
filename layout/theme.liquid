@@ -39,6 +39,53 @@
       >
     {%- endunless -%}
 
+    {%- comment -%}
+      Font Preload — Critical Path Optimization
+      Preloading fonts eliminates FOIT/FOUT by fetching font files at the
+      highest network priority BEFORE the CSS parser discovers them.
+      crossorigin is mandatory because fonts.shopifycdn.com is a different origin.
+      font-display: swap is applied in global-style / base CSS so text renders
+      immediately with a fallback font while the custom font loads.
+    {%- endcomment -%}
+
+    {%- unless settings.type_header_font.system? -%}
+      <link
+        rel="preload"
+        as="font"
+        href="{{ settings.type_header_font | font_url: 'woff2' }}"
+        type="font/woff2"
+        crossorigin="anonymous"
+      >
+    {%- endunless -%}
+
+    {%- unless settings.type_body_font.system? -%}
+      <link
+        rel="preload"
+        as="font"
+        href="{{ settings.type_body_font | font_url: 'woff2' }}"
+        type="font/woff2"
+        crossorigin="anonymous"
+      >
+    {%- endunless -%}
+
+    {%- comment -%}
+      Bold weight variant of body font (used heavily in product prices,
+      headings inside body copy, etc.) — worth preloading to avoid FOUT
+      on weight-shift after the regular weight has loaded.
+    {%- endcomment -%}
+    {%- unless settings.type_body_font.system? -%}
+      {%- assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bolder' -%}
+      {%- if body_font_bold -%}
+        <link
+          rel="preload"
+          as="font"
+          href="{{ body_font_bold | font_url: 'woff2' }}"
+          type="font/woff2"
+          crossorigin="anonymous"
+        >
+      {%- endif -%}
+    {%- endunless -%}
+
     <title>
       {{ page_title }}
       {%- if current_tags %}

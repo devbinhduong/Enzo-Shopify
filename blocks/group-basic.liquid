@@ -300,6 +300,23 @@
         "default": 12
       },
       {
+        "type": "checkbox",
+        "label": "Custom gap mobile",
+        "id": "custom_gap_mobile",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "gap_mobile",
+        "label": "Gap mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 10,
+        "visible_if": "{{ block.settings.custom_gap_mobile == true }}"
+      },
+      {
         "type": "header",
         "content": "t:content.size"
       },

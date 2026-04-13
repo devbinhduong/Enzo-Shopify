@@ -43,10 +43,70 @@
 {%- endcapture -%}
 
 {% liquid
-  assign media_width_desktop = '100vw'
-  assign media_width_mobile = '100vw'
-  assign sizes = 'auto, (min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
-  assign widths = '300, 450, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2000, 2500, 3000, 3500, 4000, 5000'
+  comment --- DESKTOP width ---
+  endcomment
+  if block.settings.width == 'custom'
+    if block.settings.unit == 'pixel'
+      assign media_width_desktop = block.settings.custom_width_pixel | append: 'px'
+      assign _cap_px = block.settings.custom_width_pixel
+    else
+      assign media_width_desktop = block.settings.custom_width | append: 'vw'
+      assign _cap_px = 2000
+    endif
+  else
+    assign media_width_desktop = '100vw'
+    assign _cap_px = 2000
+  endif
+
+  comment --- TABLET width (750–1024px) ---
+  endcomment
+  if block.settings.width_tablet == 'custom'
+    if block.settings.unit_tablet == 'pixel'
+      assign media_width_tablet = block.settings.custom_width_tablet_pixel | append: 'px'
+    else
+      assign media_width_tablet = block.settings.custom_width_tablet | append: 'vw'
+    endif
+  else
+    assign media_width_tablet = media_width_desktop
+  endif
+
+  comment --- MOBILE width (< 750px) ---
+  endcomment
+  if block.settings.width_mobile == 'custom'
+    if block.settings.unit_mobile == 'pixel'
+      assign media_width_mobile = block.settings.custom_width_mobile_pixel | append: 'px'
+    else
+      assign media_width_mobile = block.settings.custom_width_mobile | append: 'vw'
+    endif
+  else
+    assign media_width_mobile = '100vw'
+  endif
+
+  comment
+    Build sizes string with 3-breakpoint hints.
+    Browser picks the matching srcset width instead of defaulting to 100vw.
+  endcomment
+  assign sizes = '(min-width: 1025px) ' | append: media_width_desktop
+  assign sizes = sizes | append: ', (min-width: 750px) ' | append: media_width_tablet
+  assign sizes = sizes | append: ', ' | append: media_width_mobile
+
+  comment
+    Narrow srcset widths when a pixel cap is known (pixel-unit setting).
+    2x HiDPI = double the pixel value. No point generating 3000-5000px
+    entries for a block configured to 250px.
+  endcomment
+  assign _max_srcset = _cap_px | times: 2
+  if _max_srcset <= 400
+    assign widths = '150, 200, 300, 400'
+  elsif _max_srcset <= 700
+    assign widths = '150, 300, 450, 600, 700'
+  elsif _max_srcset <= 1200
+    assign widths = '300, 450, 600, 750, 900, 1050, 1200'
+  elsif _max_srcset <= 2000
+    assign widths = '450, 600, 750, 900, 1050, 1200, 1500, 1800, 2000'
+  else
+    assign widths = '600, 900, 1200, 1500, 1800, 2000, 2500, 3000, 3500, 4000, 5000'
+  endif
 
   assign element = 'div'
   if block.settings.animation_type == 'fancybox'
@@ -118,7 +178,7 @@
     {%- render 'image',
       image: image,
       class: class_img,
-      width: image.width,
+      width: _cap_px | default: image.width,
       height: image.height,
       widths: widths,
       sizes: sizes,

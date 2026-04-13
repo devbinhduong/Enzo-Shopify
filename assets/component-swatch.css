@@ -4,7 +4,8 @@
   border: var(--variant-pills-border-width) solid
     rgb(var(--color-black-rgb) / var(--opacity-15));
   border-radius: var(--swatch--border-radius);
-  padding: 0.2rem;
+  padding: 0.1rem;
+  max-height: 37px;
   box-shadow: var(--variant-pills-shadow-horizontal-offset)
     var(--variant-pills-shadow-vertical-offset)
     var(--variant-pills-shadow-blur-radius) var(--color-shadow);

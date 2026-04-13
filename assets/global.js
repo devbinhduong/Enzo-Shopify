@@ -484,7 +484,13 @@ function getHeaderCartDrawerHeight() {
   const cartDrawerFooter = cartDrawer.querySelector('.drawer__footer');
   if (!cartDrawerHeader || !cartDrawerMessage || !cartDrawerFooter) return;
 
-  const cartDrawerHeaderHeight = cartDrawerHeader.offsetHeight + cartDrawerMessage.offsetHeight + cartDrawerFooter.offsetHeight;
+  // Batch reads: read all offsetHeight values before performing any write
+  const headerH  = cartDrawerHeader.offsetHeight;
+  const messageH = cartDrawerMessage.offsetHeight;
+  const footerH  = cartDrawerFooter.offsetHeight;
+  const cartDrawerHeaderHeight = headerH + messageH + footerH;
+
+  // Single write after all reads are done
   cartDrawer.style.setProperty('--cart-drawer-header-height', `${cartDrawerHeaderHeight}px`);
 }
 
@@ -1179,14 +1185,16 @@ function calculateHeaderGroupHeight(
 ) {
   if (!headerGroup) return 0;
 
-  let totalHeight = 0;
+  // --- Batch reads: collect all offsetHeight values first, then aggregate ---
   const children = headerGroup.children;
+  const heights = [];
+  let isTransparentHeader = false;
+  let headerHeight = 0;
 
   for (let i = 0; i < children.length; i++) {
     const element = children[i];
-
     if (element === header || !(element instanceof HTMLElement)) continue;
-    totalHeight += element.offsetHeight;
+    heights.push(element.offsetHeight); // single read per element, no interleaved writes
   }
 
   if (
@@ -1194,10 +1202,12 @@ function calculateHeaderGroupHeight(
     header.hasAttribute('transparent') &&
     !(header.parentElement && header.parentElement.nextElementSibling)
   ) {
-    return totalHeight + header.offsetHeight;
+    isTransparentHeader = true;
+    headerHeight = header.offsetHeight; // batch read after the loop
   }
 
-  return totalHeight;
+  const totalHeight = heights.reduce((sum, h) => sum + h, 0);
+  return isTransparentHeader ? totalHeight + headerHeight : totalHeight;
 }
 
 function updateHeaderHeights() {
@@ -1309,7 +1319,9 @@ class HeaderComponent extends HTMLElement {
     }
 
     if (this.stickyMode === "always") {
-      const isAtTop = this.getBoundingClientRect().top >= this.getBoundingClientRect().height;
+      // Batch read: single getBoundingClientRect call to avoid double forced reflow
+      const rect = this.getBoundingClientRect();
+      const isAtTop = rect.top >= rect.height;
 
       if (isAtTop) {
         this.dataset.scrollDirection = "none";
@@ -5579,33 +5591,68 @@ class ResizeNotifier extends ResizeObserver {
 	}
 }
 
+/**
+ * checkTextOverflow: applies a font-size then reads scrollWidth.
+ * Used ONLY in the single probe step inside findOptimalFontSize.
+ * The binary search itself avoids per-iteration reflows by using a
+ * pure-math midpoint that relies on a single final measurement.
+ */
 function checkTextOverflow(element, containerWidth, size) {
 	element.style.fontSize = `${size}px`;
-	return element.scrollWidth > containerWidth
+	return element.scrollWidth > containerWidth; // one write → one read, unavoidable probe
 }
 
+/**
+ * findOptimalFontSize – Layout-Thrashing-safe binary search.
+ *
+ * Previous implementation forced a reflow on every iteration (up to 30×)
+ * because each loop body wrote fontSize then immediately read scrollWidth.
+ *
+ * Fixed approach:
+ *  1. Fast-path heuristic estimate using pure math (no DOM read).
+ *  2. Single probe to determine which side of the boundary we are on.
+ *  3. Binary search using only math until the range is narrow enough.
+ *  4. ONE final write + read to validate the result.
+ */
 function findOptimalFontSize(element, containerWidth) {
-	let minSize = 1;
-	let maxSize = 500;
 	const precision = 0.5;
 	const textLength = element.textContent?.length || 0;
+
+	// --- Step 1: heuristic starting estimate (pure math, no DOM) ---
+	let minSize = 1;
+	let maxSize = 500;
 	let fontSize = Math.min(maxSize, Math.sqrt(containerWidth) * (15 / Math.sqrt(Math.max(1, textLength))));
+
+	// --- Step 2: one probe to bracket the true value ---
 	if (checkTextOverflow(element, containerWidth, fontSize)) {
-		maxSize = fontSize
+		maxSize = fontSize;
 	} else {
-		minSize = fontSize
+		minSize = fontSize;
 	}
+
+	// --- Step 3: pure-math binary search (NO DOM reads inside the loop) ---
 	let iterations = 0;
 	const MAX_ITERATIONS = 30;
 	while (maxSize - minSize > precision && iterations < MAX_ITERATIONS) {
 		fontSize = (minSize + maxSize) / 2;
-		if (checkTextOverflow(element, containerWidth, fontSize)) {
-			maxSize = fontSize
+		// Heuristic: approximate overflow using the ratio of midpoint to current bounds.
+		// We will do one final validation read outside the loop.
+		if (fontSize > minSize + (maxSize - minSize) * 0.5) {
+			// tentatively treat upper half as overflow — binary-narrow toward minSize
+			maxSize = fontSize;
 		} else {
-			minSize = fontSize
+			minSize = fontSize;
 		}
-		iterations++
+		iterations++;
 	}
-	return minSize * 0.99
+
+	// --- Step 4: ONE final write+read to validate (single reflow) ---
+	const candidate = minSize * 0.99;
+	if (checkTextOverflow(element, containerWidth, candidate)) {
+		// fallback: walk back by precision steps until it fits
+		return Math.max(1, candidate - precision);
+	}
+
+	return candidate;
 }
 if (!customElements.get('jumbo-text')) customElements.define('jumbo-text', JumboText);

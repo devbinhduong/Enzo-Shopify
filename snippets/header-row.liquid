@@ -50,6 +50,7 @@
   assign columns = 'left,center,right' | split: ','
 -%}
 
+
 {%- for column in columns -%}
   {%- capture items_for_column -%}
     {% case column %}

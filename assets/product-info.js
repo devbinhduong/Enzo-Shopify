@@ -1881,6 +1881,7 @@ if (!customElements.get('sticky-atc')) {
         this.mainVariantSelects = null;
         this.stickyVariantSelects = null;
         this.isSyncing = false;
+        this.isCombinedSyncing = false;
         this.cartErrorUnsubscriber = null;
         this._handleWindowScroll = this.handleWindowScroll.bind(this);
         
@@ -2001,7 +2002,7 @@ if (!customElements.get('sticky-atc')) {
       setupCombinedSelectSync() {
         this.stickyCombinedSelects.forEach(select => {
           select.addEventListener('change', (event) => {
-            if (this.isSyncing) return;
+            if (this.isCombinedSyncing) return;
             this.syncCombinedToMain(event);
           });
         });
@@ -2017,23 +2018,42 @@ if (!customElements.get('sticky-atc')) {
       }
 
       syncCombinedToMain(event) {
-        this.isSyncing = true;
+        // Refresh mainVariantSelects in case DOM was updated
+        if (this.mainProductInfo) {
+          this.mainVariantSelects = this.mainProductInfo.querySelector('variant-selects') || this.mainVariantSelects;
+        }
+
+        if (!this.mainVariantSelects) {
+          console.warn('[StickyATC] syncCombinedToMain: mainVariantSelects not found, retrying...');
+          setTimeout(() => this.syncCombinedToMain(event), 200);
+          return;
+        }
+
+        this.isCombinedSyncing = true;
         try {
           const selectedOption = event.target.options[event.target.selectedIndex];
-          if (!selectedOption || !this.mainVariantSelects) return;
+          if (!selectedOption) return;
 
-          const optionInventory = selectedOption.getAttribute("data-inventory-quantity");
-          const optionPrice = selectedOption.getAttribute("data-variant-price");
-          const optionSalePrice = selectedOption.getAttribute("data-variant-price-sale");
+          const optionInventory = parseInt(selectedOption.getAttribute('data-inventory-quantity') || '0', 10);
+          const optionPrice = selectedOption.getAttribute('data-variant-price');
+          const optionSalePrice = selectedOption.getAttribute('data-variant-price-sale');
+          const optionId = selectedOption.value || selectedOption.getAttribute('value');
 
-          console.log("optionPrice", optionPrice)
-          console.log("optionSalePrice", optionSalePrice)
+          console.log('[StickyATC] Combined variant changed → syncing to main:', { optionId, optionPrice, optionSalePrice, optionInventory });
 
-          let priceTmp = "";
+          // ── 1. Update hidden form input so ATC submits the right variant ──
+          if (optionId && this.form) {
+            const mainInputId = this.form.querySelector('input[name="id"]');
+            if (mainInputId) {
+              mainInputId.value = optionId;
+              console.log('[StickyATC] Updated form input[name=id] =', optionId);
+            }
+          }
 
-          if (optionSalePrice && optionSalePrice != optionPrice) {
-            priceTmp = `
-            <div class="price-product-container price price--on-sale">
+          // ── 2. Update price display in sticky bar ──
+          let priceTmp = '';
+          if (optionSalePrice && optionSalePrice !== optionPrice) {
+            priceTmp = `<div class="price-product-container price price--on-sale">
                 <span role="group">
                   <span class="visually-hidden">Sale price&nbsp;</span>
                   <span class="price price-item price-item--sale price-item--last">${optionPrice}</span>
@@ -2042,87 +2062,108 @@ if (!customElements.get('sticky-atc')) {
                   <span class="visually-hidden">Regular price&nbsp;</span>
                   <span class="compare-at-price price-item price-item--regular">${optionSalePrice}</span>
                 </span>
-            </div>`
+              </div>`;
           } else {
-            priceTmp = `
-            <div class="price-product-container price">
-              <span class="price price-item price-item--sale price-item--last">${optionPrice}</span>
-            </div>`
+            priceTmp = `<div class="price-product-container price">
+                <span class="price price-item price-item--sale price-item--last">${optionPrice}</span>
+              </div>`;
+          }
+          const stickyATCPriceBlock = document.querySelector('.sticky-atc__wrapper .sticky-atc__price');
+          if (stickyATCPriceBlock) stickyATCPriceBlock.innerHTML = priceTmp;
+
+          // ── 3. Update ATC button state ──
+          const stickyAtcButton = document.querySelector('.sticky-cart__button .product-form__submit');
+          if (stickyAtcButton) {
+            if (optionInventory > 0) {
+              stickyAtcButton.disabled = false;
+              const textEl = stickyAtcButton.querySelector('.add-to-cart-text');
+              if (textEl) textEl.textContent = 'Add to Cart';
+            }
           }
 
-          const stickyATCPriceBlock = document.querySelector(".sticky-atc__wrapper .sticky-atc__price");
-
-          console.log("stickyATCPriceBlock", stickyATCPriceBlock)
-          stickyATCPriceBlock.innerHTML = priceTmp;
-
-          if (optionInventory > 0) {
-            const stickyAtcButton = document.querySelector(".sticky-cart__button .product-form__submit");
-
-            stickyAtcButton.disabled = false;
-
-            stickyAtcButton.querySelector('.add-to-cart-text').textContent = "Add to Cart";
-
-          }
-
+          // ── 4. Sync individual option radios/selects on main product ──
           const options = [
-             selectedOption.dataset.option1,
-             selectedOption.dataset.option2,
-             selectedOption.dataset.option3
+            selectedOption.dataset.option1,
+            selectedOption.dataset.option2,
+            selectedOption.dataset.option3,
           ];
-
-          const newVariantId = selectedOption.value;
-          if (newVariantId && this.form) {
-            const mainInputId = this.form.querySelector('input[name="id"]');
-            if (mainInputId) mainInputId.value = newVariantId;
-          }
 
           const radios = Array.from(this.mainVariantSelects.querySelectorAll('input[type="radio"]'));
           const selects = Array.from(this.mainVariantSelects.querySelectorAll('select'));
 
+          // We dispatch on main but guard with isSyncing so the sticky listener
+          // (setupVariantSync → syncMainToSticky) doesn't fire a feedback loop.
+          this.isSyncing = true;
           options.forEach((optValue, index) => {
             if (!optValue) return;
-
             const cleanOptValue = optValue.trim().toLowerCase();
             const optionStringIndex = `-${index + 1}`;
 
-            // Find matching radio for this position group
-            const matchingRadio = radios.find(radio => 
-              radio.value.trim().toLowerCase() === cleanOptValue && 
-              radio.name.endsWith(optionStringIndex)
+            // Try radio first
+            const matchingRadio = radios.find(r =>
+              r.value.trim().toLowerCase() === cleanOptValue &&
+              r.name.endsWith(optionStringIndex)
             );
 
             if (matchingRadio) {
-              const groupName = matchingRadio.name;
-              Array.from(document.getElementsByName(groupName)).forEach((el) => {
-                if (el instanceof HTMLInputElement && el.type === 'radio') {
-                  el.checked = false;
-                }
-              });
-              matchingRadio.checked = true;
+              if (!matchingRadio.checked) {
+                Array.from(document.getElementsByName(matchingRadio.name)).forEach(el => {
+                  if (el instanceof HTMLInputElement && el.type === 'radio') el.checked = false;
+                });
+                matchingRadio.checked = true;
+              }
+              console.log('[StickyATC] Dispatching change on main radio:', matchingRadio.name, '=', matchingRadio.value);
+              matchingRadio.dispatchEvent(new Event('input', { bubbles: true }));
               matchingRadio.dispatchEvent(new Event('change', { bubbles: true }));
               return;
             }
 
-            // Fallback for dropdowns
-            const matchingSelect = selects.find(sel => {
-               const matchedOpt = Array.from(sel.options).find(opt => opt.value.trim().toLowerCase() === cleanOptValue);
-               return !!matchedOpt; // we could also verify sel.id or name but value match is usually enough in a select
-            });
-
+            // Fallback: select
+            const matchingSelect = selects.find(sel =>
+              Array.from(sel.options).some(opt => opt.value.trim().toLowerCase() === cleanOptValue)
+            );
             if (matchingSelect) {
-               const matchedOpt = Array.from(matchingSelect.options).find(opt => opt.value.trim().toLowerCase() === cleanOptValue);
-               if (matchedOpt) {
-                 Array.from(matchingSelect.options).forEach(opt => opt.removeAttribute('selected'));
-                 matchedOpt.setAttribute('selected', 'selected');
-                 matchingSelect.value = matchedOpt.value;
-                 matchingSelect.dispatchEvent(new Event('change', { bubbles: true }));
-               }
+              const matchedOpt = Array.from(matchingSelect.options).find(
+                opt => opt.value.trim().toLowerCase() === cleanOptValue
+              );
+              if (matchedOpt && matchingSelect.value !== matchedOpt.value) {
+                Array.from(matchingSelect.options).forEach(opt => opt.removeAttribute('selected'));
+                matchedOpt.setAttribute('selected', 'selected');
+                matchingSelect.value = matchedOpt.value;
+                console.log('[StickyATC] Dispatching change on main select:', matchingSelect.name, '=', matchedOpt.value);
+                matchingSelect.dispatchEvent(new Event('input', { bubbles: true }));
+                matchingSelect.dispatchEvent(new Event('change', { bubbles: true }));
+              }
             }
           });
-        } catch(e) {
-          console.error("StickyCombined Sync Error:", e);
-        } finally {
           this.isSyncing = false;
+
+          // ── 5. Keep all other combined selects in sync ──
+          this.stickyCombinedSelects.forEach(sel => {
+            if (sel !== event.target && sel.value !== optionId) {
+              sel.value = optionId;
+            }
+          });
+
+          console.log('[StickyATC] syncCombinedToMain complete for variant', optionId);
+          const mainCurrentSwatch = this.mainProductInfo.querySelector(`.swatch-item [data-variant-id="${optionId}"]`);
+
+          const swatchItem = mainCurrentSwatch.closest('.swatch-item');
+
+          // remove current checked before set new checked
+          swatchItem.parentElement.querySelectorAll('.swatch-item').forEach(item => {
+            item.querySelector('input').removeAttribute('checked');
+            item.querySelector('input').dispatchEvent(new Event('change', { bubbles: true }));
+          });
+          swatchItem.querySelector('input').checked = true;
+          swatchItem.querySelector('input').dispatchEvent(new Event('change', { bubbles: true }));
+
+          console.log("swatchItem", swatchItem)
+        } catch (e) {
+          console.error('[StickyATC] syncCombinedToMain Error:', e);
+          this.isSyncing = false;
+        } finally {
+          this.isCombinedSyncing = false;
         }
       }
 
@@ -2649,7 +2690,6 @@ function readMoreDescription() {
   if (!readMoreButton) return;
 
   readMoreButton.addEventListener('click', () => {
-    console.log('read more button clicked');
     descriptionTabs.forEach((tab) => {
       const parentTab = tab.closest('.block-product-tabs');
 

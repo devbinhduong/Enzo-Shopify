@@ -178,14 +178,16 @@
 
 .tabs-content .toggle-title .svg-wrapper {
   position: absolute;
-  right: -4px;
+  right: -6px;
   top: 50%;
   transform: translateY(-50%) rotate(var(--icon-rotate, 0deg));
 }
 
 .tabs-content .toggle-title .svg-wrapper svg {
-  height: var(--icon-size-xs);
-  width: var(--icon-size-xs);
+  /* height: var(--icon-size-xs);
+  width: var(--icon-size-xs); */
+  width: 15px;
+  height: 8px;
 }
 
 .style-accordion .toggle-content {
@@ -230,7 +232,8 @@
 .tab-content.border-bottom side-drawer-opener {
   border-bottom: 1px solid var(--accordion-border-color);
 }
-.tab-content.border-top-bottom side-drawer-opener {
+.tab-content.border-top-bottom side-drawer-opener,
+.tab-content.border-top-bottom {
   border-top: 1px solid var(--accordion-border-color);
   border-bottom: 1px solid var(--accordion-border-color);
 }

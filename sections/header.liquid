@@ -294,6 +294,8 @@
         if row == 'top'
           assign style = style | append: '--border-bottom-width-mobile: [width]px; ' | replace: '[width]', section.settings.border_width
         endif
+
+        assign order = 'multi_tab_menu,logo,mobile_logo,menu,message,localization,account,search,mobile_search,actions,custom_button'
       %}
 
       {% capture content %}
@@ -1053,7 +1055,7 @@
         "id": "menu_gap",
         "label": "t:settings.gap",
         "min": 0,
-        "max": 30,
+        "max": 40,
         "step": 1,
         "unit": "px",
         "default": 0

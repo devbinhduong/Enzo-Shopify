@@ -201,3 +201,9 @@
   line-height: 21px;
   text-transform: capitalize;
 }
+
+@media (max-width: 749px) {
+  #ProductGridContainer .product-grid {
+    gap: 1rem !important;
+  }
+}

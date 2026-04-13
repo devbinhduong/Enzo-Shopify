@@ -3,6 +3,8 @@
   assign price_cents = product.selected_or_first_available_variant.price
   assign ratio_cents = ratio | times: 100
   assign point_link = block.settings.point_link
+  assign before_text = block.settings.before_text
+  assign after_text = block.settings.after_text
   
   assign points = price_cents | divided_by: ratio_cents | round: 0
 -%}
@@ -11,15 +13,15 @@
   {% content_for 'block', type: 'icon', id: 'point-icon' %}
 
   {%- capture point_text -%}
-    Collect 
+    {{ before_text }} 
       <span class="point-value">
         <a class="link link--underline" href="{{ point_link }}" style="color: {{ block.settings.accent_color }}; font-weight: 600;">{{ points }} KS points</a>
       </span> 
-      with this purchase
+      {{ after_text }}
   {%- endcapture -%}
 
   <div class="product-reward-points" {{ block.shopify_attributes }}>
-      <p style="margin:0;">
+      <p style="margin:0; font-size: {{ block.settings.font_size }}px;">
         {{ point_text }}
       </p>
   </div>
@@ -30,6 +32,18 @@
   "name": "Points text",
   "tag": null,
   "settings": [
+    {
+      "type": "text",
+      "id": "before_text",
+      "label": "Before text",
+      "default": "Collect"
+    },
+    {
+      "type": "text",
+      "id": "after_text",
+      "label": "After text",
+      "default": "with this purchase"
+    },
     {
       "type": "number",
       "id": "point_ratio",
@@ -42,6 +56,16 @@
         "id": "accent_color",
         "label": "Point text color",
         "default": "#FF76A1"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
     },
     {
       "type": "url",

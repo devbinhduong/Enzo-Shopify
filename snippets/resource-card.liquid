@@ -20,9 +20,31 @@
   else
     assign ratio = image_aspect_ratio
   endif
-  assign image_width = image_width | default: 1200
-  assign widths = '240, 352, 832, 1200'
-  assign image_sizes = image_sizes | default: 'auto'
+  comment
+    image_width caps the URL in src="" (CDN limit).
+    600px is enough for cards that rarely exceed ~500px on any viewport.
+    Callers that need larger cards (e.g. hero cards) should pass image_width explicitly.
+  endcomment
+  assign image_width = image_width | default: 300
+
+  comment
+    Granular widths across the small-to-medium range.
+    The old list (240, 352, 832, 1200) had a 352→832 gap that meant a 223px
+    card at 2× DPR (446px needed) had no close match and fell back to 832.
+  endcomment
+  assign widths = '150, 200, 300, 450, 600'
+
+  comment
+    Provide a meaningful default sizes hint instead of sizes="auto".
+    sizes="auto" is only properly supported in very recent browsers and
+    requires loading="lazy"; older browsers silently ignore it and fall
+    back to the src URL (often 650px+ even for a 223px card).
+
+    Default assumption: cards are displayed in a 4-column grid on desktop,
+    3-column on tablet, 2-column on mobile — callers should pass image_sizes
+    explicitly if their layout differs (e.g. search drawer = single column).
+  endcomment
+  assign image_sizes = image_sizes | default: '(min-width: 1200px) 25vw, (min-width: 750px) 33vw, 50vw'
   assign single_thumbnail_collection = false
   if resource_type == 'collection' and collection_thumbnails != 'multiple'
     assign single_thumbnail_collection = true
