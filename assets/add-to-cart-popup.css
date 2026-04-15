@@ -43,7 +43,7 @@ add-to-cart-popup .add-to-cart-popup__content-info {
     grid-template-areas:
         "media details"
         "media quantity";
-    gap: var(--gap-xs);
+    gap: 1rem;
     align-items: start;
     padding-block: calc(var(--cart-items-gap) / 2);
     padding-inline: var(--cart-items-gap);

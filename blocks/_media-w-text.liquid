@@ -152,7 +152,9 @@
           slides_per_view: slides_per_view,
           space_between: space_between_mobile,
           watch_slides_progress: true,
-          breakpoints: breakpoints
+          breakpoints: breakpoints,
+          autoplay: block.settings.autoplay,
+          autoplay_speed: block.settings.autoplay_speed
         -%}
         style="
           {% render 'swiper-style',
@@ -351,6 +353,24 @@
       "label": "t:settings.loop",
       "default": false,
       "visible_if": "{{ block.settings.layout_type == 'carousel'}}"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:settings.autoplay",
+      "default": false,
+      "visible_if": "{{ block.settings.layout_type == 'carousel' }}"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "t:settings.autoplay_speed",
+      "min": 3,
+      "max": 7,
+      "step": 1,
+      "unit": "s",
+      "default": 3,
+      "visible_if": "{{ block.settings.autoplay == true and block.settings.layout_type == 'carousel' }}"
     },
     {
       "type": "select",

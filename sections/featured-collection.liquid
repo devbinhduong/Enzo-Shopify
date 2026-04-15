@@ -31,6 +31,10 @@
   else
     assign columns_desktop = sec_stts.columns_desktop
   endif
+  assign columns_small_desktop = 4
+  if columns_desktop == 3
+    assign columns_small_desktop = 2
+  endif
   assign columns_tablet = 2
   if columns_desktop == 1
     assign columns_tablet = 1
@@ -578,9 +582,9 @@
             {%- endif -%}
             {%- capture breakpoints -%}
               {
-                {% if has_media_banner %}"0": { "slidesPerView": {{ columns_mobile }}, "slidesOffsetAfter": 60 },{% endif %}
-                "768": { "slidesPerView": {% if is_widget %}1{% else %}{{ columns_tablet }}{% endif %}{% if has_media_banner %}, "slidesOffsetAfter": 130 {% endif %} },
-                "1024": { "slidesPerView": {% if is_widget %}{{ columns_desktop }}{% else %}{{ columns_tablet }}{% endif %}{% if has_media_banner %}, "slidesOffsetAfter": 130 {% endif %} },
+                {% if has_media_banner %}"0": { "slidesPerView": {{ columns_mobile }}, "slidesOffsetAfter": 40 },{% endif %}
+                "768": { "slidesPerView": {% if is_widget %}1{% else %}{{ columns_tablet }}{% endif %}{% if has_media_banner %}, "slidesOffsetAfter": 50 {% endif %} },
+                "1024": { "slidesPerView": {% if is_widget %}{{ columns_desktop }}{% else %}{{ columns_small_desktop }}{% endif %}{% if has_media_banner %}, "slidesOffsetAfter": 60 {% endif %} },
                 "1400": { "slidesPerView": {{ columns_desktop }}{% if has_media_banner %}, "slidesOffsetAfter": 130 {% endif %} }
               }
             {%- endcapture -%}

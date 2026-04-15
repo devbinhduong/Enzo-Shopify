@@ -2038,6 +2038,7 @@ if (!customElements.get('sticky-atc')) {
           const optionPrice = selectedOption.getAttribute('data-variant-price');
           const optionSalePrice = selectedOption.getAttribute('data-variant-price-sale');
           const optionId = selectedOption.value || selectedOption.getAttribute('value');
+          const optionName = selectedOption.getAttribute('data-option1');
 
           console.log('[StickyATC] Combined variant changed → syncing to main:', { optionId, optionPrice, optionSalePrice, optionInventory });
 
@@ -2148,17 +2149,29 @@ if (!customElements.get('sticky-atc')) {
           console.log('[StickyATC] syncCombinedToMain complete for variant', optionId);
           const mainCurrentSwatch = this.mainProductInfo.querySelector(`.swatch-item [data-variant-id="${optionId}"]`);
 
-          const swatchItem = mainCurrentSwatch.closest('.swatch-item');
+          if (mainCurrentSwatch) {
+            const swatchItem = mainCurrentSwatch.closest('.swatch-item');
 
-          // remove current checked before set new checked
-          swatchItem.parentElement.querySelectorAll('.swatch-item').forEach(item => {
-            item.querySelector('input').removeAttribute('checked');
-            item.querySelector('input').dispatchEvent(new Event('change', { bubbles: true }));
-          });
-          swatchItem.querySelector('input').checked = true;
-          swatchItem.querySelector('input').dispatchEvent(new Event('change', { bubbles: true }));
+            // remove current checked before set new checked
+            swatchItem.parentElement.querySelectorAll('.swatch-item').forEach(item => {
+              item.querySelector('input').removeAttribute('checked');
+              item.querySelector('input').dispatchEvent(new Event('change', { bubbles: true }));
+            });
+            swatchItem.querySelector('input').checked = true;
+            swatchItem.querySelector('input').dispatchEvent(new Event('change', { bubbles: true }));
 
-          console.log("swatchItem", swatchItem)
+            console.log("swatchItem", swatchItem)
+          } else {
+            const inputVariant = this.mainProductInfo.querySelector(`input[value="${optionName}"]`);
+
+            // remove current checked before set new checked
+            inputVariant.parentElement.querySelectorAll('input').forEach(item => {
+              item.removeAttribute('checked');
+              item.dispatchEvent(new Event('change', { bubbles: true }));
+            });
+            inputVariant.checked = true;
+            inputVariant.dispatchEvent(new Event('change', { bubbles: true }));
+          }
         } catch (e) {
           console.error('[StickyATC] syncCombinedToMain Error:', e);
           this.isSyncing = false;

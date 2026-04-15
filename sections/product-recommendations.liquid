@@ -61,6 +61,9 @@
       section--{{ section.settings.page_width }}
       color-{{ section.settings.color_scheme }}
       spacing-style
+      {% if section.settings.custom_padding_mb %}
+        custom-padding-mb
+      {% endif %}
     "
     style="
       {% if section.settings.page_width == 'custom' %}
@@ -68,6 +71,12 @@
         --page-width: calc(var(--page-content-width) + var(--page-margin) * 2);
       {% endif %}
       {%  render 'spacing-style', settings: section.settings %}
+      {% if section.settings.custom_padding_mb %}
+        --padding-block-start-mb: {{ section.settings.padding-block-start-mobile }}px;
+        --padding-block-end-mb: {{ section.settings.padding-block-end-mobile }}px;
+        --padding-inline-start-mb: {{ section.settings.padding-inline-start-mobile }}px;
+        --padding-inline-end-mb: {{ section.settings.padding-inline-end-mobile }}px;
+      {% endif %}
     "
   >
     <div
@@ -838,6 +847,14 @@
         {
           "value": "2",
           "label": "t:options.two_columns"
+        },
+         {
+          "value": "1.2",
+          "label": "1.2"
+        },
+        {
+          "value": "2.1",
+          "label": "2.1"
         }
       ]
     },
@@ -884,6 +901,56 @@
       "step": 1,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "checkbox",
+      "label": "Custom padding mobile",
+      "id": "custom_padding_mb",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start-mobile",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.custom_padding_mb }}"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end-mobile",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.custom_padding_mb }}"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start-mobile",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.custom_padding_mb }}"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end-mobile",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ section.settings.custom_padding_mb }}"
     }
   ],
   "presets": [

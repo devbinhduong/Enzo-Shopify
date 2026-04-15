@@ -26,6 +26,7 @@
     assign columns_tablet = 3
   endif
   assign columns_gap = sec_stts.columns_gap
+  assign columns_gap_mb = columns_gap | divided_by: 2
   assign rows_gap = sec_stts.rows_gap
 
   assign enable_navigation = false
@@ -104,9 +105,9 @@
         {%- assign slides_per_view = columns_mobile -%}
         {%- capture breakpoints -%}
           {
-            "768": { "slidesPerView": {{ columns_tablet }} },
-            "1024": { "slidesPerView": {{ columns_small_desktop }} },
-            "1400": { "slidesPerView": {{ columns_desktop }} }
+            "768": { "slidesPerView": {{ columns_tablet }}, "spaceBetween": {{ columns_gap }} },
+            "1024": { "slidesPerView": {{ columns_small_desktop }}, "spaceBetween": {{ columns_gap }} },
+            "1400": { "slidesPerView": {{ columns_desktop }}, "spaceBetween": {{ columns_gap }} }
           }
         {%- endcapture -%}
         <swiper-component
@@ -115,7 +116,7 @@
             settings: section.settings,
             loop: false,
             slides_per_view: slides_per_view,
-            space_between: columns_gap,
+            space_between: columns_gap_mb,
             breakpoints: breakpoints
           -%}
           style="

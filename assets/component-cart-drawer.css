@@ -268,7 +268,7 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
   grid-template-areas:
       "media details remove"
       "media quantity totals";
-  gap: var(--gap-xs);
+  gap: 1rem;
   align-items: start;
   padding-block: calc(var(--cart-items-gap) / 2);
   padding-inline: var(--cart-items-gap);
@@ -365,7 +365,8 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 }
 
 .cart-drawer .cart-item:last-child {
-  margin-bottom: var(--cart-items-gap);
+  /* margin-bottom: var(--cart-items-gap); */
+  margin-bottom: 0;
 }
 
 .drawer--function-blocks {
@@ -419,7 +420,7 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 
 /* Mint start custom */
 .drawer__more-block-icons {
-  padding: 2.5rem 3rem;
+  padding: 1rem 3rem 2.5rem;
 }
 
 .drawer__more-block-icons .payment-icons__list {

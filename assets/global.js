@@ -3081,9 +3081,12 @@ class WishlistView extends HTMLElement {
       const item = this.wishlistContainer?.querySelector(`.card--block[data-product-handle="${handle}"]`);
 
       if (item != null) {
-        // debug: console.log(item);
-        item.querySelector('[data-wishlist]').classList.add('wishlist-added');
-        item.querySelector('[data-wishlist] .text').textContent = window.wishlist.remove;
+        const wishlistButton = item.querySelector('[data-wishlist]');
+        if (wishlistButton) {
+          wishlistButton.classList.add('wishlist-added');
+          const textElem = wishlistButton.querySelector('.text');
+          if (textElem) textElem.textContent = window.wishlist.remove;
+        }
         item.classList.add('is-in-grid');
         productHTML.dataset.wishlistAdded = `wishlist-${item.dataset.productCardId}`;
       }

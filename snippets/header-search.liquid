@@ -48,7 +48,7 @@
             <side-drawer-opener data-side-drawer="#Drawer-Search">
           {% endif %}
           <{{ details_summary }}
-            class="header__icon header__icon--search header__icon--summary button focus-inset modal__toggle"
+            class="header__icon header__icon--search header__icon--summary button focus-inset modal__toggle flex items-center justify-center"
             aria-haspopup="dialog"
             aria-label="{{ 'content.search' | t }}"
           >
@@ -156,7 +156,7 @@
               </div>
             </div>
           {%- elsif search_type == 'drawer' -%}
-            {%- render 'predictive-search-drawer', variant: variant, input_id: input_id, color_scheme: search_color_scheme -%}
+            {% comment %} {%- render 'predictive-search-drawer', variant: variant, input_id: input_id, color_scheme: search_color_scheme -%} {% endcomment %}
           {%- endif -%}
         </{{ details_element }}>
       </{{ details_wrapper }}>

@@ -13,7 +13,6 @@
 <div
   class="{{ card_product_information_class | strip | strip_newlines }}"
   style="
-    {%- render 'block-padding', settings: bl_stts -%}
     {%- if bl_stts.width_option == 'custom' -%}
       --globalGroupWidth: {{ bl_stts.custom_width }}%;
     {%- endif -%}
@@ -22,6 +21,10 @@
     {%- if bl_stts.inherit_color_scheme == false -%}
       {%- render 'color-scheme-style', settings: bl_stts -%}
     {%- endif -%}
+    padding-left: {{ bl_stts.padding_left }}px;
+    padding-right: {{ bl_stts.padding_right }}px;
+    padding-top: {{ bl_stts.padding_top }}px;
+    padding-bottom: {{ bl_stts.padding_bottom }}px;
   "
 >
   {% content_for 'blocks' %}

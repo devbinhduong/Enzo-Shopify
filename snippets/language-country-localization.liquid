@@ -97,7 +97,23 @@
             {%- if element == 'drawer' -%}
               <span class="drawer-localization__button--label h6 inline-flex items-center gap-xs" style="{{ form_style }}">
                 {%- if country_style == true -%}
-                  <span class="icon-flag icon-flag--{{ localization.language.iso_code }}"></span>
+                  {%- liquid
+                    assign found_custom_icon = false
+                    for i in (1..6)
+                      assign code_id = 'custom_icon_code_' | append: i
+                      assign svg_id = 'custom_icon_svg_' | append: i
+                      assign custom_code = section.settings[code_id] | downcase | strip
+                      assign current_code = localization.language.iso_code | downcase | strip
+                      if custom_code != blank and custom_code == current_code and section.settings[svg_id] != blank
+                        echo '<span class="custom-flag">' | append: section.settings[svg_id] | append: '</span>'
+                        assign found_custom_icon = true
+                        break
+                      endif
+                    endfor
+                  -%}
+                  {%- if found_custom_icon == false -%}
+                    <span class="icon-flag icon-flag-default icon-flag--{{ localization.language.iso_code }}"></span>
+                  {%- endif -%}
                 {%- endif -%}
                 <span class="language-code">{{ localization.language.iso_code | upcase }}</span>
                 {{- icon_caret_forward -}}
@@ -129,7 +145,23 @@
                     arial-label="{{ language.endonym_name | capitalize }}"
                   >
                     {% if country_style == true %}
-                      <span class="icon-flag icon-flag--{{ language.iso_code }}"></span>
+                      {%- liquid
+                        assign found_custom_icon = false
+                        for i in (1..6)
+                          assign code_id = 'custom_icon_code_' | append: i
+                          assign svg_id = 'custom_icon_svg_' | append: i
+                          assign custom_code = section.settings[code_id] | downcase | strip
+                          assign current_code = language.iso_code | downcase | strip
+                          if custom_code != blank and custom_code == current_code and section.settings[svg_id] != blank
+                            echo '<span class="custom-flag">' | append: section.settings[svg_id] | append: '</span>'
+                            assign found_custom_icon = true
+                            break
+                          endif
+                        endfor
+                      -%}
+                      {%- if found_custom_icon == false -%}
+                        <span class="icon-flag icon-flag-default icon-flag--{{ language.iso_code }}"></span>
+                      {%- endif -%}
                     {% endif %}
                     <span>
                       {{ language.endonym_name | capitalize }}
@@ -229,7 +261,23 @@
                             arial-label="{{ country.name }}"
                           >
                             {% if country_style == true %}
-                              <span class="icon-flag icon-flag--{{ country.iso_code }}"></span>
+                              {%- liquid
+                                assign found_custom_icon = false
+                                for i in (1..6)
+                                  assign code_id = 'custom_icon_code_' | append: i
+                                  assign svg_id = 'custom_icon_svg_' | append: i
+                                  assign custom_code = section.settings[code_id] | downcase | strip
+                                  assign current_code = country.iso_code | downcase | strip
+                                  if custom_code != blank and custom_code == current_code and section.settings[svg_id] != blank
+                                    echo '<span class="custom-flag">' | append: section.settings[svg_id] | append: '</span>'
+                                    assign found_custom_icon = true
+                                    break
+                                  endif
+                                endfor
+                              -%}
+                              {%- if found_custom_icon == false -%}
+                                <span class="icon-flag icon-flag-default icon-flag--{{ country.iso_code }}"></span>
+                              {%- endif -%}
                             {% endif %}
                             <span class="country">{{- country.name }} </span>
                             <span class="country-code"
@@ -253,7 +301,23 @@
                           data-value="{{ country.iso_code }}"
                           id="{{ country.name }}"
                         >
-                          <span class="icon-flag icon-flag--{{ country.iso_code }}"></span>
+                          {%- liquid
+                            assign found_custom_icon = false
+                            for i in (1..6)
+                              assign code_id = 'custom_icon_code_' | append: i
+                              assign svg_id = 'custom_icon_svg_' | append: i
+                              assign custom_code = section.settings[code_id] | downcase | strip
+                              assign current_code = country.iso_code | downcase | strip
+                              if custom_code != blank and custom_code == current_code and section.settings[svg_id] != blank
+                                echo '<span class="custom-flag">' | append: section.settings[svg_id] | append: '</span>'
+                                assign found_custom_icon = true
+                                break
+                              endif
+                            endfor
+                          -%}
+                          {%- if found_custom_icon == false -%}
+                            <span class="icon-flag icon-flag-default icon-flag--{{ country.iso_code }}"></span>
+                          {%- endif -%}
                           <span class="country">{{- country.name }} </span>
                           <span class="country-code"
                             >({{ country.currency.symbol -}}
@@ -297,14 +361,30 @@
             {%- if show_country -%}
               <span class="mobile-localization mobile-localization--country inline-flex items-center gap-2xs">
                 {% if country_style == true %}
-                  <span
-                    class="icon-flag icon-flag--{{ localization.country }}"
-                    style="
-                      background-image: url({{- localization.country | image_url: width: 32 }});
-                      --size-shadow: {{ flag_shadow_size }}px;
-                      --color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-30-60));
-                    "
-                  ></span>
+                  {%- liquid
+                    assign found_custom_icon = false
+                    for i in (1..6)
+                      assign code_id = 'custom_icon_code_' | append: i
+                      assign svg_id = 'custom_icon_svg_' | append: i
+                      assign custom_code = section.settings[code_id] | downcase | strip
+                      assign current_code = localization.country.iso_code | downcase | strip
+                      if custom_code != blank and custom_code == current_code and section.settings[svg_id] != blank
+                        echo '<span class="custom-flag">' | append: section.settings[svg_id] | append: '</span>'
+                        assign found_custom_icon = true
+                        break
+                      endif
+                    endfor
+                  -%}
+                  {%- if found_custom_icon == false -%}
+                    <span
+                      class="icon-flag icon-flag-default icon-flag--{{ localization.country }}"
+                      style="
+                        background-image: url({{- localization.country | image_url: width: 32 }});
+                        --size-shadow: {{ flag_shadow_size }}px;
+                        --color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-30-60));
+                      "
+                    ></span>
+                  {%- endif -%}
                 {% endif %}
                 <span class="currency-code">
                   {{- localization.country.currency.iso_code -}}
@@ -350,14 +430,30 @@
             {%- if show_country -%}
               <span class="mobile-localization mobile-localization--country inline-flex items-center gap-2xs">
                 {% if country_style == true %}
-                  <span
-                    class="icon-flag icon-flag--{{ localization.country }}"
-                    style="
-                      background-image: url({{- localization.country | image_url: width: 32 }});
-                      --size-shadow: {{ flag_shadow_size }}px;
-                      --color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-30-60));
-                    "
-                  ></span>
+                  {%- liquid
+                    assign found_custom_icon = false
+                    for i in (1..6)
+                      assign code_id = 'custom_icon_code_' | append: i
+                      assign svg_id = 'custom_icon_svg_' | append: i
+                      assign custom_code = section.settings[code_id] | downcase | strip
+                      assign current_code = localization.country.iso_code | downcase | strip
+                      if custom_code != blank and custom_code == current_code and section.settings[svg_id] != blank
+                        echo '<span class="custom-flag">' | append: section.settings[svg_id] | append: '</span>'
+                        assign found_custom_icon = true
+                        break
+                      endif
+                    endfor
+                  -%}
+                  {%- if found_custom_icon == false -%}
+                    <span
+                      class="icon-flag icon-flag-default icon-flag--{{ localization.country }}"
+                      style="
+                        background-image: url({{- localization.country | image_url: width: 32 }});
+                        --size-shadow: {{ flag_shadow_size }}px;
+                        --color-shadow: rgb(var(--color-foreground-rgb) / var(--opacity-30-60));
+                      "
+                    ></span>
+                  {%- endif -%}
                 {% endif %}
                 <span class="currency-code">
                   {{- localization.country.currency.iso_code -}}
@@ -452,7 +548,23 @@
                               arial-label="{{ language.endonym_name | capitalize }}"
                             >
                               {% if country_style == true %}
-                                <span class="icon-flag icon-flag--{{ language.iso_code }}"></span>
+                                {%- liquid
+                                  assign found_custom_icon = false
+                                  for i in (1..6)
+                                    assign code_id = 'custom_icon_code_' | append: i
+                                    assign svg_id = 'custom_icon_svg_' | append: i
+                                    assign custom_code = section.settings[code_id] | downcase | strip
+                                    assign current_code = language.iso_code | downcase | strip
+                                    if custom_code != blank and custom_code == current_code and section.settings[svg_id] != blank
+                                      echo '<span class="custom-flag">' | append: section.settings[svg_id] | append: '</span>'
+                                      assign found_custom_icon = true
+                                      break
+                                    endif
+                                  endfor
+                                -%}
+                                {%- if found_custom_icon == false -%}
+                                  <span class="icon-flag icon-flag-default icon-flag--{{ language.iso_code }}"></span>
+                                {%- endif -%}
                               {% endif %}
                               <span>
                                 {{ language.endonym_name | capitalize }}
@@ -534,9 +646,25 @@
                                 id="{{ country.name }}"
                                 arial-label="{{ country.name }}"
                               >
-                                {% if country_style == true %}
-                                  <span class="icon-flag icon-flag--{{ country.iso_code }}"></span>
-                                {% endif %}
+                            {% if country_style == true %}
+                              {%- liquid
+                                assign found_custom_icon = false
+                                for i in (1..6)
+                                  assign code_id = 'custom_icon_code_' | append: i
+                                  assign svg_id = 'custom_icon_svg_' | append: i
+                                  assign custom_code = section.settings[code_id] | downcase | strip
+                                  assign current_code = country.iso_code | downcase | strip
+                                  if custom_code != blank and custom_code == current_code and section.settings[svg_id] != blank
+                                    echo '<span class="custom-flag">' | append: section.settings[svg_id] | append: '</span>'
+                                    assign found_custom_icon = true
+                                    break
+                                  endif
+                                endfor
+                              -%}
+                              {%- if found_custom_icon == false -%}
+                                <span class="icon-flag icon-flag-default icon-flag--{{ country.iso_code }}"></span>
+                              {%- endif -%}
+                            {% endif %}
                                 <span class="country">{{- country.name }} </span>
                                 <span class="country-code"
                                   >({{ country.currency.symbol -}}
@@ -559,7 +687,23 @@
                               data-value="{{ country.iso_code }}"
                               id="{{ country.name }}"
                             >
-                              <span class="icon-flag icon-flag--{{ country.iso_code }}"></span>
+                              {%- liquid
+                                assign found_custom_icon = false
+                                for i in (1..6)
+                                  assign code_id = 'custom_icon_code_' | append: i
+                                  assign svg_id = 'custom_icon_svg_' | append: i
+                                  assign custom_code = section.settings[code_id] | downcase | strip
+                                  assign current_code = country.iso_code | downcase | strip
+                                  if custom_code != blank and custom_code == current_code and section.settings[svg_id] != blank
+                                    echo '<span class="custom-flag">' | append: section.settings[svg_id] | append: '</span>'
+                                    assign found_custom_icon = true
+                                    break
+                                  endif
+                                endfor
+                              -%}
+                              {%- if found_custom_icon == false -%}
+                                <span class="icon-flag icon-flag-default icon-flag--{{ country.iso_code }}"></span>
+                              {%- endif -%}
                               <span class="country">{{- country.name }} </span>
                               <span class="country-code"
                                 >({{ country.currency.symbol -}}
