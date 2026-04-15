@@ -34,6 +34,7 @@
   assign wrap = wrap | default: block.settings.wrap
   assign font_style = font_style | default: block.settings.font_style
   assign case = text_case | default: block.settings.text_case
+  assign aria_label = aria_label | default: label | prepend: 'Go to '
 -%}
 <a
   {% if link == blank %}
@@ -60,6 +61,12 @@
       {% render 'typography-style', settings: block.settings, button_link: true, font_style: font_style, case: case %}
     {% endif %}
   "
+  {% if aria_label == blank %}
+    aria-label="Go to {{ label }}"
+  {% else %}
+    aria-label="{{ aria_label }}"
+  {% endif %}
+
   {%- if open_in_new_tab -%}
     target="_blank"
     rel="noopener noreferrer"
@@ -75,12 +82,15 @@
       <span class="button-text-main inline-block relative z-1">
         {{ label }}
       </span>
+      <span class="button-text-aria visibility-hidden">{{ aria_label }}</span>
     </span>
   {%- else -%}
     <span class="text">{{ label }}</span>
+    <span class="button-text-aria visibility-hidden">{{ aria_label }}</span>
   {%- endif -%}
   {% if link_reveal and style_class == 'link' %}
     <span class="text-mask link none{% if link_hover_underline and style_class == 'link' and link_underline == false %} link--hover-underline{% endif %}" data-text="{{ label }}">{{ label }}</span>
+    <span class="button-text-aria visibility-hidden">{{ aria_label }}</span>
   {% endif %}
   {% if icon %}
     {{ icon }}

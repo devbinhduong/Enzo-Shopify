@@ -15,3 +15,10 @@ store = "qmcar"
 theme = "185698910510"
 theme-editor-sync = true
 ignore = "*.json"
+
+[environments.test]
+store = "korean-skincare-uk"
+theme = "186343391612"
+theme-editor-sync = true
+ignore = "*.json"
+

@@ -708,6 +708,12 @@ featured-product product-recommendations swiper-component,
   }
 }
 
+@media (max-width: 1024px) {
+  .sticky-atc.sticky-atc--combined-dropdown .sticky-cart__button button {
+    padding: 1.5rem 2.5rem;
+  }
+}
+
 @media (min-width: 751px) and (max-width: 1024px) {
   .sticky-atc.sticky-atc--combined-dropdown .sticky-atc__action {
     width: 70%;

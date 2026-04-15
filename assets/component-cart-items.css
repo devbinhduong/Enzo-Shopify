@@ -423,7 +423,7 @@ cart-items-component .cart-items__table-row.removing {
     grid-template-areas:
         "media details totals"
         "media quantity remove";
-    gap: var(--gap-xs);
+    gap: 1rem;
     align-items: start;
     padding-block: var(--cart-items-gap);
     padding-inline: 0 var(--cart-items-gap);

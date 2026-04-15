@@ -112,9 +112,9 @@
                 <li>
                 <div class="menu-drawer__menu-item-brand" id="Details-menu-drawer-brands-{{ letter |downcase }}{% if next_letter %}-{{ next_letter | downcase }}{% endif %}">
                   <a
-                    href="javascript:void(0);"
+                    href="#brands-{{ letter |downcase }}{% if next_letter %}-{{ next_letter | downcase }}{% endif %}"
                     id="HeaderDrawer-brands-{{ letter | downcase }}{% if next_letter %}-{{ next_letter | downcase }}{% endif %}"
-                    class="{{ class_link }} menu-drawer__menu-item-level-2"
+                    class="{{ class_link }} menu-drawer__menu-item-level-2 test12121212"
                   >
                     {{ letter }}{% if next_letter %}-{{ next_letter }}{% endif %}
                   </a>

@@ -1,5 +1,6 @@
 {%- liquid
   assign card_article = block.settings.article
+  assign aria_label = card_article.title
 -%}
 
 <div class="card--block-button w-full{% if block.settings.icon != 'none' %} flex items-center{% endif %}">
@@ -8,7 +9,7 @@
       {%- render 'card-article-button', card_article: card_article, block: block -%}
     {% else %}
       {%- assign placeholder = 'blogs.article.read_more' | t -%}
-      {%- render 'button', link: card_article.url, block: block, label: placeholder -%}
+      {%- render 'button', link: card_article.url, block: block, label: placeholder, aria_label: aria_label -%}
     {% endif %}
   {%- else -%}
     {%- assign placeholder = 'blogs.article.read_more' | t -%}

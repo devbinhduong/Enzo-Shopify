@@ -58,6 +58,10 @@
     assign _cap_px = 2000
   endif
 
+  if block.settings.custom_render_size
+    assign _cap_px = block.settings.render_width
+  endif
+
   comment --- TABLET width (750–1024px) ---
   endcomment
   if block.settings.width_tablet == 'custom'
@@ -183,7 +187,8 @@
       widths: widths,
       sizes: sizes,
       fetch_priority: fetch_priority,
-      style: style_value
+      style: style_value,
+      force_exact_size: block.settings.custom_render_size
     -%}
   {%- else -%}
     {{ 'hero-apparel-1' | placeholder_svg_tag: 'image-block__image placeholder-svg' }}
@@ -289,6 +294,24 @@
       "unit": "px",
       "default": 100,
       "visible_if": "{{ block.settings.width == 'custom' and block.settings.unit == 'pixel' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_render_size",
+      "label": "Custom Render Size",
+      "default": false,
+      "info": "Force the image to render at an exact resolution (disables retina scaling)."
+    },
+    {
+      "type": "range",
+      "id": "render_width",
+      "label": "Render Width (px)",
+      "info": "Resolution to render. Use smaller values for performance, larger for quality.",
+      "min": 100,
+      "max": 3000,
+      "step": 50,
+      "default": 1000,
+      "visible_if": "{{ block.settings.custom_render_size }}"
     },
     {
       "type": "select",

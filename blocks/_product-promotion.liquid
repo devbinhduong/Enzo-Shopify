@@ -26,10 +26,9 @@
       gap: 1rem;
     }
 
-    .promo-content h4 {
+    .promo-content h2 {
       margin: 0;
       color: rgba(0, 0, 0, 0.80);
-      font-family: Poppins;
       font-size: 15px;
       font-style: normal;
       font-weight: 600;
@@ -51,7 +50,7 @@
       <img src="{{ product.metafields.custom.product_promotion_banner | image_url: width: 110 }}" alt="{{ product.metafields.custom.product_promotion_title }}">
     </div>
     <div class="promo-content">
-      <h4>{{ product.metafields.custom.product_promotion_title }}</h4>
+      <h2>{{ product.metafields.custom.product_promotion_title }}</h2>
       <p>{{ product.metafields.custom.product_promotion_text }}</p>
     </div>
   </div>

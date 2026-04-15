@@ -24,6 +24,13 @@
   assign f_widths = widths | default: '240, 352, 650, 832, 1200'
   assign m_widths = widths | default: '240, 352, 650, 832, 1200'
 
+  if settings.product_card_custom_render_size
+    assign f_media_width = settings.product_card_render_width
+    assign media_width = settings.product_card_render_width
+    assign f_widths = settings.product_card_render_width | append: ''
+    assign m_widths = settings.product_card_render_width | append: ''
+  endif
+
   unless lazy_load == false
     assign loading = "lazy"
   endunless

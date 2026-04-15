@@ -62,13 +62,23 @@
     assign image_widths = widths | default: widths_default
   -%}
 
+  {%- liquid 
+    assign image_url_width_num = image_url_width | plus: 0
+    assign image_url_height_num = image_url_height | plus: 0
+    assign force_exact_size = force_exact_size | default: false
+
+    assign image_widths = widths | default: widths_default
+    if force_exact_size
+      assign image_widths = image_url_width | default: image_url_height | append: ''
+    endif
+  -%}
   {% if use_width_constraint %}
     {% capture image_srcset -%}
-      {{ image | image_url: width: image_url_width, format: 'webp' }} 1x, {{ image | image_url: width: image_url_width_2x, format: 'webp' }} 2x, {{ image | image_url: width: image_url_width_3x, format: 'webp' }} 3x
+      {{ image | image_url: width: image_url_width, format: 'webp' }} 1x{% unless force_exact_size %}, {{ image | image_url: width: image_url_width_2x, format: 'webp' }} 2x{% if image_url_width_num < 600 %}, {{ image | image_url: width: image_url_width_3x, format: 'webp' }} 3x{% endif %}{% endunless %}
     {%- endcapture %}
   {% else %}
     {% capture image_srcset -%}
-      {{ image | image_url: height: image_url_height, format: 'webp' }} 1x, {{ image | image_url: height: image_url_height_2x, format: 'webp' }} 2x, {{ image | image_url: height: image_url_height_3x, format: 'webp' }} 3x
+      {{ image | image_url: height: image_url_height, format: 'webp' }} 1x{% unless force_exact_size %}, {{ image | image_url: height: image_url_height_2x, format: 'webp' }} 2x{% if image_url_height_num < 600 %}, {{ image | image_url: height: image_url_height_3x, format: 'webp' }} 3x{% endif %}{% endunless %}
     {%- endcapture %}
   {% endif %}
 

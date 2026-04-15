@@ -2981,6 +2981,27 @@
         "unit": "px",
         "label": "t:settings.blur",
         "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Product card rendering"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_card_custom_render_size",
+        "label": "Custom Render Size",
+        "default": false,
+        "info": "Force product images to render at an exact resolution (disables retina scaling)."
+      },
+      {
+        "type": "range",
+        "id": "product_card_render_width",
+        "label": "Render Width (px)",
+        "min": 100,
+        "max": 1500,
+        "step": 50,
+        "default": 600,
+        "visible_if": "{{ settings.product_card_custom_render_size }}"
       }
     ]
   },

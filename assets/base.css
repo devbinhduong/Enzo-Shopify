@@ -13669,12 +13669,12 @@ deferred-media[class].media-block__media
 
 .pagination__list > li {
   min-width: 0.5rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
 }
-
-.pagination__list > li:not(:last-child) {
-  margin-right: 1rem;
+.pagination__list > li > a {
+ 
 }
-
 .pagination__item {
   display: inline-flex;
   height: 2.1rem;
@@ -19834,4 +19834,8 @@ details-disclosure > details {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+}
+
+#AddToCartModal .cart-item__price-wrapper .price {
+  text-align: left !important;
 }
