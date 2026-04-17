@@ -112,9 +112,9 @@
 
     {{ content_for_header }}
 
-    <!--Gem_Page_Header_Script-->
-    {% render 'gem-app-header-scripts' %}
-    <!--End_Gem_Page_Header_Script-->
+    {% if template.page_type != 'index' and template.page_type != 'product' and template.page_type != 'collection' %}
+      {% render 'gem-app-header-scripts' %}
+    {% endif %}
   </head>
 
   <body

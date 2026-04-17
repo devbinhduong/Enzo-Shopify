@@ -31,9 +31,14 @@
     assign m_widths = settings.product_card_render_width | append: ''
   endif
 
-  unless lazy_load == false
+  if preload
+    assign loading = "eager"
+    assign fetchpriority = "high"
+  elsif lazy_load == false
+    assign loading = "eager"
+  else
     assign loading = "lazy"
-  endunless
+  endif
 
   if collection and collection.handle
     assign href_product_url = '/collections/' | append: collection.handle | append: '/products/' | append: card_product.handle
@@ -52,14 +57,14 @@
   {% comment %} <section-fetcher class="absolute inset-0" data-section-id="{{ section.id }}" data-target-id="{{ secondary_media_id }}" data-activate="inview"></section-fetcher> {% endcomment %}
   <div class="media media--transparent media--hover-effect" id="CardProductMedia-Content-{{ section.id }}-{{ card_product.id }}">
     {% if f_media %}
-      {{ f_media | image_url: width: f_media_width , format: 'webp' | image_tag: sizes: sizes, widths: f_widths, loading: 'lazy', alt: f_media_alt, class: 'motion-reduce', loading: loading, style: focal_point_style }}
+      {{ f_media | image_url: width: f_media_width , format: 'webp' | image_tag: sizes: sizes, widths: f_widths, alt: f_media_alt, class: 'motion-reduce', loading: loading, fetchpriority: fetchpriority, style: focal_point_style }}
     {% else %}
       {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
     {% endif %}
     {%- if media[1] != null and show_secondary_image -%}
       {%- case media[1].media_type -%}
         {%- when 'image' -%}
-          {{ media[1] | image_url: width: media_width , format: 'webp' | image_tag: sizes: sizes, widths: m_widths, loading: 'lazy', alt: media_alt, class: 'motion-reduce', loading: 'lazy', id: secondary_media_id, style: secondary_focal_point_style }}
+          {{ media[1] | image_url: width: media_width , format: 'webp' | image_tag: sizes: sizes, widths: m_widths, alt: media_alt, class: 'motion-reduce', loading: 'lazy', id: secondary_media_id, style: secondary_focal_point_style }}
         {%- when 'video', 'external_video' -%}
           {%- render 'video',
             video: media[1],

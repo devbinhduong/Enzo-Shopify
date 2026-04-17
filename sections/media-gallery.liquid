@@ -15,6 +15,31 @@
 
 {% render 'section', section: section, children: children %}
 
+<script>
+  (function() {
+    const loadVideoScript = () => {
+      if (window.videoBackgroundComponentLoadedScript) return;
+      window.videoBackgroundComponentLoadedScript = true;
+      const script = document.createElement('script');
+      script.src = "{{ 'video-background-component.js' | asset_url }}";
+      script.defer = true;
+      document.head.appendChild(script);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadVideoScript();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '600px' });
+
+    const sectionEl = document.querySelector('#shopify-section-{{ section.id }}');
+    if (sectionEl) observer.observe(sectionEl);
+  })();
+</script>
+
 {% schema %}
 {
   "name": "t:names.media_gallery",

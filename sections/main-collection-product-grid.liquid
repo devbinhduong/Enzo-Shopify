@@ -85,6 +85,12 @@
 
             {% capture children %}
               {% for product in collection.products %}
+                {%- liquid
+                  assign preload_image = false
+                  if forloop.index0 < 4
+                    assign preload_image = true
+                  endif
+                -%}
                 <li
                   id="{{ section.id }}-{{ product.id }}"
                   class="product-grid__item product-grid__item--{{ forloop.index0 }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -96,7 +102,7 @@
                   {% endif %}
                 >
                   {% # theme-check-disable %}
-                  {% content_for "block", type: "_product-card", id: "product-card", closest.product: product %}
+                  {% content_for "block", type: "_product-card", id: "product-card", closest.product: product, preload_image: preload_image %}
                   {% # theme-check-enable %}
                 </li>
               {% endfor %}

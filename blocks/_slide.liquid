@@ -58,14 +58,23 @@
 
   assign height_1 = block_stts.image_1.width | divided_by: block_stts.image_1.aspect_ratio | round
   assign height_2 = block_stts.image_2.width | divided_by: block_stts.image_2.aspect_ratio | round
+
   if block_stts.image_1 != blank and block_stts.image_2 != blank
     assign media_width_desktop = 100 | divided_by: 2 | append: 'vw'
   else
     assign media_width_desktop = '100vw'
   endif
+
   assign media_width_mobile = '100vw'
+  assign desktop_widths = '1100, 1500, 1780, 2000, 3000, 3840'
+  assign mobile_widths = '375, 550, 750, 1100'
+
   assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
-  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
+  assign height_video_1 = 0
+  if block_stts.video_1.preview_image != blank
+    assign height_video_1 = block_stts.video_1.preview_image.width | divided_by: block_stts.video_1.preview_image.aspect_ratio | round
+  endif
 
   assign image_behavior = sec_stts.image_behavior
   assign element = 'div'
@@ -83,18 +92,16 @@
       data-swiper-parallax="35%"
     >
       {%- if has_image_mb_1 -%}
-        {% assign max_w = block_stts.image_mb_1.width %}
+        {%- capture mobile_srcset -%}
+          {%- assign widths_list = mobile_widths | remove: " " | split: "," -%}
+          {%- for width in widths_list -%}
+            {{ block_stts.image_mb_1 | image_url: width: width }} {{ width }}w{%- unless forloop.last -%}, {%- endunless -%}
+          {%- endfor -%}
+        {%- endcapture -%}
         <source
           media="(max-width: 749px)"
           sizes="100vw"
-          srcset="
-            {{ block_stts.image_mb_1 | image_url: width: 360 | escape }} 360w,
-            {{ block_stts.image_mb_1 | image_url: width: 480 | escape }} 480w,
-            {{ block_stts.image_mb_1 | image_url: width: 600 | escape }} 600w
-            {%- if max_w >= 750 -%}, {{ block_stts.image_mb_1 | image_url: width: 750 | escape }} 750w{%- endif -%}
-            {%- if max_w >= 828 -%}, {{ block_stts.image_mb_1 | image_url: width: 828 | escape }} 828w{%- endif -%}
-            {%- if max_w >= 1080 -%}, {{ block_stts.image_mb_1 | image_url: width: 1080 | escape }} 1080w{%- endif -%}
-          "
+          srcset="{{ mobile_srcset | strip_newlines }}"
           width="{{ block_stts.image_mb_1.width }}"
           height="{{ block_stts.image_mb_1.height }}"
         >
@@ -103,41 +110,30 @@
       {{
         block_stts.image_1
         | image_url: width: block_stts.image_1.width
-        | image_tag: height: height_1, sizes: sizes, widths: widths, loading: loading, alt: block_stts.image_1.alt, fetchpriority: fetchpriority
+        | image_tag:
+          height: height_1,
+          sizes: sizes,
+          widths: desktop_widths,
+          loading: loading,
+          alt: block_stts.image_1.alt,
+          fetchpriority: fetchpriority,
+          preload: true
       }}
     </picture>
   {%- endif -%}
 
   {%- if has_video_1 -%}
-    {% liquid
-      assign preview_image = block_stts.image_1
-      if block_stts.media_type_1 == 'video'
-        assign preview_image = block_stts.video_1.preview_image
-      endif
-    %}
-
-    {%- if preview_image -%}
-      {%- liquid
-        assign height_video_1 = preview_image.width | divided_by: preview_image.aspect_ratio | round
-        assign media_width_desktop = '100vw'
-        assign media_width_mobile = '100vw'
-        assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
-        assign lazy_sizes = 'auto, ' | append: sizes
-        assign widths = '832, 1200, 1600, 1920, 2560, 3840'
-      %}
-    {%- endif -%}
-
     {% assign media_count = media_count | plus: 1 %}
     {%- if block_stts.video_1.preview_image -%}
-      {%- assign video_preview_image_alt = block_stts.video_1.preview_image.alt |  default: 'Video preview image' -%}
+      {%- assign video_preview_image_alt = block_stts.video_1.preview_image.alt | default: 'Video preview image' -%}
       {{
         block_stts.video_1.preview_image
         | image_url: width: 3840
         | image_tag:
-          widths: widths,
+          widths: desktop_widths,
           loading: loading,
           class: 'slide__video-poster',
-          sizes: lazy_sizes,
+          sizes: sizes,
           fetchpriority: fetchpriority,
           height: height_video_1,
           alt: video_preview_image_alt
@@ -146,7 +142,14 @@
 
     {{
       block_stts.video_1
-      | video_tag: poster: nil, autoplay: true, loop: true, controls: false, muted: true, class: 'slide__video'
+      | video_tag:
+        poster: nil,
+        autoplay: true,
+        loop: true,
+        controls: false,
+        muted: true,
+        class: 'slide__video',
+        loading: loading
     }}
   {%- endif -%}
 
@@ -157,9 +160,15 @@
       data-swiper-parallax="35%"
     >
       {%- if has_image_mb_2 -%}
+        {%- capture mobile_srcset_2 -%}
+          {%- assign widths_list = mobile_widths | remove: " " | split: "," -%}
+          {%- for width in widths_list -%}
+            {{ block_stts.image_mb_2 | image_url: width: width }} {{ width }}w{%- unless forloop.last -%}, {%- endunless -%}
+          {%- endfor -%}
+        {%- endcapture -%}
         <source
           media="(max-width: 749px)"
-          srcset="{{ block_stts.image_mb_2 | image_url: width: '400x' }} 400w, {{ block_stts.image_mb_2 | image_url: width: '600x' }} 600w, {{ block_stts.image_mb_2 | image_url: width: '800x' }} 800w, {{ block_stts.image_mb_2 | image_url: width: '1000x' }} 1000w"
+          srcset="{{ mobile_srcset_2 | strip_newlines }}"
           alt="{{ block_stts.image_mb_2.alt }}"
           width="{{ block_stts.image_mb_2.width }}"
           height="{{ block_stts.image_mb_2.height }}"
@@ -168,8 +177,14 @@
 
       {{
         block_stts.image_2
-        | image_url: width: 3840
-        | image_tag: height: height_2, sizes: sizes, widths: widths, loading: loading, alt: block_stts.image_2.alt, fetchpriority: fetchpriority
+        | image_url: width: block_stts.image_2.width
+        | image_tag:
+          height: height_2,
+          sizes: sizes,
+          widths: desktop_widths,
+          loading: 'lazy',
+          alt: block_stts.image_2.alt,
+          fetchpriority: 'low'
       }}
     </picture>
   {%- endif -%}

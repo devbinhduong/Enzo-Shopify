@@ -4,8 +4,8 @@
 
   let is_load_js = false;
 
-  document.addEventListener('DOMContentLoaded', function() {
-    ['keydown', 'mousemove', 'touchstart'].forEach((event) => {
+  const init = () => {
+    ['keydown', 'mousemove', 'touchstart', 'scroll'].forEach((event) => {
       document.addEventListener(event, () => {
         if (is_load_js) return;
         is_load_js = true;
@@ -148,5 +148,11 @@
         });
       });
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
