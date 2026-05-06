@@ -2714,7 +2714,9 @@ function readMoreDescription() {
           }
 
           setTimeout(() => {
-            tab.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            const headerHeight = document.querySelector('#header-component')?.offsetHeight || 0;
+            const offset = tab.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
           }, 200);
         }
       }
@@ -2727,7 +2729,9 @@ function readMoreDescription() {
           }
 
           setTimeout(() => {
-            tab.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            const headerHeight = document.querySelector('#header-component')?.offsetHeight || 0;
+            const offset = tab.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
           }, 200);
         }
       }

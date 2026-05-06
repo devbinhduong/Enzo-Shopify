@@ -3581,7 +3581,8 @@ details[open]>.share-button__fallback {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
+  font-weight: 400;
   top: -1rem;
   right: 0rem;
   line-height: 1;
@@ -3703,6 +3704,7 @@ details[open]>.share-button__fallback {
   --color-badge-background: var(--color-sale-badge-background);
   --color-badge-border: var(--color-sale-badge-border);
   --color-badge-foreground: var(--color-sale-badge-foreground);
+  border: none;
 }
 
 .custom-badge {
@@ -18199,6 +18201,7 @@ predictive-search-results__card--query,
   outline: none;
   background-color: transparent;
   box-shadow: none;
+  opacity: 1;
 }
 .header__icon:not(.header__icon--summary),
 .header__icon span {
@@ -18377,7 +18380,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   margin-left: 0;
 }
 .header__menu-item {
-  padding: 1.2rem;
+  padding: 1rem;
   text-decoration: none;
   color: rgb(var(--color-primary-rgb) / var(--opacity-100));
 }
@@ -19838,4 +19841,54 @@ details-disclosure > details {
 
 #AddToCartModal .cart-item__price-wrapper .price {
   text-align: left !important;
+}
+
+/* Mint check feedback 05052026 */
+
+#shopify-section-template--26677199438204__featured_collection_iQLw8d .collection-carousel-swiper-component {
+	 height: calc(100% + 40px) !important;
+}
+ #shopify-section-template--26677199438204__featured_collection_iQLw8d .swiper-wrapper, #shopify-section-template--26677199438204__featured_collection_iQLw8d .collection-carousel-swiper-component, #shopify-section-template--26677199438204__featured_collection_iQLw8d .card-wrapper, #shopify-section-template--26677199438204__featured_collection_iQLw8d .swiper {
+	 height: 100%;
+}
+ #shopify-section-template--26677199438204__featured_collection_iQLw8d .section-global__content {
+	 padding-bottom: 4rem;
+}
+
+.swiper-parent-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper-shadow-mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.mask-left {
+  left: 0;
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+
+.mask-right {
+  right: 0;
+  background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+
+.swiper-parent-container:has(.swiper-button-prev.swiper-button-disabled) .mask-left{
+  opacity: 0;
+}
+
+.swiper-parent-container:has(.swiper-button-next.swiper-button-disabled) .mask-right{
+  opacity: 0;
+}
+
+* {
+  letter-spacing: 0 !important;
 }

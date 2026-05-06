@@ -4,11 +4,20 @@
 
 {%- capture card_product_vendor -%}
   <div class="card--block-vendor">
-    <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-    <div class="opacity-100">
+  <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+  <div class="opacity-100">
+    {%- assign vendor_handle = card_product.vendor | handleize -%}
+    {%- assign vendor_collection = collections[vendor_handle] -%}
+
+    {%- if vendor_collection != blank -%}
+      <a href="{{ vendor_collection.url }}" title="{{ card_product.vendor }}">
+        {{ card_product.vendor }}
+      </a>
+    {%- else -%}
       {{ card_product.vendor | link_to_vendor }}
-    </div>
+    {%- endif -%}
   </div>
+</div>
 {%- endcapture -%}
 
 {%- if card_product and card_product != empty -%}

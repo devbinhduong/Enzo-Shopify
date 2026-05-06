@@ -2080,7 +2080,12 @@ class SwiperComponent extends HTMLElement {
                 swiper: null,
               },
             }),
-        freeMode: true
+        freeMode: true,
+        mousewheel: {
+          forceToAxis: true,
+          sensitivity: 1,
+          releaseOnEdges: true,
+        },
       };
 
       if (this.options.effect === "fade") {

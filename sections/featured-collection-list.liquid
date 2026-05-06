@@ -66,6 +66,7 @@
   endif
 
   assign scroll_reveal = false
+  assign always_show_swiper_button = true
 -%}
 
 {% comment %} Layout type [tabs-grid] and [tabs-carousel] {% endcomment %}
@@ -776,7 +777,7 @@
                           }
                         {%- endcapture -%}
                         <swiper-component
-                          class="collection-carousel-swiper-component{% if section.settings.full_width and section.settings.section_width == 'page-width' %} full-width{% endif %}"
+                          class="collection-carousel-swiper-component swiper-parent-container{% if section.settings.full_width and section.settings.section_width == 'page-width' %} full-width{% endif %}"
                           {%- render 'swiper-data',
                             settings: section.settings,
                             loop: false,
@@ -794,6 +795,8 @@
                             %}
                           "
                         >
+                          <div class="swiper-shadow-mask mask-left"></div>
+                          <div class="swiper-shadow-mask mask-right"></div>
                           <div class="swiper"
                           style="
                             {% if sec_stts.pagination_type == 'bullets' and sec_stts.navigation == 'pagination' or sec_stts.navigation == 'arrows-pagination' %}
@@ -822,7 +825,7 @@
                             </ul>
 
                             {%- if enable_navigation -%}
-                              <div class="swiper-btns-wrap small-hide">
+                              <div class="swiper-btns-wrap{% if always_show_swiper_button %} always_show_swiper_button {%  else %} small-hide{% endif %}">
                                 {%- render 'swiper-button' -%}
                               </div>
                             {%- endif -%}
@@ -936,7 +939,7 @@
                             </ul>
 
                             {%- if enable_navigation -%}
-                              <div class="swiper-btns-wrap small-hide">
+                              <div class="swiper-btns-wrap{% if always_show_swiper_button %} always_show_swiper_button {%  else %} small-hide{% endif %}">
                                 {%- render 'swiper-button' -%}
                               </div>
                             {%- endif -%}
@@ -1208,7 +1211,7 @@
                         {% endfor %}
                       </ul>
                       {%- if enable_navigation -%}
-                        <div class="swiper-btns-wrap small-hide">
+                        <div class="swiper-btns-wrap{% if always_show_swiper_button %} always_show_swiper_button {%  else %} small-hide{% endif %}">
                           {%- render 'swiper-button' -%}
                         </div>
                       {%- endif -%}
