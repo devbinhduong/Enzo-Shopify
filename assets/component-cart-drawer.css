@@ -54,9 +54,9 @@ cart-drawer-items .section--main-cart {
   height: 100%;
 
   .cart__contents {
-    overflow-y: auto;
+    /* overflow-y: auto; */
     flex: 1;
-    max-height: calc(100dvh - var(--cart-drawer-header-height));
+    /* max-height: calc(100dvh - var(--cart-drawer-header-height)); */
   }
 }
 
@@ -64,9 +64,9 @@ cart-drawer-items .section--main-cart {
   flex-grow: 1;
 }
 
-.cart-drawer cart-drawer-items .cart__contents {
+/* .cart-drawer cart-drawer-items .cart__contents {
   min-height: 15rem;
-}
+} */
 
 .cart-drawer .cart-items,
 .cart-drawer tbody {

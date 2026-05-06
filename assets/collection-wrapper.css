@@ -207,3 +207,7 @@
     gap: 1rem !important;
   }
 }
+
+.collection-hero__text-wrapper:not(:has(.collection-description-text)) .text-block {
+  padding-bottom: 0 !important;
+}

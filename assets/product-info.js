@@ -2740,3 +2740,33 @@ function readMoreDescription() {
 }
 
 readMoreDescription();
+
+function handleReviewApp() {
+  const reviewBadge = document.querySelector('.jdgm-preview-badge');
+  const appBlock = document.querySelector("#judgeme_product_reviews");
+
+  if (reviewBadge && appBlock) {
+    const globalDrawer = document.querySelector('#Drawer-Global');
+    const drawerContentInner = globalDrawer?.querySelector('.drawer__content-inner');
+    drawerContentInner.innerHTML = '';
+    drawerContentInner.appendChild(appBlock);
+    
+    reviewBadge.addEventListener('click', (e) => {
+     e.preventDefault();
+     e.stopImmediatePropagation();
+
+     if (window.innerWidth < 750) {
+       if (globalDrawer) globalDrawer.open(reviewBadge);
+     } else {
+       setTimeout(() => {
+         const headerHeight = document.querySelector('#header-component')?.offsetHeight || 0;
+         const offset = appBlock.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+         window.scrollTo({ top: offset, behavior: 'smooth' });
+       }, 200);
+     }
+    });
+  }
+
+}
+
+handleReviewApp();

@@ -7377,6 +7377,8 @@ text-loader-component {
   .tabs-product-header {
     overflow: auto;
     max-width: 100%;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
   @media screen and (max-width: 749px) {
     padding-bottom: var(--pb);
@@ -7397,6 +7399,10 @@ text-loader-component {
       background-position-x: left;
       background-size: 100% var(--link-underline-width, 1px);
     }
+  }
+
+  &:last-child {
+    padding-right: 2rem;
   }
 
   &.link + .tabs-product-header__item {
